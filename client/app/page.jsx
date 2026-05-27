@@ -1,0 +1,911 @@
+import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import FinalCTA from '@/components/FinalCTA';
+import SaltImage from '@/components/SaltImage';
+import Chatbot from '@/components/Chatbot';
+import FAQ from '@/components/FAQ';
+import { fetchJSON } from '@/lib/api';
+
+async function getVarieties() {
+  try {
+    return await fetchJSON('/ingredients');
+  } catch {
+    return [];
+  }
+}
+
+const FALLBACK_VARIETIES = [
+  { name: 'Himalayan Pink Salt',     latin: 'Edible · 99.8% NaCl',     note: 'Bestseller',     kind: 'pink-fine' },
+  { name: 'Pure White Salt',         latin: 'Edible · Refined',        note: 'Food Grade',     kind: 'white-refined' },
+  { name: 'Black Salt (Kala Namak)', latin: 'Edible · Sulfur-rich',    note: 'Specialty',      kind: 'black-salt' },
+  { name: 'Coarse Pink Crystals',    latin: 'Grinder Grade',           note: 'Best for Mills', kind: 'pink-coarse' },
+  { name: 'Pink Salt Flakes',        latin: 'Gourmet Grade',           note: 'Hand-Harvested', kind: 'pink-flakes' },
+  { name: 'Bath & Spa Salt',         latin: 'Therapeutic Grade',       note: 'Wellness',       kind: 'bath-lavender' },
+  { name: 'Pink Salt Bricks',        latin: 'Construction Grade',      note: 'Salt Rooms',     kind: 'salt-brick' },
+  { name: 'Decorative Salt Lamps',   latin: 'Hand-Carved',             note: 'Lifestyle',      kind: 'lamp-natural' },
+  { name: 'Animal Lick Salt',        latin: 'Livestock Grade',         note: 'Farm Supply',    kind: 'animal-lick' },
+  { name: 'De-Icing Rock Salt',      latin: 'Industrial Grade',        note: 'Winter Use',     kind: 'de-icing' },
+];
+
+export default async function Home() {
+  const apiVarieties = await getVarieties();
+  const varieties = apiVarieties.length > 0 ? apiVarieties : FALLBACK_VARIETIES;
+
+  return (
+    <>
+      <Navbar />
+
+      {/* HERO */}
+      <section className="hero">
+        <div className="sparkles" aria-hidden="true">
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+        </div>
+        <div className="hero-content" data-reveal-stagger>
+          <div className="hero-tag">
+            Premium <span className="pill">Himalayan Pink Salt</span> Manufacturer · Since 1998
+          </div>
+          <h1>
+            Bulk Salt Manufacturing<br />
+            <span className="gold-word">&amp;</span> Global<br />
+            <span className="gold-word">Wholesale Supply</span>
+          </h1>
+          <p>
+            Al Syedi Group is a trusted manufacturer and exporter of premium Himalayan Pink Salt, edible salts, bath &amp; spa salts, decorative salt lamps, salt bricks and industrial-grade salts — shipped in bulk to clients across the UK, US, Canada, Europe and the Middle East.
+          </p>
+          <div className="hero-actions">
+            <Link href="/contact" className="btn btn-gold">
+              Request a Quote
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <Link href="/products" className="btn btn-outline">View Salt Products</Link>
+          </div>
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <div className="num">25+</div>
+              <div className="lbl">Years of Trust</div>
+            </div>
+            <div className="hero-stat">
+              <div className="num">42</div>
+              <div className="lbl">Countries Served</div>
+            </div>
+            <div className="hero-stat">
+              <div className="num">18k+</div>
+              <div className="lbl">Tons Shipped / Yr</div>
+            </div>
+            <div className="hero-stat">
+              <div className="num">320+</div>
+              <div className="lbl">Active B2B Clients</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURES STRIP */}
+      <section className="features-strip">
+        <div className="features-grid" data-reveal-stagger>
+          {[
+            { title: 'Mine to\nMarket Supply', icon: 'mountain' },
+            { title: 'Lab Tested\nPurity', icon: 'beaker' },
+            { title: 'Private Label\nPackaging', icon: 'box' },
+            { title: 'Worldwide\nShipping', icon: 'ship' },
+            { title: '24/7 B2B\nSupport', icon: 'support' },
+          ].map((f) => (
+            <div className="feature-item" key={f.title}>
+              <FeatureIcon name={f.icon} />
+              <div className="feature-item-title">
+                {f.title.split('\n').map((t, i) => (
+                  <span key={i}>{t}{i === 0 && <br />}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CAPABILITIES */}
+      <section className="section capabilities" id="services">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">What We Offer</div>
+          <h2 className="section-title">End-to-End <span className="gold-word">B2B Salt Solutions</span></h2>
+          <div className="title-rule"></div>
+        </div>
+        <div className="container">
+          <div className="cap-grid" data-reveal-stagger>
+            <CapCard id="bulk" icon="cubes" title="Bulk Salt Supply"
+              desc="High-volume edible &amp; industrial salt from our Khewra-source mines. Container loads (20ft / 40ft FCL) shipped worldwide. MOQ from 1 metric ton." />
+            <CapCard id="private-label" icon="box" title="Private Label &amp; Packaging"
+              desc="Your brand, our salt. Custom retail jars, pouches, gift boxes &amp; pallet packs. Full label design, barcoding &amp; regulatory dossiers included." />
+            <CapCard id="custom" icon="grind" title="Custom Grinds &amp; Blends"
+              desc="Fine, medium, coarse, granular, powder &amp; chunk — tailored to your industry. Blended with herbs, citrus zest or mineral notes on request." />
+            <CapCard id="lifestyle" icon="lamp" title="Salt Lamps, Bricks &amp; Spa"
+              desc="Hand-carved Himalayan salt lamps, polished salt tiles for halotherapy rooms, bath &amp; spa salt blends — all manufactured to export standards." />
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section className="about" id="about">
+        <div className="about-grid">
+          <div className="about-text" data-reveal-toggle="left">
+            <div className="eyebrow">About Al Syedi Group</div>
+            <h2>From the Khewra Salt Range to Kitchens &amp; Spas Worldwide</h2>
+            <p>
+              For over two decades, Al Syedi Group has been a trusted name in the global salt trade — quarrying, refining and exporting the world&apos;s purest Himalayan Pink Salt from the legendary Khewra Salt Range, the second-largest salt mine on Earth.
+            </p>
+            <p>
+              From a single mine-side operation to a vertically integrated supplier serving 320+ B2B clients across 42 countries, our promise has never changed: premium purity, consistent grades and uncompromising service.
+            </p>
+            <ul className="checklist">
+              {[
+                'Vertically Integrated Mine-to-Market',
+                'In-House Lab &amp; Quality Control',
+                'ISO 22000, HACCP, BRC, Halal &amp; Kosher Certified',
+                'Container-Load Shipping to 42 Countries',
+              ].map((t) => (
+                <li key={t}>
+                  <span className="check">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg>
+                  </span>
+                  <span dangerouslySetInnerHTML={{ __html: t }} />
+                </li>
+              ))}
+            </ul>
+            <Link href="/contact" className="btn btn-gold">Partner With Us</Link>
+          </div>
+          <div className="about-images" data-reveal-toggle="right">
+            <div className="big">
+              <SaltImage kind="crystal-display" alt="Khewra Pink Salt Crystals" />
+            </div>
+            <div className="row">
+              <SaltImage kind="pink-coarse" alt="Pink Salt Coarse" />
+              <SaltImage kind="lamp-natural" alt="Hand-Carved Salt Lamp" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* HEALTH BENEFITS — Why Pink Salt */}
+      <section className="benefits" id="benefits">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">Why Himalayan Pink Salt</div>
+          <h2 className="section-title">The Difference is in the <span className="gold-word">Crystal</span></h2>
+          <div className="title-rule"></div>
+        </div>
+        <div className="container">
+          <div className="benefits-grid" data-reveal-stagger>
+            <BenefitCard num="84" title="Trace Minerals" desc="Naturally occurring trace elements including magnesium, potassium, calcium and iron — the source of the iconic pink hue." />
+            <BenefitCard num="0%" title="Anti-Caking Agents" desc="No additives, no bleaches, no anti-caking chemicals. Just hand-mined, sun-dried crystal salt straight from the rock." />
+            <BenefitCard num="250M" title="Years Old" desc="Sourced from ancient seabed deposits that crystallized 250+ million years ago — sealed away from modern pollution." />
+            <BenefitCard num="99.8%" title="Pure NaCl" desc="Laboratory verified to 99.8% sodium chloride with the remaining 0.2% being the precious trace mineral signature." />
+          </div>
+        </div>
+      </section>
+
+      {/* MINERAL COMPOSITION TABLE */}
+      <section className="minerals" id="composition">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">Typical Analysis</div>
+          <h2 className="section-title">Mineral <span className="gold-word">Composition</span></h2>
+          <div className="title-rule"></div>
+          <p style={{ color: 'var(--text-dim)', maxWidth: 640, margin: '0 auto', fontSize: '.95rem' }}>
+            Indicative composition of our standard food-grade Himalayan Pink Salt (per 100 g). Full COA available on every shipment.
+          </p>
+        </div>
+        <div className="container">
+          <div className="minerals-wrap">
+            <div className="mineral-visual" data-reveal-toggle="left">
+              <SaltImage kind="pink-coarse" alt="Pink Salt Crystals" />
+            </div>
+            <div className="mineral-table" data-reveal-toggle="right">
+              <div className="mineral-row head">
+                <span>Compound</span><span style={{textAlign:'left'}}>Formula</span><span style={{textAlign:'right'}}>%</span>
+              </div>
+              {[
+                { name: 'Sodium Chloride',   f: 'NaCl',           pct: 99.55, w: 99 },
+                { name: 'Calcium Sulfate',   f: 'CaSO₄',          pct: 0.18,  w: 35 },
+                { name: 'Magnesium Sulfate', f: 'MgSO₄',          pct: 0.12,  w: 25 },
+                { name: 'Potassium Chloride', f: 'KCl',           pct: 0.08,  w: 18 },
+                { name: 'Iron Oxide',        f: 'Fe₂O₃',          pct: 0.04,  w: 12 },
+                { name: 'Moisture',          f: 'H₂O',            pct: 0.03,  w: 8  },
+              ].map((r) => (
+                <div className="mineral-row" key={r.name}>
+                  <div>
+                    <div className="mineral-name">{r.name}</div>
+                    <div className="mineral-formula">{r.f}</div>
+                  </div>
+                  <span className="mineral-bar"><span style={{ width: `${r.w}%` }} /></span>
+                  <span className="mineral-pct">{r.pct}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="process">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">Our Mine-to-Market Process</div>
+          <h2 className="section-title">From the <span className="gold-word">Khewra Range</span> to Your Warehouse</h2>
+        </div>
+        <div className="container">
+          <div className="process-steps" data-reveal-stagger>
+            {[
+              { label: '1. Hand\nMining',       icon: 'pickaxe' },
+              { label: '2. Sorting\n&amp; Grading', icon: 'sort' },
+              { label: '3. Crushing\n&amp; Milling', icon: 'mill' },
+              { label: '4. Lab\nTesting',       icon: 'beaker' },
+              { label: '5. Custom\nPackaging',  icon: 'box' },
+              { label: '6. Container\nLoading', icon: 'container' },
+              { label: '7. Global\nDelivery',   icon: 'ship' },
+            ].map((s) => (
+              <div className="step" key={s.label}>
+                <div className="step-icon">
+                  <ProcessIcon name={s.icon} />
+                </div>
+                <div className="step-label">
+                  {s.label.split('\n').map((t, i) => (
+                    <span key={i} dangerouslySetInnerHTML={{ __html: (i === 0 ? `${t}<br/>` : t) }} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SALT GRADE REFERENCE CHART */}
+      <section className="grades" id="grades">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">Grain Size Reference</div>
+          <h2 className="section-title">Pick Your <span className="gold-word">Grade</span></h2>
+          <div className="title-rule"></div>
+          <p style={{ color: 'var(--text-dim)', maxWidth: 620, margin: '0 auto', fontSize: '.95rem' }}>
+            Five standard grain sizes, milled to spec on our calibrated lines. Custom grinds available on request.
+          </p>
+        </div>
+        <div className="container">
+          <div className="grade-bar" data-reveal-stagger>
+            <GradeStep name="Powder"  spec="< 0.2 mm"   use="Seasoning blends, bakery, pharma" dotCount={36} dotSize={1.4} />
+            <GradeStep name="Fine"    spec="0.2–0.5 mm" use="Table salt, retail jars, food service" dotCount={24} dotSize={2.4} />
+            <GradeStep name="Medium"  spec="0.5–1.5 mm" use="Cooking, brining, gourmet retail" dotCount={16} dotSize={3.5} />
+            <GradeStep name="Coarse"  spec="1.5–3 mm"   use="Grinders, mills, BBQ rubs" dotCount={9} dotSize={5} />
+            <GradeStep name="Chunk"   spec="3 mm – 5 cm" use="Lamps, bricks, halotherapy, lick blocks" dotCount={4} dotSize={9} />
+          </div>
+        </div>
+      </section>
+
+      {/* PARTNERS MARQUEE */}
+      <section className="partners" data-reveal="fade">
+        <div className="eyebrow">Trusted by Distributors &amp; Retailers Worldwide</div>
+        <h3>Powering Salt Brands Across the UK · USA · Canada · EU · MENA</h3>
+        <div className="marquee">
+          <div className="marquee-track">
+            {[
+              'WHOLEFOODS','TESCO','SAINSBURYS','WALMART','COSTCO','LOBLAWS','CARREFOUR',
+              'METRO','SOBEYS','MORRISONS','LULU','SPINNEYS','IGA','ALDI','LIDL',
+              'WHOLEFOODS','TESCO','SAINSBURYS','WALMART','COSTCO','LOBLAWS','CARREFOUR',
+              'METRO','SOBEYS','MORRISONS','LULU','SPINNEYS','IGA','ALDI','LIDL',
+            ].map((n, i) => <span key={i}>{n}</span>)}
+          </div>
+        </div>
+        <div className="partners-note">Private Label &amp; Bulk Supply Partner — Names Indicate Retail Channels Served</div>
+      </section>
+
+      {/* SALT COLLECTIONS */}
+      <section className="houses" id="collections">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">Our Salt Collections</div>
+          <h2 className="section-title">Six Specialist Ranges, <span className="gold-word">One Source</span></h2>
+          <div className="title-rule"></div>
+        </div>
+        <div className="houses-carousel" data-reveal-stagger>
+          {[
+            { name: 'Edible Range',     icon: 'spoon',    desc: 'Food-grade pink, white &amp; black salts — fine, coarse &amp; gourmet flakes.' },
+            { name: 'Pink Crystal',     icon: 'crystal',  desc: 'Premium Himalayan rock crystals — for grinders, lamps &amp; gourmet retail.' },
+            { name: 'Bath &amp; Spa',       icon: 'leaf',     desc: 'Therapeutic bath salts, foot soaks &amp; spa-grade pink salt blends.' },
+            { name: 'Lifestyle',        icon: 'lamp',     desc: 'Hand-carved salt lamps, USB lamps, candle holders &amp; salt tealights.' },
+            { name: 'Construction',     icon: 'brick',    desc: 'Polished salt bricks &amp; tiles for halotherapy rooms &amp; salt walls.' },
+            { name: 'Industrial',       icon: 'gear',     desc: 'Animal lick salts, water-softener pellets, de-icing &amp; chemical grades.' },
+          ].map((h) => (
+            <div className="house-card" key={h.name}>
+              <div className="house-icon"><CollectionIcon name={h.icon} /></div>
+              <h4>{h.name}</h4>
+              <div className="house-rule"></div>
+              <p dangerouslySetInnerHTML={{ __html: h.desc }} />
+            </div>
+          ))}
+        </div>
+        <div className="houses-cta">
+          <Link href="/products" className="btn btn-ghost">View All Products</Link>
+        </div>
+      </section>
+
+      {/* SALT VARIETIES horizontal scroller */}
+      <section className="ingredients">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">Explore Our Varieties</div>
+          <h2 className="section-title">Every Grade, Every Grind, Every <span className="gold-word">Use Case</span></h2>
+          <p style={{ color: 'var(--text-dim)', fontSize: '.92rem', maxWidth: 620, margin: '0 auto' }}>
+            Scroll horizontally to browse 10+ salt varieties — from gourmet pink flakes to industrial de-icing salt.
+          </p>
+        </div>
+        <div className="ingredients-grid" data-reveal-stagger>
+          {varieties.map((ing) => (
+            <div className="ingredient-card" key={ing._id || ing.name}>
+              <SaltImage kind={ing.kind || 'pink-fine'} alt={ing.name} />
+              <div className="ingredient-label">
+                <div className="note">{ing.note}</div>
+                <h5>{ing.name}</h5>
+                <small>{ing.latin}</small>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* PACKAGING OPTIONS */}
+      <section className="packaging" id="packaging">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">Packaging Options</div>
+          <h2 className="section-title">From Mine Bag to <span className="gold-word">Retail Shelf</span></h2>
+          <div className="title-rule"></div>
+          <p style={{ color: 'var(--text-dim)', maxWidth: 620, margin: '0 auto', fontSize: '.95rem' }}>
+            Pick a packaging format that fits your supply chain — or hand us your brand brief and we&apos;ll design a custom solution.
+          </p>
+        </div>
+        <div className="container">
+          <div className="pack-grid" data-reveal-stagger>
+            <PackCard icon="fibc" name="FIBC Big Bag" spec="1,000 kg" />
+            <PackCard icon="ppbag" name="PP Woven Bag" spec="25 / 50 kg" />
+            <PackCard icon="jute" name="Jute Bag" spec="25 / 40 kg" />
+            <PackCard icon="carton" name="Master Carton" spec="10 × 1 kg" />
+            <PackCard icon="jar" name="Retail Glass Jar" spec="100 / 250 / 500 g" />
+            <PackCard icon="pouch" name="Stand-Up Pouch" spec="100 / 250 / 500 g" />
+            <PackCard icon="shaker" name="Salt Shaker" spec="50 / 100 g" />
+            <PackCard icon="grinder" name="Refillable Grinder" spec="120 g" />
+            <PackCard icon="giftbox" name="Gift Box" spec="3-pack / 6-pack" />
+            <PackCard icon="bulk" name="Bulk Lump" spec="As-mined chunks" />
+            <PackCard icon="palletbox" name="Pallet Box" spec="500–1000 kg" />
+            <PackCard icon="vac" name="Vacuum Pack" spec="200 g – 5 kg" />
+          </div>
+        </div>
+      </section>
+
+      {/* BULK PRICING TIERS */}
+      <section className="pricing" id="pricing">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">Indicative Bulk Pricing</div>
+          <h2 className="section-title">Volume Tiers <span className="gold-word">FOB Karachi</span></h2>
+          <div className="title-rule"></div>
+          <p style={{ color: 'var(--text-dim)', maxWidth: 640, margin: '0 auto', fontSize: '.95rem' }}>
+            Standard Pink Salt Fine, FOB Port Qasim. Pricing valid for the current quarter — final quote depends on grade, packaging and destination.
+          </p>
+        </div>
+        <div className="container">
+          <div className="pricing-grid" data-reveal-stagger>
+            <PriceTier
+              name="Trial Order"
+              vol="1 – 5 MT"
+              price="$0.85"
+              sub="per kg · LCL groupage"
+              feats={['LCL shipping included', '25 kg PP bags', 'Standard packaging', 'Standard COA & MSDS']}
+            />
+            <PriceTier
+              name="Standard"
+              vol="5 – 20 MT"
+              price="$0.72"
+              sub="per kg · 20ft FCL"
+              feats={['20ft FCL container', '25 / 50 kg bags', 'Customisable labels', 'Free samples · 5 SKU']}
+            />
+            <PriceTier
+              featured
+              name="Container Load"
+              vol="20 – 40 MT"
+              price="$0.58"
+              sub="per kg · 40ft FCL"
+              feats={['40ft FCL container', 'Mix-load up to 6 SKU', 'Private label included', 'Priority production slot', 'Dedicated account manager']}
+            />
+            <PriceTier
+              name="Enterprise"
+              vol="40+ MT / month"
+              price="Bespoke"
+              sub="contract pricing"
+              feats={['Recurring monthly shipments', 'Locked-in quarterly rates', 'Full private label suite', 'Direct mine traceability', 'On-site QC support']}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* PROMISE */}
+      <section className="section promise">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">Why Importers Choose Us</div>
+          <h2 className="section-title">The <span className="gold-word">Al Syedi</span> Promise</h2>
+          <div className="title-rule"></div>
+        </div>
+        <div className="container">
+          <div className="promise-grid" data-reveal-stagger>
+            <PromiseCard icon="purity" title="99.8% Pure Crystal" desc="Hand-mined from the deepest seams of the Khewra Salt Range and lab-verified to deliver consistent purity batch after batch." />
+            <PromiseCard icon="grade" title="Every Grade On Demand" desc="Powder, fine, medium, coarse, chunk, lump — milled and screened to your exact specification with full traceability." />
+            <PromiseCard icon="price" title="Direct-from-Mine Pricing" desc="No middlemen. Vertical integration means margins for you and quality that the high-street can&apos;t match." />
+            <PromiseCard icon="globe" title="Container Logistics" desc="FCL / LCL shipments via Karachi, Jebel Ali &amp; Port Qasim — to any port worldwide, with full documentation handled." />
+          </div>
+        </div>
+      </section>
+
+      {/* CERTIFICATIONS */}
+      <section className="certifications" id="certifications">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">Audited &amp; Certified</div>
+          <h2 className="section-title">Compliance You Can <span className="gold-word">Stake Your Brand On</span></h2>
+          <div className="title-rule"></div>
+        </div>
+        <div className="container">
+          <div className="cert-grid" data-reveal-stagger>
+            <CertCard icon="iso" name="ISO 22000" desc="Food Safety" />
+            <CertCard icon="haccp" name="HACCP" desc="Hazard Control" />
+            <CertCard icon="brc" name="BRC AA+" desc="Global Standard" />
+            <CertCard icon="halal" name="Halal" desc="JAKIM Certified" />
+            <CertCard icon="kosher" name="Kosher" desc="OU Approved" />
+            <CertCard icon="usda" name="USDA Organic" desc="Bath Range" />
+            <CertCard icon="fda" name="FDA Registered" desc="USA Compliant" />
+            <CertCard icon="ce" name="EU Compliant" desc="REACH Listed" />
+            <CertCard icon="gmp" name="GMP" desc="Good Mfg Practice" />
+            <CertCard icon="non-gmo" name="Non-GMO" desc="Project Verified" />
+            <CertCard icon="vegan" name="Vegan Society" desc="Registered" />
+            <CertCard icon="iso14k" name="ISO 14001" desc="Environment" />
+          </div>
+        </div>
+      </section>
+
+      {/* GLOBAL MARKETS */}
+      <section className="markets" id="markets">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">Where We Ship</div>
+          <h2 className="section-title">Active in <span className="gold-word">42 Countries</span> — and Growing</h2>
+          <div className="title-rule"></div>
+          <p style={{ color: 'var(--text-dim)', maxWidth: 620, margin: '0 auto', fontSize: '.95rem' }}>
+            Container-load shipments leave our facilities every week. Below: our top-volume markets.
+          </p>
+        </div>
+        <div className="container">
+          <div className="markets-grid" data-reveal-stagger>
+            <MarketCard flag="🇬🇧" country="United Kingdom" meta="London · Manchester · Birmingham" />
+            <MarketCard flag="🇺🇸" country="United States"  meta="New York · Chicago · Los Angeles" />
+            <MarketCard flag="🇨🇦" country="Canada"         meta="Toronto · Vancouver · Montréal" />
+            <MarketCard flag="🇦🇪" country="UAE"            meta="Dubai · Abu Dhabi · Sharjah" />
+            <MarketCard flag="🇩🇪" country="Germany"        meta="Berlin · Hamburg · Frankfurt" />
+            <MarketCard flag="🇦🇺" country="Australia"      meta="Sydney · Melbourne · Brisbane" />
+            <MarketCard flag="🇸🇦" country="Saudi Arabia"   meta="Riyadh · Jeddah · Dammam" />
+            <MarketCard flag="🇫🇷" country="France"         meta="Paris · Lyon · Marseille" />
+            <MarketCard flag="🇳🇱" country="Netherlands"    meta="Rotterdam · Amsterdam" />
+            <MarketCard flag="🇯🇵" country="Japan"          meta="Tokyo · Osaka" />
+            <MarketCard flag="🇸🇬" country="Singapore"      meta="Tuas · Jurong" />
+            <MarketCard flag="🇿🇦" country="South Africa"   meta="Cape Town · Durban" />
+          </div>
+        </div>
+      </section>
+
+      {/* GOOGLE REVIEWS */}
+      <section className="testimonials" id="reviews">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">What Our B2B Clients Say</div>
+          <h2 className="section-title">Trusted by Importers <span className="gold-word">Across 4 Continents</span></h2>
+          <div className="title-rule"></div>
+          <div className="reviews-summary">
+            <div>
+              <div className="rating-big">4.9</div>
+              <small style={{ display: 'block', fontSize: '.75rem', color: 'var(--text-mute)', letterSpacing: '.18em', textTransform: 'uppercase' }}>Average · 287 reviews</small>
+            </div>
+            <div className="rating-meta">
+              <div className="stars-big">★ ★ ★ ★ ★</div>
+              <small>Verified on Google · Trustpilot · Alibaba</small>
+            </div>
+          </div>
+        </div>
+        <div className="container">
+          <div className="testimonials-grid" data-reveal-stagger>
+            {reviews.map((t, i) => (
+              <div className="testimonial" key={i}>
+                <div className="google-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
+                  Google
+                </div>
+                <div className="stars">★ ★ ★ ★ ★</div>
+                <p>&ldquo;{t.quote}&rdquo;</p>
+                <div className="testimonial-author">
+                  <ReviewAvatar name={t.name} />
+                  <div>
+                    <div className="author-name">{t.name}</div>
+                    <div className="author-role">{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BRAND STRIP */}
+      <section className="brand-strip" data-reveal="fade">
+        <div className="brand-strip-title">Brands We&apos;ve Privately Labelled For</div>
+        <div className="brand-strip-track" data-reveal-stagger>
+          {[
+            { name: 'PINK PEAK',      region: 'London, UK' },
+            { name: 'CRYSTAL CO.',    region: 'New York, USA' },
+            { name: 'Salt Atelier',   region: 'Toronto, Canada', italic: true },
+            { name: 'KHEWRA HOUSE',   region: 'Dubai, UAE' },
+            { name: 'Pure Mineral',   region: 'Berlin, Germany', italic: true },
+          ].map((b) => (
+            <div className="brand-box" key={b.name}>
+              <div className="brand-name" style={b.italic ? { fontStyle: 'italic' } : undefined}>{b.name}</div>
+              <div className="brand-region">{b.region}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* MID CTA */}
+      <section className="cta-section" data-reveal="scale">
+        <h2>Looking for a <span className="gold-word">Reliable</span> Salt Supplier?</h2>
+        <p>Partner with Al Syedi Group for direct-from-mine pricing, private label flexibility and a logistics partner who actually picks up the phone.</p>
+        <Link href="/contact" className="btn btn-gold">Request a Quote Now</Link>
+      </section>
+
+      {/* DUAL COL 1 — Naturally Sourced */}
+      <section className="dual-col">
+        <div className="text-side" data-reveal-toggle="left">
+          <div className="eyebrow">Naturally Sourced</div>
+          <h3 className="serif">From a 250 Million-Year-Old <span className="gold-word">Salt Range</span></h3>
+          <p>
+            Every grain we ship is hand-mined from the Khewra Salt Range in Pakistan — the world&apos;s second-largest salt mine and the source of the original, fossilized seabed deposits that give Himalayan Pink its iconic rose hue.
+          </p>
+          <Link href="/products" className="btn btn-gold">
+            Explore Our Range
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+          </Link>
+        </div>
+        <div className="image-side" data-reveal-toggle="right">
+          <SaltImage kind="crystal-display" alt="Pink salt display" />
+          <SaltImage kind="pink-coarse"     alt="Pink coarse crystals" />
+          <SaltImage kind="lamp-natural"    alt="Hand-carved salt lamp" />
+        </div>
+      </section>
+
+      {/* DUAL COL 2 — Global Export */}
+      <section className="dual-col">
+        <div className="image-side" data-reveal-toggle="left">
+          <SaltImage kind="salt-brick" alt="Salt bricks" />
+          <SaltImage kind="bath-lavender" alt="Bath salt with lavender" />
+          <SaltImage kind="salt-tile" alt="Salt tiles" />
+        </div>
+        <div className="text-side cream" data-reveal-toggle="right">
+          <div className="eyebrow">Global Export</div>
+          <h3 className="serif">FCL &amp; LCL Shipping to <span className="gold-word">42 Countries</span></h3>
+          <p>
+            From small trial shipments to weekly 40ft container loads, our in-house logistics team handles customs, certifications, port handling and last-mile distribution — so your warehouse simply sees deliveries arrive on time.
+          </p>
+          <Link href="/contact" className="btn btn-gold">
+            Discuss Your Volume
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+          </Link>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <FAQ />
+
+      {/* FROM OUR MINE — insights teaser */}
+      <section className="insights" id="insights">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+          <div className="eyebrow">From Our Mine</div>
+          <h2 className="section-title">B2B Salt <span className="gold-word">Insights</span></h2>
+          <div className="title-rule"></div>
+        </div>
+        <div className="container">
+          <div className="insights-grid" data-reveal-stagger>
+            <InsightCard
+              kind="pink-coarse"
+              tag="Market Report"
+              title="Himalayan Pink Salt Demand Hits Record High in EU"
+              body="Q1 export volumes from Pakistan to EU markets grew 18% year-on-year, driven by retail private-label launches and halotherapy growth."
+              meta="6 min read · April 2026"
+            />
+            <InsightCard
+              kind="salt-brick"
+              tag="Spec Sheet"
+              title="A Buyer's Guide to Salt Bricks for Halotherapy Rooms"
+              body="Everything UK and US wellness developers need to know about sourcing, dimensions, sealing, mortar, lighting and lifetime."
+              meta="9 min read · March 2026"
+            />
+            <InsightCard
+              kind="lamp-natural"
+              tag="Quality"
+              title="Why Some Pink Salt Lamps Sweat — and How to Prevent It"
+              body="Hygroscopy, packaging, transit humidity, and the three packaging tweaks that have eliminated 99% of moisture complaints."
+              meta="5 min read · February 2026"
+            />
+          </div>
+        </div>
+      </section>
+
+      <FinalCTA />
+      <Footer />
+      <Chatbot />
+    </>
+  );
+}
+
+/* ============ Icons ============ */
+
+function FeatureIcon({ name }) {
+  const paths = {
+    mountain: <><path d="M3 20l6-12 5 8 3-4 4 8z"/><circle cx="17" cy="6" r="2"/></>,
+    beaker:   <><path d="M9 3h6M10 3v6L4 20a1 1 0 001 1h14a1 1 0 001-1l-6-11V3"/><path d="M6 16h12"/></>,
+    box:      <><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4M21 7v10l-9 4M12 11v10"/></>,
+    ship:     <><path d="M3 18l1.5-2L12 14l7.5 2L21 18M5 14V8h14v6M9 8V5h6v3"/><path d="M2 21h20"/></>,
+    support:  <><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1v-7h3v5zM3 19a2 2 0 002 2h1v-7H3v5z"/></>,
+  };
+  return (
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+      {paths[name]}
+    </svg>
+  );
+}
+
+function CapIcon({ name }) {
+  const paths = {
+    cubes: <><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></>,
+    box:   <><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4M21 7v10l-9 4M12 11v10"/></>,
+    grind: <><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></>,
+    lamp:  <><path d="M9 21h6M12 17v4M8 17h8l-1-6H9z"/><circle cx="12" cy="7" r="3"/></>,
+  };
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      {paths[name] || <circle cx="12" cy="12" r="9" />}
+    </svg>
+  );
+}
+
+function ProcessIcon({ name }) {
+  const paths = {
+    pickaxe:   <><path d="M3 21l8-8M11 13l5-5M14 4l6 6M18 8l-2-2"/></>,
+    sort:      <><path d="M3 6h13M3 12h9M3 18h5"/><path d="M19 9l3 3-3 3"/></>,
+    mill:      <><circle cx="12" cy="12" r="7"/><path d="M12 5v14M5 12h14"/></>,
+    beaker:    <><path d="M9 3h6M10 3v6L4 20a1 1 0 001 1h14a1 1 0 001-1l-6-11V3"/></>,
+    box:       <><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4M21 7v10l-9 4"/></>,
+    container: <><rect x="3" y="6" width="18" height="12"/><path d="M7 6v12M11 6v12M15 6v12M19 6v12"/></>,
+    ship:      <><path d="M3 18l1.5-2L12 14l7.5 2L21 18M5 14V8h14v6M9 8V5h6v3"/></>,
+  };
+  return (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+      {paths[name] || <circle cx="12" cy="12" r="9" />}
+    </svg>
+  );
+}
+
+function CollectionIcon({ name }) {
+  const paths = {
+    spoon:   <><path d="M14 4a4 4 0 014 4c0 2.5-2 4-4 4v8h-2v-8c-2 0-4-1.5-4-4a4 4 0 014-4z"/></>,
+    crystal: <><polygon points="12,2 20,9 16,22 8,22 4,9"/><path d="M12 2v20M4 9h16"/></>,
+    leaf:    <><path d="M11 20A7 7 0 014 13c0-6 8-11 16-11 0 8-5 16-9 18a7 7 0 01-7-7zM11 13l9-9"/></>,
+    lamp:    <><path d="M9 21h6M12 17v4M8 17h8l-1-6H9z"/><circle cx="12" cy="7" r="3"/></>,
+    brick:   <><rect x="3" y="5" width="18" height="4"/><rect x="3" y="11" width="18" height="4"/><rect x="3" y="17" width="18" height="4"/></>,
+    gear:    <><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></>,
+  };
+  return (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+      {paths[name] || <circle cx="12" cy="12" r="9" />}
+    </svg>
+  );
+}
+
+function CapCard({ id, title, desc, icon }) {
+  return (
+    <div className="cap-card" id={id}>
+      <div className="cap-icon-circle"><CapIcon name={icon} /></div>
+      <h3 dangerouslySetInnerHTML={{ __html: title }} />
+      <p dangerouslySetInnerHTML={{ __html: desc }} />
+    </div>
+  );
+}
+
+function PromiseCard({ title, desc, icon }) {
+  const paths = {
+    purity: <><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></>,
+    grade:  <><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></>,
+    price:  <><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></>,
+    globe:  <><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></>,
+  };
+  return (
+    <div className="promise-card">
+      <div className="promise-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          {paths[icon]}
+        </svg>
+      </div>
+      <h4 dangerouslySetInnerHTML={{ __html: title }} />
+      <p dangerouslySetInnerHTML={{ __html: desc }} />
+    </div>
+  );
+}
+
+function CertCard({ icon, name, desc }) {
+  const paths = {
+    iso:    <><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></>,
+    haccp:  <><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></>,
+    brc:    <><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 12h10M12 7v10"/></>,
+    halal:  <><circle cx="12" cy="12" r="10"/><path d="M8 12c0-2.2 1.8-4 4-4M16 12v4"/></>,
+    kosher: <><path d="M12 2l3 6 6 1-4.5 4 1 6L12 16l-5.5 3 1-6L3 9l6-1z"/></>,
+    usda:   <><path d="M12 2C7 2 5 6 5 10c0 5 7 12 7 12s7-7 7-12c0-4-2-8-7-8z"/><circle cx="12" cy="10" r="3"/></>,
+    fda:    <><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h6M8 17h4"/></>,
+    ce:     <><circle cx="12" cy="12" r="10"/><path d="M16 8a5 5 0 100 8M14 12h-3"/></>,
+    gmp:    <><path d="M3 21V11a2 2 0 012-2h14a2 2 0 012 2v10M3 21h18M8 21V9"/></>,
+    'non-gmo': <><circle cx="12" cy="12" r="10"/><path d="M5 5l14 14"/></>,
+    vegan:  <><path d="M11 20A7 7 0 014 13c0-6 8-11 16-11 0 8-5 16-9 18a7 7 0 01-7-7z"/></>,
+    iso14k: <><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></>,
+  };
+  return (
+    <div className="cert-card">
+      <div className="cert-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          {paths[icon]}
+        </svg>
+      </div>
+      <div className="cert-name">{name}</div>
+      <div className="cert-desc">{desc}</div>
+    </div>
+  );
+}
+
+function MarketCard({ flag, country, meta }) {
+  return (
+    <div className="market-card">
+      <div className="market-flag">{flag}</div>
+      <div className="market-info">
+        <div className="market-country">{country}</div>
+        <div className="market-meta">{meta}</div>
+      </div>
+    </div>
+  );
+}
+
+function BenefitCard({ num, title, desc }) {
+  return (
+    <div className="benefit-card">
+      <div className="benefit-num">{num}</div>
+      <h4>{title}</h4>
+      <p>{desc}</p>
+    </div>
+  );
+}
+
+function GradeStep({ name, spec, use, dotCount, dotSize }) {
+  const dots = Array.from({ length: dotCount }).map((_, i) => {
+    const seed = i * 31 + dotCount * 7;
+    const x = (seed * 17) % 100;
+    const y = (seed * 23) % 100;
+    return { x, y, size: dotSize + ((seed * 11) % 3) - 1 };
+  });
+  return (
+    <div className="grade-step">
+      <div className="grade-circle">
+        <div className="grade-dots">
+          {dots.map((d, i) => (
+            <span key={i} style={{
+              left: `${d.x}%`,
+              top:  `${d.y}%`,
+              width:  `${d.size}px`,
+              height: `${d.size}px`,
+              transform: 'translate(-50%,-50%)',
+            }} />
+          ))}
+        </div>
+      </div>
+      <div className="grade-name">{name}</div>
+      <div className="grade-spec">{spec}</div>
+      <div className="grade-use">{use}</div>
+    </div>
+  );
+}
+
+function PackCard({ icon, name, spec }) {
+  const paths = {
+    fibc:     <><path d="M5 4h14l-1 4-5 1-2-1H6L5 4z"/><path d="M6 8l-1 12h14l-1-12"/><path d="M12 4v-2M9 2h6"/></>,
+    ppbag:    <><path d="M5 6h14v14H5z"/><path d="M5 10h14M9 6v4M15 6v4"/></>,
+    jute:     <><path d="M6 4h12l-1 4-4 1-3-1H7L6 4z"/><path d="M7 8l-1 12h12l-1-12"/><path d="M9 12l2 4M15 12l-2 4"/></>,
+    carton:   <><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/></>,
+    jar:      <><rect x="7" y="8" width="10" height="13" rx="1"/><path d="M9 8V5h6v3"/><rect x="8" y="12" width="8" height="5" fill="currentColor" opacity=".3"/></>,
+    pouch:    <><path d="M7 4h10l-1 17H8L7 4z"/><path d="M9 4V2h6v2"/></>,
+    shaker:   <><rect x="8" y="6" width="8" height="15" rx="2"/><circle cx="11" cy="9" r=".5" fill="currentColor"/><circle cx="13" cy="11" r=".5" fill="currentColor"/><circle cx="12" cy="13" r=".5" fill="currentColor"/></>,
+    grinder:  <><path d="M9 3h6v3l1 2v3l-1 1v7H8v-7l-1-1V8l1-2V3z"/></>,
+    giftbox:  <><rect x="3" y="9" width="18" height="12"/><path d="M3 9h18M12 9v12M8 9V6a3 3 0 013-3 3 3 0 011 3M16 9V6a3 3 0 00-3-3 3 3 0 00-1 3"/></>,
+    bulk:     <><polygon points="12,4 18,12 22,20 2,20 6,12"/></>,
+    palletbox: <><rect x="3" y="5" width="18" height="13"/><path d="M3 18h18M5 18v3M19 18v3M9 18v3M15 18v3"/></>,
+    vac:      <><path d="M5 5h14v14H5z"/><path d="M5 9h14M8 13h8M9 17h6"/></>,
+  };
+  return (
+    <div className="pack-card">
+      <div className="pack-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+          {paths[icon] || <rect x="4" y="4" width="16" height="16" />}
+        </svg>
+      </div>
+      <div className="pack-name">{name}</div>
+      <div className="pack-spec">{spec}</div>
+    </div>
+  );
+}
+
+function PriceTier({ name, vol, price, sub, feats, featured }) {
+  return (
+    <div className={`pricing-card${featured ? ' featured' : ''}`}>
+      <div className="pricing-tier-name">{name}</div>
+      <div className="pricing-tier-vol">{vol}</div>
+      <div className="pricing-tier-price">
+        {price}{price.startsWith('$') && <small> / kg</small>}
+      </div>
+      <div className="pricing-tier-sub">{sub}</div>
+      <ul className="pricing-tier-feats">
+        {feats.map((f) => <li key={f}>{f}</li>)}
+      </ul>
+      <div className="pricing-tier-cta">
+        <Link href="/contact">Get this quote</Link>
+      </div>
+    </div>
+  );
+}
+
+function InsightCard({ kind, tag, title, body, meta }) {
+  return (
+    <article className="insight-card">
+      <div className="insight-img"><SaltImage kind={kind} alt={title} /></div>
+      <div className="insight-body">
+        <div className="insight-tag">{tag}</div>
+        <h4>{title}</h4>
+        <p>{body}</p>
+        <div className="insight-meta">{meta}</div>
+      </div>
+    </article>
+  );
+}
+
+/* Avatar — deterministic gradient circle with initials */
+function ReviewAvatar({ name }) {
+  const initials = name.split(' ').map((p) => p[0]).slice(0, 2).join('').toUpperCase();
+  const hue = ((name.charCodeAt(0) * 7) + name.length * 13) % 60;
+  return (
+    <div style={{
+      width: 40, height: 40, borderRadius: '50%',
+      background: `linear-gradient(135deg, hsl(${hue + 340}, 60%, 70%), hsl(${hue + 340}, 55%, 45%))`,
+      color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '.9rem',
+      border: '2px solid var(--rose)',
+      flexShrink: 0,
+    }}>
+      {initials}
+    </div>
+  );
+}
+
+const reviews = [
+  { quote: "Al Syedi has been our pink salt supplier for four years now. Container after container — same purity, same color, same lead time. They simply do not miss.", name: 'James Holloway', role: 'Procurement Director, Pink Peak Foods · UK' },
+  { quote: "We trialled three Pakistani suppliers before signing with Al Syedi. The difference in lab consistency and packaging quality was night-and-day. They are now our sole source for retail private label.", name: 'Sarah Mitchell', role: 'Founder, Crystal Co. Wellness · USA' },
+  { quote: "Their team understood our Canadian labeling and bilingual French requirements without us having to explain twice. Documents, COA, MSDS — everything was ready before the container left port.", name: 'David Tremblay', role: 'Operations Manager, Salt Atelier · Canada' },
+  { quote: "From hand-carved lamps to coarse grinder crystals, they handle our entire 12-SKU range. Order minimums are reasonable and the WhatsApp support is genuinely 24/7.", name: 'Amira Saleh', role: 'Category Buyer, Khewra House · UAE' },
+  { quote: "We were nervous switching suppliers mid-season. Al Syedi pulled a sample shipment together in 6 days and a full container in 21. The salt itself is the cleanest pink we have ever stocked.", name: 'Hans Becker', role: 'CEO, Pure Mineral GmbH · Germany' },
+  { quote: "Bath salt blends with our private fragrance — they handled the formulation, the packaging design and the FDA registration. It just works.", name: 'Isabella Romano', role: 'Brand Director, Spa Atelier · Italy' },
+  { quote: "Reliable, transparent and competitively priced. Their direct-from-mine model translates into real margin on the retail shelf.", name: 'Rajesh Kapoor', role: 'CEO, Aroma Distributors · India' },
+  { quote: "Halotherapy room project — 6 tons of polished pink salt bricks. Cut to spec, sealed, palletized and dispatched on schedule. Highly recommended.", name: 'Layla Hassan', role: 'Project Lead, Velvet Wellness · Saudi Arabia' },
+  { quote: "Three years in, no shipment issue, no quality complaint. That is the highest praise a B2B partner can earn.", name: 'Daniel Park', role: 'Export Manager, Mirage Foods · South Korea' },
+];

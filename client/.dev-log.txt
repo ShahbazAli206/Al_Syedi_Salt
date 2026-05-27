@@ -1,0 +1,17 @@
+
+> kenooz-client@1.0.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 4.4s
+ ○ Compiling / ...
+ ✓ Compiled / in 7.9s (558 modules)
+ GET / 200 in 9546ms
+ ○ Compiling /products ...
+ ✓ Compiled /products in 11s (534 modules)
+ GET /products 200 in 11306ms
+ GET /products 200 in 92ms
+ GET /products 200 in 91ms
