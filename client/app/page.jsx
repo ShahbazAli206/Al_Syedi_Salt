@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FinalCTA from '@/components/FinalCTA';
 import SaltImage from '@/components/SaltImage';
+import Flag from '@/components/Flag';
 import Chatbot from '@/components/Chatbot';
 import FAQ from '@/components/FAQ';
 import { fetchJSON } from '@/lib/api';
@@ -227,7 +228,7 @@ export default async function Home() {
       </section>
 
       {/* PROCESS */}
-      <section className="process">
+      <section className="process" id="process">
         <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
           <div className="eyebrow">Our Mine-to-Market Process</div>
           <h2 className="section-title">From the <span className="gold-word">Khewra Range</span> to Your Warehouse</h2>
@@ -280,7 +281,7 @@ export default async function Home() {
       </section>
 
       {/* PARTNERS MARQUEE */}
-      <section className="partners" data-reveal="fade">
+      <section className="partners" id="partners" data-reveal="fade">
         <div className="eyebrow">Trusted by Distributors &amp; Retailers Worldwide</div>
         <h3>Powering Salt Brands Across the UK · USA · Canada · EU · MENA</h3>
         <div className="marquee">
@@ -326,7 +327,7 @@ export default async function Home() {
       </section>
 
       {/* SALT VARIETIES horizontal scroller */}
-      <section className="ingredients">
+      <section className="ingredients" id="varieties">
         <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
           <div className="eyebrow">Explore Our Varieties</div>
           <h2 className="section-title">Every Grade, Every Grind, Every <span className="gold-word">Use Case</span></h2>
@@ -422,7 +423,7 @@ export default async function Home() {
       </section>
 
       {/* PROMISE */}
-      <section className="section promise">
+      <section className="section promise" id="promise">
         <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
           <div className="eyebrow">Why Importers Choose Us</div>
           <h2 className="section-title">The <span className="gold-word">Al Syedi</span> Promise</h2>
@@ -475,18 +476,18 @@ export default async function Home() {
         </div>
         <div className="container">
           <div className="markets-grid" data-reveal-stagger>
-            <MarketCard flag="🇬🇧" country="United Kingdom" meta="London · Manchester · Birmingham" />
-            <MarketCard flag="🇺🇸" country="United States"  meta="New York · Chicago · Los Angeles" />
-            <MarketCard flag="🇨🇦" country="Canada"         meta="Toronto · Vancouver · Montréal" />
-            <MarketCard flag="🇦🇪" country="UAE"            meta="Dubai · Abu Dhabi · Sharjah" />
-            <MarketCard flag="🇩🇪" country="Germany"        meta="Berlin · Hamburg · Frankfurt" />
-            <MarketCard flag="🇦🇺" country="Australia"      meta="Sydney · Melbourne · Brisbane" />
-            <MarketCard flag="🇸🇦" country="Saudi Arabia"   meta="Riyadh · Jeddah · Dammam" />
-            <MarketCard flag="🇫🇷" country="France"         meta="Paris · Lyon · Marseille" />
-            <MarketCard flag="🇳🇱" country="Netherlands"    meta="Rotterdam · Amsterdam" />
-            <MarketCard flag="🇯🇵" country="Japan"          meta="Tokyo · Osaka" />
-            <MarketCard flag="🇸🇬" country="Singapore"      meta="Tuas · Jurong" />
-            <MarketCard flag="🇿🇦" country="South Africa"   meta="Cape Town · Durban" />
+            <MarketCard code="gb" country="United Kingdom" meta="London · Manchester · Birmingham" />
+            <MarketCard code="us" country="United States"  meta="New York · Chicago · Los Angeles" />
+            <MarketCard code="ca" country="Canada"         meta="Toronto · Vancouver · Montréal" />
+            <MarketCard code="ae" country="UAE"            meta="Dubai · Abu Dhabi · Sharjah" />
+            <MarketCard code="de" country="Germany"        meta="Berlin · Hamburg · Frankfurt" />
+            <MarketCard code="au" country="Australia"      meta="Sydney · Melbourne · Brisbane" />
+            <MarketCard code="sa" country="Saudi Arabia"   meta="Riyadh · Jeddah · Dammam" />
+            <MarketCard code="fr" country="France"         meta="Paris · Lyon · Marseille" />
+            <MarketCard code="nl" country="Netherlands"    meta="Rotterdam · Amsterdam" />
+            <MarketCard code="jp" country="Japan"          meta="Tokyo · Osaka" />
+            <MarketCard code="sg" country="Singapore"      meta="Tuas · Jurong" />
+            <MarketCard code="za" country="South Africa"   meta="Cape Town · Durban" />
           </div>
         </div>
       </section>
@@ -537,7 +538,7 @@ export default async function Home() {
       </section>
 
       {/* BRAND STRIP */}
-      <section className="brand-strip" data-reveal="fade">
+      <section className="brand-strip" id="brands-labeled" data-reveal="fade">
         <div className="brand-strip-title">Brands We&apos;ve Privately Labelled For</div>
         <div className="brand-strip-track" data-reveal-stagger>
           {[
@@ -768,10 +769,10 @@ function CertCard({ icon, name, desc }) {
   );
 }
 
-function MarketCard({ flag, country, meta }) {
+function MarketCard({ code, country, meta }) {
   return (
     <div className="market-card">
-      <div className="market-flag">{flag}</div>
+      <div className="market-flag"><Flag code={code} width={36} height={26} /></div>
       <div className="market-info">
         <div className="market-country">{country}</div>
         <div className="market-meta">{meta}</div>

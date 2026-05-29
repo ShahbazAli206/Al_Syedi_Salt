@@ -6,12 +6,105 @@
   - Local:        http://localhost:3000
 
  ✓ Starting...
- ✓ Ready in 4.4s
+ ✓ Ready in 6.5s
  ○ Compiling / ...
- ✓ Compiled / in 7.9s (558 modules)
- GET / 200 in 9546ms
- ○ Compiling /products ...
- ✓ Compiled /products in 11s (534 modules)
- GET /products 200 in 11306ms
- GET /products 200 in 92ms
- GET /products 200 in 91ms
+ ✓ Compiled / in 17.3s (558 modules)
+ GET / 200 in 19220ms
+ GET / 200 in 410ms
+ GET / 200 in 376ms
+ ⨯ ./components/Navbar.jsx:6:1
+Module not found: Can't resolve './Flag'
+[0m [90m 4 |[39m [36mimport[39m { useEffect[33m,[39m useRef[33m,[39m useState } [36mfrom[39m [32m'react'[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mLogo[39m [36mfrom[39m [32m'./Logo'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m [33mFlag[39m [36mfrom[39m [32m'./Flag'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m [90m/* ============================================================[39m[0m
+[0m [90m 9 |[39m [90m   Sitemap — every meaningful section on every page is here.[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ ⨯ ./components/Navbar.jsx:6:1
+Module not found: Can't resolve './Flag'
+[0m [90m 4 |[39m [36mimport[39m { useEffect[33m,[39m useRef[33m,[39m useState } [36mfrom[39m [32m'react'[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mLogo[39m [36mfrom[39m [32m'./Logo'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m [33mFlag[39m [36mfrom[39m [32m'./Flag'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m [90m/* ============================================================[39m[0m
+[0m [90m 9 |[39m [90m   Sitemap — every meaningful section on every page is here.[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ ⨯ ./components/Navbar.jsx:6:1
+Module not found: Can't resolve './Flag'
+[0m [90m 4 |[39m [36mimport[39m { useEffect[33m,[39m useRef[33m,[39m useState } [36mfrom[39m [32m'react'[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mLogo[39m [36mfrom[39m [32m'./Logo'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m [33mFlag[39m [36mfrom[39m [32m'./Flag'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m [90m/* ============================================================[39m[0m
+[0m [90m 9 |[39m [90m   Sitemap — every meaningful section on every page is here.[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ ⨯ ./components/Navbar.jsx:6:1
+Module not found: Can't resolve './Flag'
+[0m [90m 4 |[39m [36mimport[39m { useEffect[33m,[39m useRef[33m,[39m useState } [36mfrom[39m [32m'react'[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mLogo[39m [36mfrom[39m [32m'./Logo'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m [33mFlag[39m [36mfrom[39m [32m'./Flag'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m [90m/* ============================================================[39m[0m
+[0m [90m 9 |[39m [90m   Sitemap — every meaningful section on every page is here.[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ ⨯ ./components/Navbar.jsx:6:1
+Module not found: Can't resolve './Flag'
+[0m [90m 4 |[39m [36mimport[39m { useEffect[33m,[39m useRef[33m,[39m useState } [36mfrom[39m [32m'react'[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mLogo[39m [36mfrom[39m [32m'./Logo'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m [33mFlag[39m [36mfrom[39m [32m'./Flag'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m [90m/* ============================================================[39m[0m
+[0m [90m 9 |[39m [90m   Sitemap — every meaningful section on every page is here.[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ ○ Compiling /_not-found ...
+ ⨯ ./components/Navbar.jsx:6:1
+Module not found: Can't resolve './Flag'
+[0m [90m 4 |[39m [36mimport[39m { useEffect[33m,[39m useRef[33m,[39m useState } [36mfrom[39m [32m'react'[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mLogo[39m [36mfrom[39m [32m'./Logo'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m [33mFlag[39m [36mfrom[39m [32m'./Flag'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m [90m/* ============================================================[39m[0m
+[0m [90m 9 |[39m [90m   Sitemap — every meaningful section on every page is here.[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ ⨯ ./components/Navbar.jsx:6:1
+Module not found: Can't resolve './Flag'
+[0m [90m 4 |[39m [36mimport[39m { useEffect[33m,[39m useRef[33m,[39m useState } [36mfrom[39m [32m'react'[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mLogo[39m [36mfrom[39m [32m'./Logo'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m [33mFlag[39m [36mfrom[39m [32m'./Flag'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m[0m
+[0m [90m 8 |[39m [90m/* ============================================================[39m[0m
+[0m [90m 9 |[39m [90m   Sitemap — every meaningful section on every page is here.[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ GET / 500 in 18216ms
+ ✓ Compiled /_error in 1315ms (494 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 751ms (307 modules)
+ GET / 200 in 2418ms
+ GET / 200 in 603ms
+ ✓ Compiled in 2.3s (753 modules)
+ ✓ Compiled in 936ms (48 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 1916ms (308 modules)
+ GET / 200 in 3308ms
+ GET / 200 in 653ms
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 2.8s (762 modules)
+ GET /contact 200 in 3355ms
+ GET /contact 200 in 249ms
+ GET / 200 in 480ms
+ GET /contact 200 in 195ms

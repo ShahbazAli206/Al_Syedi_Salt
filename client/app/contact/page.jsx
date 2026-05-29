@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import ContactForm from '@/components/ContactForm';
 import Chatbot from '@/components/Chatbot';
+import Flag from '@/components/Flag';
 
 export const metadata = { title: 'Contact — Al Syedi Group' };
 
@@ -55,12 +56,12 @@ export default function ContactPage() {
           </div>
 
           <div className="offices-grid" data-reveal-stagger>
-            <Office flag="🇬🇧" name="United Kingdom" region="EU & UK Sales" addr="14 Salt Wharf Road, Manchester M5 3AA, United Kingdom" phone="+44 161 555 0188" />
-            <Office flag="🇺🇸" name="United States"  region="Americas Sales" addr="2200 Pink Crystal Ave, Suite 410, Newark NJ 07102, USA" phone="+1 973 555 0124" />
-            <Office flag="🇨🇦" name="Canada"         region="North America" addr="88 Mineral Drive, Mississauga ON L5T 2N5, Canada" phone="+1 905 555 0167" />
-            <Office flag="🇦🇪" name="UAE"            region="MENA & GCC" addr="Warehouse 8, Jebel Ali Free Zone, Dubai, UAE" phone="+971 4 555 0142" />
-            <Office flag="🇵🇰" name="Pakistan (HQ)"  region="Manufacturing" addr="Khewra Salt Range, District Jhelum, Punjab 49100" phone="+92 300 456 7890" />
-            <Office flag="🇩🇪" name="Germany"        region="DACH Region" addr="Hafenstraße 17, 20457 Hamburg, Deutschland" phone="+49 40 555 0173" />
+            <Office code="gb" name="United Kingdom" region="EU & UK Sales" addr="14 Salt Wharf Road, Manchester M5 3AA, United Kingdom" phone="+44 161 555 0188" />
+            <Office code="us" name="United States"  region="Americas Sales" addr="2200 Pink Crystal Ave, Suite 410, Newark NJ 07102, USA" phone="+1 973 555 0124" />
+            <Office code="ca" name="Canada"         region="North America" addr="88 Mineral Drive, Mississauga ON L5T 2N5, Canada" phone="+1 905 555 0167" />
+            <Office code="ae" name="UAE"            region="MENA & GCC" addr="Warehouse 8, Jebel Ali Free Zone, Dubai, UAE" phone="+971 4 555 0142" />
+            <Office code="pk" name="Pakistan (HQ)"  region="Manufacturing" addr="Khewra Salt Range, District Jhelum, Punjab 49100" phone="+92 300 456 7890" />
+            <Office code="de" name="Germany"        region="DACH Region" addr="Hafenstraße 17, 20457 Hamburg, Deutschland" phone="+49 40 555 0173" />
           </div>
         </div>
       </section>
@@ -87,10 +88,12 @@ function InfoRow({ label, value, icon }) {
   );
 }
 
-function Office({ flag, name, region, addr, phone }) {
+function Office({ code, name, region, addr, phone }) {
   return (
     <div className="office-card">
-      <div className="flag">{flag}</div>
+      <div className="flag" style={{ marginBottom: '.75rem' }}>
+        <Flag code={code} width={44} height={30} />
+      </div>
       <small>{region}</small>
       <h4>{name}</h4>
       <p className="addr">{addr}</p>

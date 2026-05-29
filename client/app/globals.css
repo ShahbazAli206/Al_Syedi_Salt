@@ -163,6 +163,11 @@ body.light-mode::before{
 /* ===== Reset & Base ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+/* Offset anchor jumps so the fixed header (topbar + navbar) doesn't cover the target heading */
+section[id]{scroll-margin-top:130px}
+@media (max-width: 1100px){
+  section[id]{scroll-margin-top:80px}
+}
 body{
   font-family:'Inter','Segoe UI',sans-serif;
   background:#0a0a0a;
@@ -253,16 +258,68 @@ body.light-mode{
 .btn-ghost{border-color:var(--rose);color:var(--rose)}
 .btn-ghost:hover{background:var(--rose);color:#fff}
 
+/* ===== Site Header (topbar + navbar) ===== */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100}
+
+/* Top announcement bar */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.55rem 1.5rem;
+  background:linear-gradient(180deg,#08050a,#0d0709);
+  border-bottom:1px solid rgba(232,165,160,.08);
+  font-size:.78rem;
+}
+body.light-mode .topbar{
+  background:linear-gradient(180deg,#1a0d10,#251215);color:#f0ebe6;
+}
+.topbar-tagline{
+  flex:1;text-align:center;color:var(--rose-soft);
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:.85rem;letter-spacing:.02em;
+  padding:0 1rem;
+}
+.topbar-actions{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+.country-select{position:relative}
+.country-trigger{
+  display:flex;align-items:center;gap:.5rem;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  padding:.35rem .75rem;border-radius:6px;
+  font-size:.78rem;color:var(--text);cursor:pointer;
+  transition:all .2s;
+}
+.country-trigger:hover{border-color:var(--rose);color:var(--rose)}
+.country-trigger .flag{font-size:1rem;line-height:1}
+.country-trigger .country-name{font-weight:500}
+.country-list{
+  position:absolute;top:calc(100% + .5rem);right:0;min-width:200px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:6px;padding:.35rem;
+  box-shadow:0 20px 40px rgba(0,0,0,.5);
+  z-index:99;
+  animation:fadeDown .2s ease;
+}
+@keyframes fadeDown{ from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+.country-list button{
+  width:100%;text-align:left;display:flex;align-items:center;gap:.65rem;
+  padding:.55rem .75rem;border-radius:4px;font-size:.82rem;color:var(--text);
+  transition:background .15s;
+}
+.country-list button:hover{background:var(--card-2)}
+.country-list button.active{background:rgba(232,165,160,.12);color:var(--rose)}
+.country-list .flag{font-size:1.05rem}
+.topbar-theme{
+  width:30px;height:30px;border-radius:50%;
+}
+
 /* ===== Navbar ===== */
 .navbar{
-  position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:.9rem 2rem;background:rgba(10,10,10,.88);
+  padding:.85rem 1.5rem;background:rgba(10,10,10,.92);
   backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(232,165,160,.08);
   transition:padding .3s ease, background .3s ease;
 }
-.navbar.scrolled{padding:.6rem 2rem;background:rgba(10,10,10,.96)}
+.navbar.scrolled{padding:.5rem 1.5rem;background:rgba(10,10,10,.97)}
 body.light-mode .navbar{background:rgba(250,243,238,.94);border-bottom:1px solid rgba(168,72,72,.1)}
 .logo{display:flex;align-items:center;gap:.5rem;transition:opacity .2s}
 .logo:hover{opacity:.85}
@@ -301,7 +358,7 @@ img.img-fallback::after{ content:"";display:block; }
 .dropdown{
   position:absolute;top:100%;left:-1rem;min-width:300px;
   background:var(--card);border:1px solid var(--border);
-  padding:.75rem;margin-top:.5rem;border-radius:6px;
+  padding:.75rem;margin-top:.5rem;border-radius:8px;
   opacity:0;visibility:hidden;transform:translateY(-8px);
   transition:all .25s ease;z-index:99;
   box-shadow:0 22px 55px rgba(0,0,0,.55), 0 0 0 1px rgba(232,165,160,.06);
@@ -313,15 +370,171 @@ img.img-fallback::after{ content:"";display:block; }
 }
 .dropdown li a:hover{background:var(--card-2)}
 .dropdown-icon{ color:var(--rose);flex-shrink:0;margin-top:2px; }
-.dropdown-title{font-weight:600;font-size:.9rem;color:var(--text);margin-bottom:.15rem}
-.dropdown-desc{font-size:.78rem;color:var(--text-dim);line-height:1.4}
+.dropdown-title{display:block;font-weight:600;font-size:.9rem;color:var(--text);margin-bottom:.15rem}
+.dropdown-desc{display:block;font-size:.78rem;color:var(--text-dim);line-height:1.4}
 
-.menu-toggle{display:none;width:38px;height:38px;flex-direction:column;
-  align-items:center;justify-content:center;gap:5px}
-.menu-toggle span{width:22px;height:2px;background:var(--text);transition:all .3s}
+/* ===== Mega menu (2-column dropdown) ===== */
+.has-mega .dropdown.mega{
+  display:grid;grid-template-columns:1fr 1fr;gap:.4rem 1.5rem;
+  min-width:600px;padding:1.2rem 1.2rem 1rem;
+  /* Center the panel under its trigger */
+  left:50%;transform:translate(-50%,-8px);
+}
+.has-mega:hover .dropdown.mega{transform:translate(-50%,0)}
+.has-mega .mega-col-title{
+  font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--rose);font-weight:700;
+  padding:.4rem .85rem .55rem;
+  border-bottom:1px solid var(--border);
+  margin-bottom:.4rem;
+}
+.has-mega .mega-col > ul{display:flex;flex-direction:column}
+.has-mega .mega-col li > a{
+  display:flex;gap:.65rem;padding:.65rem .85rem;border-radius:5px;
+  transition:background .15s, transform .15s;
+}
+.has-mega .mega-col li > a:hover{background:var(--card-2);transform:translateX(2px)}
+.has-mega .mega-col li > a:hover .dropdown-title{color:var(--rose)}
+.has-mega .dropdown-title{font-size:.88rem;line-height:1.2}
+.has-mega .dropdown-desc{font-size:.74rem;line-height:1.4;margin-top:.1rem}
+
+/* Push wide dropdowns away from viewport edge */
+.nav-links > li:nth-child(2) .dropdown.mega{transform-origin:top left}
+.nav-links > li:nth-last-child(2) .dropdown.mega,
+.nav-links > li:nth-last-child(3) .dropdown.mega{transform-origin:top right}
+
+.menu-toggle{display:none;width:42px;height:42px;flex-direction:column;
+  align-items:center;justify-content:center;gap:5px;
+  border:1px solid var(--border);border-radius:8px;
+  background:var(--card);transition:border-color .2s, background .2s}
+.menu-toggle:hover{border-color:var(--rose)}
+.menu-toggle span{width:20px;height:2px;background:var(--text);transition:all .3s}
 .menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .menu-toggle.active span:nth-child(2){opacity:0}
 .menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Cart / quote-basket button */
+.cart-btn{
+  position:relative;width:42px;height:42px;border-radius:8px;
+  background:var(--card);border:1px solid var(--border);color:var(--text);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.cart-btn:hover{border-color:var(--rose);color:var(--rose);transform:translateY(-1px)}
+.cart-badge{
+  position:absolute;top:-6px;right:-6px;
+  min-width:20px;height:20px;border-radius:10px;padding:0 5px;
+  background:linear-gradient(135deg,var(--rose),var(--rose-deep));
+  color:#fff;font-size:.65rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(168,72,72,.4);
+}
+
+/* ===== Mobile Drawer ===== */
+.mobile-drawer{
+  position:fixed;top:0;right:0;bottom:0;
+  width:min(380px,88vw);
+  background:var(--bg-2);
+  display:flex;flex-direction:column;
+  transform:translateX(100%);
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+  z-index:300;
+  box-shadow:-20px 0 50px rgba(0,0,0,.5);
+  visibility:hidden;
+}
+.mobile-drawer.open{transform:translateX(0);visibility:visible}
+.mobile-drawer-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 1.25rem 1rem;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg,rgba(232,165,160,.06),transparent);
+}
+.mobile-drawer-head .logo{display:flex}
+.mobile-drawer-head .logo img,
+.mobile-drawer-head .logo svg{height:50px;width:auto}
+.mobile-drawer-close{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text-dim);border:1px solid var(--border);
+  transition:all .2s;
+}
+.mobile-drawer-close:hover{border-color:var(--rose);color:var(--rose)}
+.mobile-drawer-nav{
+  flex:1;overflow-y:auto;overscroll-behavior:contain;
+  padding:.5rem 0;
+}
+.mobile-drawer-nav::-webkit-scrollbar{width:6px}
+.mobile-drawer-nav::-webkit-scrollbar-track{background:transparent}
+.mobile-drawer-nav::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.mobile-drawer-nav ul{list-style:none;padding:0;margin:0}
+.mobile-drawer-nav .m-link{
+  width:100%;display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 1.5rem;font-size:1rem;font-weight:600;color:var(--text);
+  background:none;border:none;text-align:left;cursor:pointer;
+  transition:background .15s, color .15s;
+  border-left:3px solid transparent;
+}
+.mobile-drawer-nav .m-link:hover,
+.mobile-drawer-nav .m-link:focus{background:var(--card);color:var(--rose);border-left-color:var(--rose)}
+.mobile-drawer-nav .m-link svg{color:var(--rose);flex-shrink:0;transition:transform .25s}
+.m-group.open .m-toggle{background:var(--card);color:var(--rose);border-left-color:var(--rose)}
+.m-group.open .m-toggle .chev{transform:rotate(180deg)}
+.m-sub{
+  max-height:0;overflow:hidden;
+  transition:max-height .4s ease;
+  background:rgba(0,0,0,.18);
+}
+.m-group.open .m-sub{max-height:1500px;border-bottom:1px solid var(--border)}
+.m-sub-col{padding:.5rem 0}
+.m-sub-title{
+  font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--rose);font-weight:700;
+  padding:.85rem 1.5rem .4rem;
+}
+.m-sub-col ul li a{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.7rem 1.5rem .7rem 2rem;
+  font-size:.88rem;color:var(--text-dim);
+  transition:all .15s;
+}
+.m-sub-col ul li a:hover{background:var(--card-2);color:var(--rose);padding-left:2.25rem}
+.m-sub-col ul li a .dropdown-icon{color:var(--rose);flex-shrink:0}
+.m-sub-col ul li a .dropdown-title{font-weight:500;font-size:.9rem;color:var(--text)}
+.m-sub-col ul li a:hover .dropdown-title{color:var(--rose)}
+
+.mobile-drawer-foot{
+  padding:1.25rem 1.5rem;border-top:1px solid var(--border);
+  background:var(--bg-3);display:flex;flex-direction:column;gap:.85rem;
+}
+.mobile-country{
+  display:flex;align-items:center;gap:.65rem;
+  padding:.55rem .85rem;background:var(--card);border:1px solid var(--border);
+  border-radius:6px;font-size:.85rem;color:var(--text-dim);
+}
+.mobile-country .flag{font-size:1.1rem}
+.mobile-drawer-foot .btn{justify-content:center;width:100%}
+.mobile-contact-row{
+  display:flex;gap:.5rem;
+}
+.mobile-contact-row a{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.7rem;background:var(--card);border:1px solid var(--border);
+  border-radius:6px;font-size:.82rem;color:var(--text-dim);
+  transition:all .2s;
+}
+.mobile-contact-row a:hover{border-color:var(--rose);color:var(--rose)}
+.mobile-contact-row a svg{color:var(--rose)}
+
+/* Mobile backdrop */
+.mobile-backdrop{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(2px);
+  opacity:0;visibility:hidden;transition:opacity .3s, visibility .3s;
+  z-index:250;
+}
+.mobile-backdrop.active{opacity:1;visibility:visible}
+
+/* Lock body when drawer open */
+body.no-scroll{overflow:hidden}
 
 /* ===== Hero ===== */
 .hero{
@@ -977,6 +1190,17 @@ body.light-mode .process{background:#fff}
   transition:transform .2s;border-radius:4px;
 }
 .newsletter button:hover{transform:translateY(-2px)}
+/* Footer contact + newsletter strip (under main 4-col grid) */
+.footer-contact-strip{
+  max-width:1240px;margin:3rem auto 0;padding-top:2.5rem;
+  border-top:1px solid var(--border);
+}
+.footer-contact-grid{
+  display:grid;grid-template-columns:1.6fr 1fr;gap:3rem;
+}
+.footer-contact-block{display:flex;flex-direction:column}
+.footer-contact-block .contact-item{margin-bottom:.6rem}
+
 .footer-bottom{
   max-width:1240px;margin:3rem auto 0;padding-top:1.5rem;
   border-top:1px solid var(--border);
@@ -1419,18 +1643,16 @@ body.light-mode .process{background:#fff}
   .minerals-wrap{grid-template-columns:1fr;gap:2rem}
   .insights-grid{grid-template-columns:1fr}
 }
-@media (max-width: 1024px){
-  .nav-links{display:none}
+@media (max-width: 1100px){
+  .desktop-nav{display:none}
+  .quote-btn{display:none}
   .menu-toggle{display:flex}
-  .nav-links.active{
-    display:flex;position:absolute;top:100%;left:0;right:0;
-    flex-direction:column;background:var(--bg-2);
-    padding:1.5rem;gap:1rem;border-top:1px solid var(--border);
-  }
-  .nav-links.active .dropdown{
-    position:static;opacity:1;visibility:visible;transform:none;
-    box-shadow:none;margin-top:.5rem;
-  }
+  .topbar-theme{display:none}
+  .topbar{padding:.45rem .85rem;gap:.5rem}
+  .topbar-tagline{font-size:.72rem;line-height:1.35;padding:0 .25rem}
+  .country-trigger{padding:.3rem .55rem}
+  .country-trigger .country-name{display:none}
+  .country-list{right:-.5rem}
   .hero{grid-template-columns:1fr;padding:7rem 1.5rem 3rem;min-height:auto}
   .features-grid{grid-template-columns:repeat(2,1fr)}
   .feature-item{border-right:none;border-bottom:1px solid var(--border);padding-bottom:1.5rem}
@@ -1442,6 +1664,7 @@ body.light-mode .process{background:#fff}
   .process-steps::before{display:none}
   .testimonials-grid{columns:2}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .footer-contact-grid{grid-template-columns:1fr;gap:2rem}
 }
 @media (max-width: 640px){
   .section{padding:3.5rem 1rem}
@@ -1462,3 +1685,116 @@ body.light-mode .process{background:#fff}
   .mineral-row{grid-template-columns:1fr 60px 80px;font-size:.84rem;padding:.7rem 1rem}
   .pricing-card.featured::before{font-size:.6rem;padding:.3rem .65rem}
 }
+
+/* ============================================================
+   LIGHT MODE OVERRIDES
+   Sections that are intentionally kept dark in light mode
+   (topbar, features strip, cta-section, final-cta, hero) need
+   explicit light-color overrides for any text/icon/border that
+   would otherwise inherit var(--text) (dark).
+   ============================================================ */
+
+/* ----- Topbar (kept dark in light mode) ----- */
+body.light-mode .topbar .topbar-tagline{color:var(--rose-soft)}
+body.light-mode .topbar .country-trigger{
+  color:#f0ebe6;
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.14);
+}
+body.light-mode .topbar .country-trigger:hover{
+  color:var(--rose-soft);
+  border-color:var(--rose-soft);
+}
+body.light-mode .topbar .topbar-theme{
+  color:#f0ebe6;
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.14);
+}
+body.light-mode .topbar .topbar-theme:hover{
+  color:var(--rose-soft);
+  border-color:var(--rose-soft);
+}
+/* Country dropdown opens over light page — keep its own light theme */
+body.light-mode .country-list{background:var(--card);border-color:var(--border)}
+body.light-mode .country-list button{color:var(--text)}
+body.light-mode .country-list button:hover{background:var(--card-2)}
+body.light-mode .country-list button.active{
+  background:rgba(232,165,160,.18);color:var(--rose-deep);
+}
+
+/* ----- Features strip (kept dark in light mode) ----- */
+body.light-mode .features-strip .feature-item-title{color:#f0ebe6}
+body.light-mode .features-strip .feature-item{
+  border-right-color:rgba(255,255,255,.08);
+}
+body.light-mode .features-strip .feature-item svg{color:var(--rose-soft)}
+
+/* ----- Hero (kept dark in light mode — text already hardcoded light) ----- */
+/* No changes needed; hero is self-contained. */
+
+/* ----- CTA mid section (kept dark, text already hardcoded) ----- */
+body.light-mode .cta-section{
+  /* CSS variables for paragraph still resolve correctly because text is hardcoded */
+}
+
+/* ----- Final CTA (kept dark) ----- */
+body.light-mode .final-cta{
+  /* Already self-contained with hardcoded light text */
+}
+
+/* ----- Partners marquee — bg is var(--bg-3) = #fff in light mode ----- */
+/* Already inherits properly; no override needed. */
+
+/* ----- Cart button hover color in light mode (var(--card) is white) ----- */
+body.light-mode .cart-btn{color:var(--text)}
+body.light-mode .cart-btn:hover{color:var(--rose-deep)}
+
+/* ----- Menu toggle bars in light mode ----- */
+body.light-mode .menu-toggle span{background:var(--text)}
+
+/* ----- Mobile drawer header in light mode ----- */
+body.light-mode .mobile-drawer{background:#fff}
+body.light-mode .mobile-drawer-head{background:linear-gradient(180deg,rgba(232,165,160,.1),transparent)}
+body.light-mode .m-sub{background:rgba(232,165,160,.04)}
+body.light-mode .mobile-drawer-foot{background:var(--card-2)}
+
+/* ----- Logo on light navbar background — increase contrast slightly ----- */
+body.light-mode .navbar .logo svg text{filter:brightness(.85)}
+
+/* ----- Houses carousel cards on cream-ish bg in light mode ----- */
+/* .house-card uses var(--card) = #fff in light mode. Already fine. */
+
+/* ----- Ingredient label (overlays a dark image gradient) ----- */
+/* Hardcoded light text — fine. */
+
+/* ----- Footer (kept dark even in light mode? Currently uses var(--bg)) ----- */
+/* In light mode, footer becomes light. That's correct. */
+
+/* ----- Brand strip box hover ----- */
+body.light-mode .brand-box:hover{background:rgba(232,165,160,.08)}
+
+/* ----- Section title gold-word text gradient in light mode ----- */
+/* Uses gradient — visible in both modes. */
+
+/* ----- Hover states on nav links in light mode ----- */
+body.light-mode .nav-links > li > a:hover,
+body.light-mode .nav-links > li > button:hover{color:var(--rose-deep)}
+body.light-mode .nav-links > li > a::after,
+body.light-mode .nav-links > li > button::after{background:var(--rose-deep)}
+
+/* ----- Dropdown open state — make sure text stays readable on the white card bg ----- */
+body.light-mode .dropdown{background:#fff;border-color:var(--border)}
+body.light-mode .dropdown li a:hover{background:var(--card-2)}
+body.light-mode .dropdown li a:hover .dropdown-title{color:var(--rose-deep)}
+
+/* ----- Promise card border in light mode ----- */
+body.light-mode .promise-card{border-color:rgba(168,72,72,.25)}
+
+/* ----- Testimonial border accent on hover ----- */
+body.light-mode .testimonial:hover{border-color:var(--rose-deep)}
+
+/* ----- FAQ open state ----- */
+body.light-mode .faq-item.open{border-color:var(--rose-deep)}
+body.light-mode .faq-item.open .faq-q{color:var(--rose-deep)}
+
+/* ----- Subtle background drift in light mode (already handled in ::before) ----- */
