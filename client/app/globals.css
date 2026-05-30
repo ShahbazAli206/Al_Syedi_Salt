@@ -1086,14 +1086,14 @@ body.light-mode .about{background:#1c172c;color:var(--text)}
 .about-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:0;
   min-height:640px;align-items:stretch;
+  max-width:1400px;margin:0 auto;width:100%;
 }
 .about-text{
-  padding:6rem 4rem 6rem 5rem;
-  max-width:600px;
+  padding:5rem 3rem 5rem 5rem;
+  max-width:none;
   display:flex;flex-direction:column;justify-content:center;
 }
-@media (max-width:1400px){.about-text{padding:5rem 3rem 5rem 4rem}}
-@media (max-width:1100px){.about-text{padding:4rem 2rem 4rem 2rem;max-width:none}}
+@media (max-width:1100px){.about-text{padding:4rem 2rem;max-width:none}}
 .about-text .eyebrow{color:var(--rose)}
 .about h2{
   font-family:'Playfair Display',serif;
