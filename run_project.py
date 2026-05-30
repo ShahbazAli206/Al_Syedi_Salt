@@ -369,6 +369,9 @@ async def main(args):
     if not args.no_health:
         tasks.append(asyncio.create_task(open_when_ready(), name="healthcheck"))
 
+    if not args.no_autopush:
+        tasks.append(asyncio.create_task(git_auto_push(), name="autopush"))
+
     # ---- Graceful shutdown wiring ----
     shutting_down = False
     def shutdown(*_):
@@ -403,6 +406,8 @@ def cli() -> argparse.Namespace:
                    help="Don't auto-open the browser when the backend is healthy.")
     p.add_argument("--no-health",  action="store_true",
                    help="Skip the backend health-check / browser-open task.")
+    p.add_argument("--no-autopush", action="store_true",
+                   help="Disable the automatic git commit+push every 2 minutes.")
     return p.parse_args()
 
 
