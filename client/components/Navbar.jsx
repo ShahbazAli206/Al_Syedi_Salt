@@ -216,57 +216,6 @@ export default function Navbar() {
 
   return (
     <header className="site-header">
-      {/* ===== Top announcement bar ===== */}
-      <div className="topbar">
-        <div className="topbar-tagline">
-          Premium Himalayan Pink Salt Manufacturer &amp; Global Wholesale Supplier
-        </div>
-        <div className="topbar-actions">
-          <div className="country-select" ref={countryRef}>
-            <button
-              type="button"
-              className="country-trigger"
-              onClick={() => setCountryOpen((v) => !v)}
-              aria-expanded={countryOpen}
-            >
-              <Flag code={country.code} />
-              <span className="country-name">{country.name}</span>
-              <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            </button>
-            {countryOpen && (
-              <ul className="country-list" role="listbox">
-                {COUNTRIES.map((c) => (
-                  <li key={c.code}>
-                    <button
-                      type="button"
-                      onClick={() => pickCountry(c)}
-                      className={c.code === country.code ? 'active' : ''}
-                    >
-                      <Flag code={c.code} />
-                      <span>{c.name}</span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-          <button className="theme-toggle topbar-theme" onClick={toggleTheme} aria-label="Toggle theme">
-            {light ? (
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="5" />
-                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-              </svg>
-            ) : (
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-              </svg>
-            )}
-          </button>
-        </div>
-      </div>
-
       {/* ===== Main nav ===== */}
       <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
         <Link href="/" className="logo" aria-label="Al Syedi Group home" onClick={closeAll}>
@@ -317,6 +266,52 @@ export default function Navbar() {
         </ul>
 
         <div className="nav-actions">
+          {/* Country selector */}
+          <div className="country-select desktop-only" ref={countryRef}>
+            <button
+              type="button"
+              className="country-trigger"
+              onClick={() => setCountryOpen((v) => !v)}
+              aria-expanded={countryOpen}
+            >
+              <Flag code={country.code} />
+              <span className="country-name">{country.name}</span>
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+            </button>
+            {countryOpen && (
+              <ul className="country-list" role="listbox">
+                {COUNTRIES.map((c) => (
+                  <li key={c.code}>
+                    <button
+                      type="button"
+                      onClick={() => pickCountry(c)}
+                      className={c.code === country.code ? 'active' : ''}
+                    >
+                      <Flag code={c.code} />
+                      <span>{c.name}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Theme toggle */}
+          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+            {light ? (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="5" />
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+              </svg>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+              </svg>
+            )}
+          </button>
+
           <Link href="/contact" className="btn btn-gold quote-btn">Request a Quote</Link>
           <Link href="/contact" className="cart-btn" aria-label="Request basket">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">

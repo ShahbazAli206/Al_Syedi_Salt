@@ -1080,20 +1080,21 @@ body.light-mode .cap-feature:hover{background:rgba(168,72,72,.05)}
 .cap-feature-text strong{display:block;font-size:.85rem;font-weight:700;color:var(--text)}
 .cap-feature-text span{display:block;font-size:.74rem;color:var(--text-dim);margin-top:.18rem}
 
-/* ===== About — left text + right image panel ===== */
+/* ===== About — flex row: text left, image right ===== */
 .about{background:var(--bg-3);color:var(--text);padding:0;overflow:hidden}
 body.light-mode .about{background:#1c172c;color:var(--text)}
+/* Flexbox — not affected by the grid responsive overrides */
 .about-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:0;
-  min-height:640px;align-items:stretch;
+  display:flex;flex-direction:row;
+  min-height:640px;
   max-width:1400px;margin:0 auto;width:100%;
 }
 .about-text{
+  flex:1 1 50%;
   padding:5rem 3rem 5rem 5rem;
-  max-width:none;
   display:flex;flex-direction:column;justify-content:center;
+  min-width:0;
 }
-@media (max-width:1100px){.about-text{padding:4rem 2rem;max-width:none}}
 .about-text .eyebrow{color:var(--rose)}
 .about h2{
   font-family:'Playfair Display',serif;
@@ -1112,12 +1113,11 @@ body.light-mode .checklist li{color:#2a2620}
   color:#fff;display:flex;align-items:center;justify-content:center;
 }
 
-/* About — right image panel */
+/* About — right image panel (flex item) */
 .about-images{
+  flex:0 0 50%;
   position:relative;
   min-height:640px;
-  /* stretch to grid cell height */
-  align-self:stretch;
 }
 /* Left-edge gradient so image blends into the text background */
 .about-images::before{
@@ -2496,10 +2496,8 @@ body.light-mode .process{background:#fff}
   .features-grid{grid-template-columns:repeat(2,1fr)}
   .feature-item{border-right:none;border-bottom:1px solid var(--border);padding-bottom:1.5rem}
   .cap-grid,.promise-grid,.product-grid{grid-template-columns:repeat(2,1fr)}
-  .about-grid,.dual-col,.contact-grid,.brands-grid{grid-template-columns:1fr}
-  .about-images{min-height:400px;height:400px;position:relative}
-  .about-images::before{display:none}
-  .about-main-img{position:absolute;inset:0;border-radius:0}
+  .dual-col,.contact-grid,.brands-grid{grid-template-columns:1fr}
+  /* about-grid uses flex — collapse to column at small screens */
   .dual-col .text-side{padding:3rem 1.5rem}
   .dual-col .image-side{grid-template-columns:1fr 1fr 1fr;height:320px}
   .process-steps{grid-template-columns:repeat(3,1fr);gap:2rem}
