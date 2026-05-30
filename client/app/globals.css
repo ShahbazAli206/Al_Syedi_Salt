@@ -1701,12 +1701,13 @@ html.reveals-on .houses-carousel.in-view > .house-card{
 .product-filters{
   display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;
   margin-bottom:3rem;
+  animation:fadeInUp .5s cubic-bezier(.22,1,.36,1) both;
 }
 .filter-btn{
   padding:.75rem 1.5rem;font-size:.78rem;letter-spacing:.2em;
   text-transform:uppercase;border:1px solid var(--border);
   color:var(--text-dim);font-weight:700;transition:all .25s;
-  background:var(--card);border-radius:2px;
+  background:var(--card);border-radius:6px;
 }
 .filter-btn:hover{border-color:var(--rose);color:var(--rose)}
 .filter-btn.active{
@@ -1715,6 +1716,22 @@ html.reveals-on .houses-carousel.in-view > .house-card{
 }
 .product-grid{
   display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
+}
+/* CSS-only stagger — works regardless of JS observer timing */
+.product-grid--animate .product-card{
+  animation:fadeInUp .6s cubic-bezier(.22,1,.36,1) both;
+}
+.product-grid--animate .product-card:nth-child(1) {animation-delay:.05s}
+.product-grid--animate .product-card:nth-child(2) {animation-delay:.10s}
+.product-grid--animate .product-card:nth-child(3) {animation-delay:.15s}
+.product-grid--animate .product-card:nth-child(4) {animation-delay:.20s}
+.product-grid--animate .product-card:nth-child(5) {animation-delay:.25s}
+.product-grid--animate .product-card:nth-child(6) {animation-delay:.30s}
+.product-grid--animate .product-card:nth-child(7) {animation-delay:.35s}
+.product-grid--animate .product-card:nth-child(8) {animation-delay:.40s}
+.product-grid--animate .product-card:nth-child(n+9){animation-delay:.45s}
+@media (prefers-reduced-motion:reduce){
+  .product-grid--animate .product-card,.product-filters{animation:none}
 }
 .product-card{
   background:var(--card);border:1px solid var(--border);

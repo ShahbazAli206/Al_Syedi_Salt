@@ -37,7 +37,7 @@ export default function ProductGrid({ products = [] }) {
 
   return (
     <>
-      <div className="product-filters" data-reveal="up">
+      <div className="product-filters">
         {FILTERS.map((f) => (
           <button
             key={f.key}
@@ -54,7 +54,7 @@ export default function ProductGrid({ products = [] }) {
           No products in this category.
         </p>
       ) : (
-        <div className="product-grid" data-reveal-stagger>
+        <div className="product-grid product-grid--animate">
           {visible.map((p) => (
             <div className="product-card" key={p._id || p.name}>
               <div className="product-img">
