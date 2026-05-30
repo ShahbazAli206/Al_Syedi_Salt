@@ -28,58 +28,34 @@ export default async function Home() {
           <span className="dust"></span><span className="dust"></span>
         </div>
 
-        {/* Left-aligned hero content */}
-        <div className="hero-content hero-content--left" data-reveal-stagger>
-          <div className="eyebrow">Premium Himalayan Salt Manufacturer</div>
+        <div className="hero-content" data-reveal-stagger>
+          <div className="hero-tag">
+            <span>Premium</span>
+            <span className="pill">Himalayan Pink Salt</span>
+            <span>Since 1998</span>
+          </div>
           <h1>
-            Trusted by <span className="gold-word">320+ B2B</span><br />
-            Partners in <span className="gold-word">42 Countries</span>
+            Bulk Salt Manufacturing<br />
+            <span className="gold-word">&amp;</span> Global<br />
+            <span className="gold-word">Wholesale Supply</span>
           </h1>
           <p>
-            ISO 22000 &amp; HACCP certified manufacturer and exporter of premium Himalayan Pink Salt,
-            edible salts, bath blends, salt lamps and industrial salts.
-            Consistent quality. Global compliance. Reliable supply.
+            Al Syedi Group is a trusted manufacturer and exporter of premium Himalayan Pink Salt, edible salts, bath &amp; spa salts, decorative salt lamps, salt bricks and industrial-grade salts — shipped in bulk to clients across the UK, US, Canada, Europe and the Middle East.
           </p>
-
-          {/* Certification badges */}
-          <div className="hero-certs">
-            {[
-              { icon: <><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></>, label: 'ISO', sub: '22000' },
-              { icon: <><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></>, label: 'HACCP', sub: 'Certified' },
-              { icon: <><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></>, label: 'Halal', sub: 'Certified' },
-              { icon: <><path d="M12 2l3 6 6 1-4.5 4 1 6L12 16l-5.5 3 1-6L3 9l6-1z"/></>, label: 'Kosher', sub: '' },
-            ].map((c) => (
-              <div className="hero-cert" key={c.label}>
-                <div className="hero-cert-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">{c.icon}</svg>
-                </div>
-                <div className="hero-cert-label"><strong>{c.label}</strong>{c.sub && c.sub}</div>
-              </div>
-            ))}
-          </div>
-
           <div className="hero-actions">
-            <Link href="/products" className="btn btn-gold">
-              Explore Products
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            <Link href="/products" className="btn btn-outline">
+              View Salt Products
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
             </Link>
-            <Link href="/#pricing" className="btn btn-outline">Bulk Pricing Tiers</Link>
           </div>
-        </div>
-
-        {/* Bottom stats strip */}
-        <div className="hero-bottom-strip">
-          {[
-            { num: '42+',     lbl: 'Countries' },
-            { num: '320+',    lbl: 'B2B Clients' },
-            { num: '10K+ MT', lbl: 'Monthly Capacity' },
-            { num: '100%',    lbl: 'Quality Commitment' },
-          ].map((s) => (
-            <div className="hbs-item" key={s.lbl}>
-              <span className="hbs-num">{s.num}</span>
-              <span className="hbs-lbl">{s.lbl}</span>
-            </div>
-          ))}
+          <div className="hero-stats">
+            <div className="hero-stat"><div className="num">25+</div><div className="lbl">Years of Trust</div></div>
+            <div className="hero-stat"><div className="num">42</div><div className="lbl">Countries Served</div></div>
+            <div className="hero-stat"><div className="num">18k+</div><div className="lbl">Tons Shipped / Yr</div></div>
+            <div className="hero-stat"><div className="num">320+</div><div className="lbl">Active B2B Clients</div></div>
+          </div>
         </div>
       </section>
 
