@@ -2610,8 +2610,9 @@ body.light-mode .process{background:#fff}
   .process-steps{grid-template-columns:repeat(3,1fr);gap:2rem}
   .process-steps::before{display:none}
   .testimonials-grid{columns:2}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
-  .footer-contact-grid{grid-template-columns:1fr;gap:2rem}
+  .footer-inner{grid-template-columns:1fr 1fr 1fr;gap:1.5rem}
+  .footer-decor{display:none}
+  .footer-strip-grid{grid-template-columns:1fr;gap:1rem}
   /* Benefits → 2-col at tablet */
   .benefits-grid{grid-template-columns:repeat(2,1fr)}
   .benefits-crystal{width:55%}
@@ -2631,7 +2632,8 @@ body.light-mode .process{background:#fff}
   .features-grid,.cap-grid,.promise-grid,.product-grid{grid-template-columns:1fr}
   .testimonials-grid{columns:1}
   .process-steps{grid-template-columns:repeat(2,1fr)}
-  .footer-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
   .contact-form{grid-template-columns:1fr}
   .hero{padding:7.5rem 1rem 3rem}
   .hero-actions{flex-direction:column;align-items:stretch}
