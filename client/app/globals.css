@@ -1740,13 +1740,18 @@ html.reveals-on .houses-carousel.in-view > .house-card{
 
 /* ===== Two col blocks ===== */
 .dual-col{
-  display:grid;grid-template-columns:1fr 1fr;align-items:stretch;
+  display:flex;flex-direction:row;align-items:stretch;
+  max-width:1400px;margin:0 auto;width:100%;min-height:420px;
 }
-.dual-col .text-side{padding:5rem 4rem;background:var(--bg);
-  display:flex;flex-direction:column;justify-content:center}
+.dual-col .text-side{
+  flex:0 0 42%;padding:5rem 4rem;background:var(--bg);
+  display:flex;flex-direction:column;justify-content:center;min-width:0;
+}
 .dual-col .text-side.cream{background:var(--cream-2);color:var(--ink)}
 .dual-col .image-side{
+  flex:0 0 58%;
   display:grid;grid-template-columns:1fr 1fr 1fr;
+  min-width:0;
 }
 .dual-col .image-side img{height:100%;width:100%;object-fit:cover}
 .dual-col h3{
