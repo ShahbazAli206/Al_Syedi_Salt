@@ -2383,6 +2383,13 @@ body.light-mode .benefit-card p{color:var(--text-dim)}
   .benefits{padding:4rem 0}
   .cap-features{grid-template-columns:repeat(2,1fr)}
   .hero-stats{max-width:100%;gap:.75rem}
+  .showcase-grid{grid-template-columns:repeat(3,1fr)}
+  .showcase-b2b{grid-template-columns:repeat(2,1fr)}
+  .cert-grid{grid-template-columns:repeat(3,1fr)}
+  .markets-split{grid-template-columns:1fr}
+  .markets-left{padding:4rem 2rem}
+  .markets-right{height:380px;min-height:auto}
+  .markets-grid-new{grid-template-columns:repeat(3,1fr)}
 }
 @media (max-width: 640px){
   .section{padding:3.5rem 1rem}
@@ -2400,7 +2407,14 @@ body.light-mode .benefit-card p{color:var(--text-dim)}
   .ingredients-grid{grid-template-columns:repeat(2,1fr)}
   .variety-features{grid-template-columns:1fr 1fr}
   .cert-grid{grid-template-columns:repeat(2,1fr)}
-  .markets-grid{grid-template-columns:1fr}
+  .markets-split{grid-template-columns:1fr}
+  .markets-right{height:300px}
+  .markets-left{padding:3.5rem 1.5rem}
+  .showcase-grid{grid-template-columns:repeat(2,1fr)}
+  .showcase-b2b{grid-template-columns:1fr 1fr}
+  .hero-bottom-strip{position:relative}
+  .hero-certs{gap:.5rem}
+  .markets-grid-new{grid-template-columns:repeat(2,1fr)}
   .brand-card{flex-direction:column}
   .benefits-grid,.pack-grid,.pricing-grid,.grade-bar{grid-template-columns:1fr}
   .mineral-row{grid-template-columns:1fr 60px 80px;font-size:.84rem;padding:.7rem 1rem}
