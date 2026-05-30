@@ -17,9 +17,7 @@ export default async function Home() {
 
       {/* HERO */}
       <section className="hero">
-        {/* Ken Burns animated mountain background */}
         <div className="hero-bg" aria-hidden="true" />
-        {/* Floating orbs + dust particles */}
         <div className="sparkles" aria-hidden="true">
           <span className="orb"></span><span className="orb"></span>
           <span className="orb"></span><span className="orb"></span>
@@ -29,45 +27,119 @@ export default async function Home() {
           <span className="dust"></span><span className="dust"></span>
           <span className="dust"></span><span className="dust"></span>
         </div>
-        <div className="hero-content" data-reveal-stagger>
-          <div className="hero-tag">
-            <span>Premium</span>
-            <span className="pill">Himalayan Pink Salt</span>
-            <span>Since 1998</span>
-          </div>
+
+        {/* Left-aligned hero content */}
+        <div className="hero-content hero-content--left" data-reveal-stagger>
+          <div className="eyebrow">Premium Himalayan Salt Manufacturer</div>
           <h1>
-            Bulk Salt Manufacturing<br />
-            <span className="gold-word">&amp;</span> Global<br />
-            <span className="gold-word">Wholesale Supply</span>
+            Trusted by <span className="gold-word">320+ B2B</span><br />
+            Partners in <span className="gold-word">42 Countries</span>
           </h1>
           <p>
-            Al Syedi Group is a trusted manufacturer and exporter of premium Himalayan Pink Salt, edible salts, bath &amp; spa salts, decorative salt lamps, salt bricks and industrial-grade salts — shipped in bulk to clients across the UK, US, Canada, Europe and the Middle East.
+            ISO 22000 &amp; HACCP certified manufacturer and exporter of premium Himalayan Pink Salt,
+            edible salts, bath blends, salt lamps and industrial salts.
+            Consistent quality. Global compliance. Reliable supply.
           </p>
-          <div className="hero-actions">
-            <Link href="/products" className="btn btn-outline">
-              View Salt Products
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-            </Link>
+
+          {/* Certification badges */}
+          <div className="hero-certs">
+            {[
+              { icon: <><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></>, label: 'ISO', sub: '22000' },
+              { icon: <><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></>, label: 'HACCP', sub: 'Certified' },
+              { icon: <><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></>, label: 'Halal', sub: 'Certified' },
+              { icon: <><path d="M12 2l3 6 6 1-4.5 4 1 6L12 16l-5.5 3 1-6L3 9l6-1z"/></>, label: 'Kosher', sub: '' },
+            ].map((c) => (
+              <div className="hero-cert" key={c.label}>
+                <div className="hero-cert-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">{c.icon}</svg>
+                </div>
+                <div className="hero-cert-label"><strong>{c.label}</strong>{c.sub && c.sub}</div>
+              </div>
+            ))}
           </div>
-          <div className="hero-stats">
-            <div className="hero-stat">
-              <div className="num">25+</div>
-              <div className="lbl">Years of Trust</div>
+
+          <div className="hero-actions">
+            <Link href="/products" className="btn btn-gold">
+              Explore Products
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </Link>
+            <Link href="/#pricing" className="btn btn-outline">Bulk Pricing Tiers</Link>
+          </div>
+        </div>
+
+        {/* Bottom stats strip */}
+        <div className="hero-bottom-strip">
+          {[
+            { num: '42+',     lbl: 'Countries' },
+            { num: '320+',    lbl: 'B2B Clients' },
+            { num: '10K+ MT', lbl: 'Monthly Capacity' },
+            { num: '100%',    lbl: 'Quality Commitment' },
+          ].map((s) => (
+            <div className="hbs-item" key={s.lbl}>
+              <span className="hbs-num">{s.num}</span>
+              <span className="hbs-lbl">{s.lbl}</span>
             </div>
-            <div className="hero-stat">
-              <div className="num">42</div>
-              <div className="lbl">Countries Served</div>
-            </div>
-            <div className="hero-stat">
-              <div className="num">18k+</div>
-              <div className="lbl">Tons Shipped / Yr</div>
-            </div>
-            <div className="hero-stat">
-              <div className="num">320+</div>
-              <div className="lbl">Active B2B Clients</div>
-            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* PRODUCT SHOWCASE — Our Salt. Your Brand. Worldwide. */}
+      <section className="showcase" id="products-overview">
+        <div className="container">
+          <h2 className="showcase-title" data-reveal-toggle="up">
+            <span className="t1">Our Salt. </span>
+            <span className="t2">Your Brand. Worldwide.</span>
+          </h2>
+          <p className="showcase-sub" data-reveal-toggle="up">
+            From edible to industrial — tailored salt solutions for every business need.
+          </p>
+          <div className="showcase-grid" data-reveal-toggle-stagger>
+            {[
+              { kind:'pink-fine',      name:'Himalayan Pink Salt', cat:'Edible Salt',     href:'/products?category=edible' },
+              { kind:'bath-lavender',  name:'Bath & Spa',          cat:'Bath & Spa',       href:'/products?category=bath' },
+              { kind:'lamp-natural',   name:'Salt Lamps & Decor',  cat:'Home & Decor',    href:'/products?category=lifestyle' },
+              { kind:'de-icing',       name:'Industrial Salt',     cat:'Industrial Use',   href:'/products?category=industrial' },
+              { kind:'salt-brick',     name:'Salt Bricks & Tiles', cat:'Construction',    href:'/products?category=construction' },
+              { kind:'pink-granular',  name:'Salt Collections',    cat:'Gifting & Retail', href:'/products' },
+            ].map((p) => (
+              <Link href={p.href} className="showcase-card" key={p.name}>
+                <div className="showcase-img">
+                  <SaltImage kind={p.kind} alt={p.name} />
+                  <div className="showcase-img-overlay" />
+                </div>
+                <div className="showcase-body">
+                  <div className="showcase-name">{p.name}</div>
+                  <div className="showcase-cat">{p.cat}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* B2B features strip */}
+          <div className="showcase-b2b" data-reveal-toggle-stagger>
+            {[
+              { icon: <><path d="M3 3h2l2.4 12.4a2 2 0 002 1.6h9.7a2 2 0 002-1.6L23 6H6"/><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/></>, label:'Bulk & Wholesale Pricing', sub:'From 1 MT · FCL & LCL' },
+              { icon: <><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 17h7M17 14v7"/></>, label:'Private Label & OEM Services', sub:'Full brand suite' },
+              { icon: <><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4M21 7v10l-9 4M12 11v10"/></>, label:'Custom Packaging Solutions', sub:'12 formats available' },
+              { icon: <><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></>, label:'Global Shipping Support', sub:'42 countries · FCL & LCL' },
+            ].map((f) => (
+              <div className="showcase-b2b-item" key={f.label}>
+                <div className="showcase-b2b-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">{f.icon}</svg>
+                </div>
+                <div className="showcase-b2b-text">
+                  <strong>{f.label}</strong>
+                  <span>{f.sub}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="showcase-cta" data-reveal-toggle="up">
+            <Link href="/products" className="btn btn-gold">
+              View All Products
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </Link>
           </div>
         </div>
       </section>
@@ -477,55 +549,79 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* CERTIFICATIONS */}
+      {/* CERTIFICATIONS — badge design */}
       <section className="certifications" id="certifications">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Audited &amp; Certified</div>
           <h2 className="section-title">Compliance You Can <span className="gold-word">Stake Your Brand On</span></h2>
-          <div className="title-rule"></div>
+          <p className="certifications-sub">
+            We meet the world&apos;s most recognized food safety, quality and ethical standards — so you can sell with confidence.
+          </p>
         </div>
         <div className="container">
           <div className="cert-grid" data-reveal-toggle-stagger>
-            <CertCard icon="iso" name="ISO 22000" desc="Food Safety" />
-            <CertCard icon="haccp" name="HACCP" desc="Hazard Control" />
-            <CertCard icon="brc" name="BRC AA+" desc="Global Standard" />
-            <CertCard icon="halal" name="Halal" desc="JAKIM Certified" />
-            <CertCard icon="kosher" name="Kosher" desc="OU Approved" />
-            <CertCard icon="usda" name="USDA Organic" desc="Bath Range" />
-            <CertCard icon="fda" name="FDA Registered" desc="USA Compliant" />
-            <CertCard icon="ce" name="EU Compliant" desc="REACH Listed" />
-            <CertCard icon="gmp" name="GMP" desc="Good Mfg Practice" />
-            <CertCard icon="non-gmo" name="Non-GMO" desc="Project Verified" />
-            <CertCard icon="vegan" name="Vegan Society" desc="Registered" />
-            <CertCard icon="iso14k" name="ISO 14001" desc="Environment" />
+            <CertCard icon="iso"    name="ISO 22000"      desc="Food Safety" />
+            <CertCard icon="haccp"  name="HACCP"          desc="Hazard Analysis" />
+            <CertCard icon="brc"    name="BRC AA+"         desc="Global Standard" />
+            <CertCard icon="halal"  name="Halal"          desc="Certified" />
+            <CertCard icon="kosher" name="Kosher"         desc="Certified" />
+            <CertCard icon="usda"   name="USDA Organic"   desc="Approved" />
+          </div>
+          <div className="cert-grid cert-grid-row2" data-reveal-toggle-stagger>
+            <CertCard icon="fda"      name="FDA Registered"  desc="USA" />
+            <CertCard icon="ce"       name="EU Compliant"    desc="REACH" />
+            <CertCard icon="gmp"      name="GMP"             desc="Good Practice" />
+            <CertCard icon="non-gmo"  name="Non-GMO"         desc="Verified" />
+            <CertCard icon="vegan"    name="Vegan Society"   desc="Society" />
+            <CertCard icon="iso14k"   name="ISO 14001"       desc="Environment" />
+          </div>
+          <div className="cert-footer" data-reveal-toggle="up">
+            <p>Documentation, lab reports, and certificates available on request.</p>
+            <Link href="/contact" className="btn btn-gold">Download Documents</Link>
           </div>
         </div>
       </section>
 
-      {/* GLOBAL MARKETS */}
+      {/* GLOBAL MARKETS — split with world map */}
       <section className="markets" id="markets">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
-          <div className="eyebrow">Where We Ship</div>
-          <h2 className="section-title">Active in <span className="gold-word">42 Countries</span> — and Growing</h2>
-          <div className="title-rule"></div>
-          <p style={{ color: 'var(--text-dim)', maxWidth: 620, margin: '0 auto', fontSize: '.95rem' }}>
-            Container-load shipments leave our facilities every week. Below: our top-volume markets.
-          </p>
-        </div>
-        <div className="container">
-          <div className="markets-grid" data-reveal-toggle-stagger>
-            <MarketCard code="gb" country="United Kingdom" meta="London · Manchester · Birmingham" />
-            <MarketCard code="us" country="United States"  meta="New York · Chicago · Los Angeles" />
-            <MarketCard code="ca" country="Canada"         meta="Toronto · Vancouver · Montréal" />
-            <MarketCard code="ae" country="UAE"            meta="Dubai · Abu Dhabi · Sharjah" />
-            <MarketCard code="de" country="Germany"        meta="Berlin · Hamburg · Frankfurt" />
-            <MarketCard code="au" country="Australia"      meta="Sydney · Melbourne · Brisbane" />
-            <MarketCard code="sa" country="Saudi Arabia"   meta="Riyadh · Jeddah · Dammam" />
-            <MarketCard code="fr" country="France"         meta="Paris · Lyon · Marseille" />
-            <MarketCard code="nl" country="Netherlands"    meta="Rotterdam · Amsterdam" />
-            <MarketCard code="jp" country="Japan"          meta="Tokyo · Osaka" />
-            <MarketCard code="sg" country="Singapore"      meta="Tuas · Jurong" />
-            <MarketCard code="za" country="South Africa"   meta="Cape Town · Durban" />
+        <div className="markets-split">
+          <div className="markets-left" data-reveal-toggle="left">
+            <div className="eyebrow">Where We Ship</div>
+            <h2>Active in <span className="gold-word">UK, USA &amp; Across Europe</span> —<br/>Delivering to <span className="gold-word">42 Countries</span></h2>
+            <p>Container-load shipments leave our facilities every week. Below are our top-volume markets.</p>
+            <div className="markets-grid-new" data-reveal-toggle-stagger>
+              <MarketCard code="gb" country="United Kingdom" meta="London, Manchester, Birmingham" />
+              <MarketCard code="us" country="United States"  meta="New York, Chicago, Los Angeles" />
+              <MarketCard code="de" country="Germany"        meta="Berlin, Hamburg, Frankfurt" />
+              <MarketCard code="fr" country="France"         meta="Paris, Lyon, Marseille" />
+              <MarketCard code="nl" country="Netherlands"    meta="Rotterdam, Amsterdam" />
+              <MarketCard code="it" country="Italy"          meta="Milan, Rome" />
+              <MarketCard code="es" country="Spain"          meta="Madrid, Barcelona" />
+              <MarketCard code="pl" country="Poland"         meta="Warsaw" />
+              <MarketCard code="se" country="Sweden"         meta="Stockholm" />
+            </div>
+            <div className="markets-btn" style={{ marginTop: '1.75rem' }}>
+              <Link href="/#markets" className="btn btn-gold">View All Markets</Link>
+            </div>
+          </div>
+
+          {/* World map panel */}
+          <div className="markets-right" data-reveal-toggle="right">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80"
+              alt="Global shipping network"
+              className="markets-map-img"
+            />
+            <div className="markets-map-overlay" />
+            <div className="markets-stat-panel">
+              <div className="markets-stat-num">42+</div>
+              <div className="markets-stat-lbl">Countries Covered</div>
+              <div className="markets-tagline">
+                Global Reach.<br />
+                <span className="gold-word">Local Commitment.</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
