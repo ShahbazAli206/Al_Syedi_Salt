@@ -2139,43 +2139,146 @@ body.light-mode .benefit-card h4{color:var(--ink)}
 body.light-mode .benefit-card p{color:var(--text-dim)}
 
 /* ===== Mineral Composition Table ===== */
-.minerals{background:var(--bg);padding:5rem 1.5rem}
+/* ===== Mineral Composition — redesigned ===== */
+.minerals{background:var(--bg-2);padding:5rem 1.5rem 0}
 .minerals-wrap{
-  display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center;
-  max-width:1240px;margin:3rem auto 0;
+  display:grid;grid-template-columns:1fr 1.1fr;gap:2rem;align-items:stretch;
+  max-width:1200px;margin:3rem auto 0;
 }
+/* Left: full-bleed photo */
 .mineral-visual{
-  position:relative;aspect-ratio:1/1;
-  background:radial-gradient(circle at 50% 50%, rgba(232,165,160,.15), transparent 70%);
-  display:flex;align-items:center;justify-content:center;
+  position:relative;border-radius:12px;overflow:hidden;min-height:400px;
+  background:var(--card);
 }
+.mineral-visual .salt-img{width:100%;height:100%}
+.mineral-visual .salt-img img{width:100%;height:100%;object-fit:cover;object-position:center}
+/* Right: table card */
 .mineral-table{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:8px;overflow:hidden;
+  background:var(--card);border:1px solid rgba(232,165,160,.12);
+  border-radius:12px;overflow:hidden;
 }
+/* Header row */
+.mineral-row.head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.85rem 1.5rem;
+  font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--rose);font-weight:700;
+  border-bottom:1px solid rgba(232,165,160,.12);
+  background:transparent;
+}
+/* Data rows — compound | bar | pct */
 .mineral-row{
-  display:grid;grid-template-columns:1.4fr 80px 1fr;gap:1rem;
-  padding:.85rem 1.5rem;align-items:center;
-  border-bottom:1px solid var(--border);font-size:.92rem;
+  display:grid;grid-template-columns:1fr 1fr 70px;
+  gap:1rem;padding:.95rem 1.5rem;align-items:center;
+  border-bottom:1px solid rgba(232,165,160,.07);font-size:.92rem;
   transition:background .2s;
 }
 .mineral-row:last-child{border-bottom:none}
-.mineral-row:hover{background:var(--card-2)}
-.mineral-row.head{
-  background:linear-gradient(135deg,rgba(232,165,160,.1),rgba(168,72,72,.05));
-  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--rose);font-weight:700;
+.mineral-row:hover{background:rgba(232,165,160,.04)}
+/* Compound cell — name + formula inline */
+.mineral-compound{display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap}
+.mineral-name{color:var(--text);font-weight:600;font-size:.9rem}
+.mineral-formula{
+  color:var(--text-mute);font-family:'Inter',sans-serif;
+  font-size:.78rem;font-style:normal;
 }
-.mineral-name{color:var(--text);font-weight:600}
-.mineral-formula{color:var(--text-mute);font-family:'Inter',sans-serif;font-size:.78rem}
+/* Bar */
 .mineral-bar{
-  display:block;width:100%;height:7px;background:var(--bg-2);border-radius:4px;overflow:hidden;
+  display:block;width:100%;height:6px;
+  background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden;
 }
 .mineral-bar > span{
   display:block;height:100%;border-radius:4px;
   background:linear-gradient(90deg,var(--rose-soft),var(--rose));
+  transition:width .6s cubic-bezier(.22,1,.36,1);
 }
-.mineral-pct{color:var(--text);font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.mineral-pct{
+  color:var(--text);font-weight:700;text-align:right;
+  font-size:.9rem;font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+/* Bottom 4-stat strip */
+.minerals-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  max-width:1200px;margin:2.5rem auto 0;
+  background:var(--card);border:1px solid rgba(232,165,160,.1);
+  border-radius:12px;overflow:hidden;
+}
+.minerals-stat{
+  display:flex;align-items:center;gap:.85rem;
+  padding:1.4rem 1.5rem;
+  border-right:1px solid rgba(232,165,160,.1);
+  transition:background .25s;
+}
+.minerals-stat:last-child{border-right:none}
+.minerals-stat:hover{background:var(--card-2)}
+.minerals-stat-icon{
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  border:1px solid rgba(232,165,160,.28);color:var(--rose);
+  background:linear-gradient(135deg,rgba(232,165,160,.12),rgba(168,72,72,.07));
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .25s;
+}
+.minerals-stat:hover .minerals-stat-icon{transform:scale(1.1) rotate(-6deg)}
+.minerals-stat-text strong{display:block;font-size:.95rem;font-weight:700;color:var(--text)}
+.minerals-stat-text span{display:block;font-size:.72rem;color:var(--text-dim);margin-top:.12rem}
+
+/* ===== Process — redesigned ===== */
+.process{background:var(--cream);color:var(--ink);padding:5rem 1.5rem 0}
+body.light-mode .process{background:#fff}
+.process .eyebrow{color:var(--rose-deep)}
+.process .section-title{color:var(--ink)}
+.process-steps{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:1rem;
+  margin-top:3rem;position:relative;
+}
+.process-steps::before{
+  content:"";position:absolute;top:40px;left:7%;right:7%;
+  border-top:1.5px dashed rgba(168,72,72,.35);z-index:0;
+}
+.step{position:relative;z-index:1;text-align:center}
+.step-num{
+  font-size:.68rem;letter-spacing:.15em;color:var(--rose-deep);
+  font-weight:700;margin-bottom:.5rem;display:block;
+}
+.step-icon{
+  width:74px;height:74px;border-radius:50%;
+  border:1.5px solid rgba(168,72,72,.4);
+  background:#fff;
+  color:var(--rose-deep);display:flex;align-items:center;justify-content:center;
+  margin:0 auto .85rem;transition:all .35s;
+  box-shadow:0 4px 16px rgba(168,72,72,.1);
+}
+.step:hover .step-icon{
+  transform:scale(1.1);border-color:var(--rose-deep);
+  background:linear-gradient(135deg,var(--rose-soft),var(--himalayan));
+  color:#fff;box-shadow:0 8px 24px rgba(168,72,72,.25);
+}
+.step-label{font-size:.82rem;font-weight:700;color:var(--ink);line-height:1.35}
+.step-label span:first-child{color:var(--rose-deep)}
+/* Process bottom stats strip */
+.process-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  max-width:1240px;margin:4rem auto 0;
+  background:linear-gradient(135deg,rgba(232,165,160,.18),rgba(244,199,194,.12));
+  border:1px solid rgba(168,72,72,.15);border-radius:12px;
+  overflow:hidden;
+}
+.process-stat{
+  display:flex;align-items:center;gap:.85rem;
+  padding:1.5rem 1.75rem;border-right:1px solid rgba(168,72,72,.12);
+  transition:background .25s;
+}
+.process-stat:last-child{border-right:none}
+.process-stat:hover{background:rgba(168,72,72,.06)}
+.process-stat-num{
+  font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;
+  color:var(--rose-deep);line-height:1;display:block;
+}
+.process-stat-lbl{
+  font-size:.75rem;color:#5a4040;margin-top:.15rem;
+  line-height:1.3;display:block;
+}
 
 /* ===== Salt Grade Reference Chart ===== */
 .grades{background:var(--bg-2);padding:5rem 1.5rem}
