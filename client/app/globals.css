@@ -229,8 +229,8 @@ body.light-mode::before{
 /* ===== Reset & Base ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-/* Offset anchor jumps so the fixed header (topbar + navbar) doesn't cover the target heading */
-section[id]{scroll-margin-top:130px}
+/* Offset anchor jumps so the fixed navbar doesn't cover the target heading */
+section[id]{scroll-margin-top:90px}
 @media (max-width: 1100px){
   section[id]{scroll-margin-top:108px}
 }
@@ -324,27 +324,13 @@ body.light-mode{
 .btn-ghost{border-color:var(--rose);color:var(--rose)}
 .btn-ghost:hover{background:var(--rose);color:#fff}
 
-/* ===== Site Header (topbar + navbar) ===== */
+/* ===== Site Header ===== */
 .site-header{position:fixed;top:0;left:0;right:0;z-index:100}
 
-/* Top announcement bar */
-.topbar{
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  padding:.45rem 1.5rem;
-  background:transparent;
-  font-size:.78rem;
-}
-body.light-mode .topbar{
-  background:transparent;
-  color:#1a1517;
-}
-.topbar-tagline{
-  flex:1;text-align:center;color:var(--rose-soft);
-  font-family:'Playfair Display',serif;font-style:italic;
-  font-size:.85rem;letter-spacing:.02em;
-  padding:0 1rem;
-}
-.topbar-actions{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+/* Hide on mobile — country shown in drawer footer instead */
+.desktop-only{display:flex}
+@media(max-width:1100px){.desktop-only{display:none}}
+
 .country-select{position:relative}
 .country-trigger{
   display:flex;align-items:center;gap:.5rem;
@@ -2483,16 +2469,8 @@ body.light-mode .process{background:#fff}
   .desktop-nav{display:none}
   .quote-btn{display:none}
   .menu-toggle{display:flex}
-  /* Compact topbar on mobile — keep tagline, country flag and theme toggle visible
-     but reduce height so the hero "…Since 1998" tag clears the fixed header */
-  .topbar{padding:.3rem .85rem;gap:.4rem}
-  .topbar-tagline{font-size:.63rem;line-height:1.2;padding:0 .15rem;letter-spacing:.01em}
-  .topbar-theme{display:flex;width:26px;height:26px}
-  .country-trigger{padding:.25rem .5rem}
-  .country-trigger .country-name{display:none}
-  .country-list{right:-.5rem}
-  /* 7.5rem top padding clears the compact topbar (~28px) + navbar (~75px) = ~103px */
-  .hero{grid-template-columns:1fr;padding:7.5rem 1.5rem 3rem;min-height:auto}
+  /* Top padding clears the navbar (~75px) */
+  .hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;min-height:auto}
   .features-grid{grid-template-columns:repeat(2,1fr)}
   .feature-item{border-right:none;border-bottom:1px solid var(--border);padding-bottom:1.5rem}
   .cap-grid,.promise-grid,.product-grid{grid-template-columns:repeat(2,1fr)}
@@ -2548,6 +2526,11 @@ body.light-mode .process{background:#fff}
   .mineral-row{grid-template-columns:1fr 60px 80px;font-size:.84rem;padding:.7rem 1rem}
   .pricing-card.featured::before{font-size:.6rem;padding:.3rem .65rem}
   .cap-features{grid-template-columns:1fr 1fr}
+  /* About — stack to column on mobile */
+  .about-grid{flex-direction:column}
+  .about-images{flex:0 0 auto;min-height:380px;height:380px}
+  .about-images::before{display:none}
+  .about-text{padding:3.5rem 1.5rem}
   .about-overlay-cards{grid-template-columns:1fr;gap:.75rem}
   .aoc-thumb{width:60px;height:60px}
   /* Benefits → 1-col on mobile */
@@ -2563,25 +2546,23 @@ body.light-mode .process{background:#fff}
    would otherwise inherit var(--text) (dark).
    ============================================================ */
 
-/* ----- Topbar (kept dark in light mode) ----- */
-body.light-mode .topbar .topbar-tagline{color:var(--rose-soft)}
-body.light-mode .topbar .country-trigger{
-  color:#f0ebe6;
-  background:rgba(255,255,255,.06);
-  border-color:rgba(255,255,255,.14);
+/* ----- Navbar controls in light mode ----- */
+body.light-mode .navbar .country-trigger{
+  color:#3a1a1e;
+  background:rgba(168,72,72,.06);
+  border-color:rgba(168,72,72,.2);
 }
-body.light-mode .topbar .country-trigger:hover{
-  color:var(--rose-soft);
-  border-color:var(--rose-soft);
+body.light-mode .navbar .country-trigger:hover{
+  color:var(--rose);
+  border-color:var(--rose);
 }
-body.light-mode .topbar .topbar-theme{
-  color:#f0ebe6;
-  background:rgba(255,255,255,.06);
-  border-color:rgba(255,255,255,.14);
+body.light-mode .navbar .theme-toggle{
+  color:#3a1a1e;
+  border-color:rgba(168,72,72,.2);
 }
-body.light-mode .topbar .topbar-theme:hover{
-  color:var(--rose-soft);
-  border-color:var(--rose-soft);
+body.light-mode .navbar .theme-toggle:hover{
+  color:var(--rose);
+  border-color:var(--rose);
 }
 /* Country dropdown opens over light page — keep its own light theme */
 body.light-mode .country-list{background:var(--card);border-color:var(--border)}
