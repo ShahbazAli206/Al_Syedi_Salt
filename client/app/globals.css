@@ -2479,10 +2479,11 @@ body.light-mode .process{background:#fff}
   .features-grid{grid-template-columns:repeat(2,1fr)}
   .feature-item{border-right:none;border-bottom:1px solid var(--border);padding-bottom:1.5rem}
   .cap-grid,.promise-grid,.product-grid{grid-template-columns:repeat(2,1fr)}
-  .dual-col,.contact-grid,.brands-grid{grid-template-columns:1fr}
-  /* about-grid uses flex — collapse to column at small screens */
-  .dual-col .text-side{padding:3rem 1.5rem}
-  .dual-col .image-side{grid-template-columns:1fr 1fr 1fr;height:320px}
+  .contact-grid,.brands-grid{grid-template-columns:1fr}
+  /* dual-col uses flex — collapse to column */
+  .dual-col{flex-direction:column}
+  .dual-col .text-side{flex:none;padding:3rem 1.5rem}
+  .dual-col .image-side{flex:none;grid-template-columns:1fr 1fr 1fr;height:320px}
   .process-steps{grid-template-columns:repeat(3,1fr);gap:2rem}
   .process-steps::before{display:none}
   .testimonials-grid{columns:2}
