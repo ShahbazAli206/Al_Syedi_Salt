@@ -236,43 +236,69 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* MINERAL COMPOSITION TABLE */}
+      {/* MINERAL COMPOSITION */}
       <section className="minerals" id="composition">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Typical Analysis</div>
           <h2 className="section-title">Mineral <span className="gold-word">Composition</span></h2>
           <div className="title-rule"></div>
-          <p style={{ color: 'var(--text-dim)', maxWidth: 640, margin: '0 auto', fontSize: '.95rem' }}>
-            Indicative composition of our standard food-grade Himalayan Pink Salt (per 100 g). Full COA available on every shipment.
+          <p style={{ color: 'var(--text-dim)', maxWidth: 580, margin: '0 auto', fontSize: '.95rem' }}>
+            Indicative composition of our standard food-grade Himalayan Pink Salt (per 100 g).<br />
+            Full COA available on every shipment.
           </p>
         </div>
         <div className="container">
           <div className="minerals-wrap">
+            {/* Left — product photo */}
             <div className="mineral-visual" data-reveal-toggle="left">
-              <SaltImage kind="pink-coarse" alt="Pink Salt Crystals" />
+              <SaltImage kind="pink-granular" alt="Himalayan Pink Salt crystals" />
             </div>
+
+            {/* Right — compound table */}
             <div className="mineral-table" data-reveal-toggle="right">
               <div className="mineral-row head">
-                <span>Compound</span><span style={{textAlign:'left'}}>Formula</span><span style={{textAlign:'right'}}>%</span>
+                <span>Compound</span>
+                <span></span>
+                <span style={{ textAlign: 'right' }}>% by Weight</span>
               </div>
               {[
-                { name: 'Sodium Chloride',   f: 'NaCl',           pct: 99.55, w: 99 },
-                { name: 'Calcium Sulfate',   f: 'CaSO₄',          pct: 0.18,  w: 35 },
-                { name: 'Magnesium Sulfate', f: 'MgSO₄',          pct: 0.12,  w: 25 },
-                { name: 'Potassium Chloride', f: 'KCl',           pct: 0.08,  w: 18 },
-                { name: 'Iron Oxide',        f: 'Fe₂O₃',          pct: 0.04,  w: 12 },
-                { name: 'Moisture',          f: 'H₂O',            pct: 0.03,  w: 8  },
+                { name: 'Sodium Chloride',    f: '(NaCl)',    pct: '98.55', w: 99 },
+                { name: 'Calcium Sulfate',    f: '(CaSO₃)',   pct: '0.18',  w: 18 },
+                { name: 'Magnesium Sulfate',  f: '(MgSO₃)',   pct: '0.12',  w: 12 },
+                { name: 'Potassium Chloride', f: '(KCl)',     pct: '0.08',  w: 8  },
+                { name: 'Iron Oxide',         f: '(Fe₂O₃)',   pct: '0.04',  w: 5  },
+                { name: 'Moisture',           f: '(H₂O)',     pct: '0.03',  w: 3  },
               ].map((r) => (
                 <div className="mineral-row" key={r.name}>
-                  <div>
-                    <div className="mineral-name">{r.name}</div>
-                    <div className="mineral-formula">{r.f}</div>
+                  <div className="mineral-compound">
+                    <span className="mineral-name">{r.name}</span>
+                    <span className="mineral-formula">{r.f}</span>
                   </div>
                   <span className="mineral-bar"><span style={{ width: `${r.w}%` }} /></span>
                   <span className="mineral-pct">{r.pct}%</span>
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Bottom 4-stat strip */}
+          <div className="minerals-stats" data-reveal-toggle-stagger>
+            {[
+              { icon: <><circle cx="12" cy="12" r="9"/><path d="M8 12l2 2 4-4M12 3v2M12 19v2M3 12h2M19 12h2"/></>, num: '84+',          lbl: 'Trace Minerals' },
+              { icon: <><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></>,  num: '99.98%',       lbl: 'Pure NaCl' },
+              { icon: <><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></>,                          num: 'Low Heavy',     lbl: 'Metals · Tested & Certified' },
+              { icon: <><path d="M9 3h6M10 3v6L4 20a1 1 0 001 1h14a1 1 0 001-1l-6-11V3"/><path d="M6 16h12"/></>, num: 'Lab',        lbl: 'Verified · COA Provided' },
+            ].map((s) => (
+              <div className="minerals-stat" key={s.lbl}>
+                <div className="minerals-stat-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">{s.icon}</svg>
+                </div>
+                <div className="minerals-stat-text">
+                  <strong>{s.num}</strong>
+                  <span>{s.lbl}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -286,22 +312,37 @@ export default async function Home() {
         <div className="container">
           <div className="process-steps" data-reveal-toggle-stagger>
             {[
-              { label: '1. Hand\nMining',       icon: 'pickaxe' },
-              { label: '2. Sorting\n&amp; Grading', icon: 'sort' },
-              { label: '3. Crushing\n&amp; Milling', icon: 'mill' },
-              { label: '4. Lab\nTesting',       icon: 'beaker' },
-              { label: '5. Custom\nPackaging',  icon: 'box' },
-              { label: '6. Container\nLoading', icon: 'container' },
-              { label: '7. Global\nDelivery',   icon: 'ship' },
+              { num: '01', line1: 'Hand',       line2: 'Mining',    icon: 'pickaxe' },
+              { num: '02', line1: 'Sorting &',  line2: 'Grading',   icon: 'sort' },
+              { num: '03', line1: 'Crushing &', line2: 'Milling',   icon: 'mill' },
+              { num: '04', line1: 'Lab',         line2: 'Testing',  icon: 'beaker' },
+              { num: '05', line1: 'Custom',      line2: 'Packaging',icon: 'box' },
+              { num: '06', line1: 'Container',   line2: 'Loading',  icon: 'container' },
+              { num: '07', line1: 'Global',      line2: 'Delivery', icon: 'ship' },
             ].map((s) => (
-              <div className="step" key={s.label}>
-                <div className="step-icon">
-                  <ProcessIcon name={s.icon} />
-                </div>
+              <div className="step" key={s.num}>
+                <span className="step-num">{s.num}</span>
+                <div className="step-icon"><ProcessIcon name={s.icon} /></div>
                 <div className="step-label">
-                  {s.label.split('\n').map((t, i) => (
-                    <span key={i} dangerouslySetInnerHTML={{ __html: (i === 0 ? `${t}<br/>` : t) }} />
-                  ))}
+                  <span>{s.line1}<br/></span>
+                  <span>{s.line2}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom stats strip */}
+          <div className="process-stats" data-reveal-toggle-stagger>
+            {[
+              { num: '25+',   lbl: 'Years\nof Expertise' },
+              { num: '18K+ MT', lbl: 'Shipped\nAnnually' },
+              { num: '42+',   lbl: 'Countries\nServed' },
+              { num: '320+',  lbl: 'Active\nB2B Clients' },
+            ].map((s) => (
+              <div className="process-stat" key={s.lbl}>
+                <div>
+                  <span className="process-stat-num">{s.num}</span>
+                  <span className="process-stat-lbl">{s.lbl.replace('\n', ' ')}</span>
                 </div>
               </div>
             ))}
