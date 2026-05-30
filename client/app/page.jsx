@@ -187,7 +187,7 @@ export default async function Home() {
             </ul>
             <Link href="/contact" className="btn btn-gold">Partner With Us</Link>
           </div>
-          <div className="about-images" data-reveal-toggle="up">
+          <div className="about-images" data-reveal-toggle="right">
             <div className="about-main-img">
               <SaltImage kind="burst-crystal" alt="Khewra Pink Salt Crystals" />
               <div className="about-overlay-cards">
