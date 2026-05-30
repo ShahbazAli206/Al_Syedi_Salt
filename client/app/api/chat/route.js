@@ -47,7 +47,7 @@ export async function POST(request) {
       parts: [{ text: String(m.content).slice(0, 4000) }],
     }));
 
-  const model = 'gemini-2.0-flash';
+  const model = 'gemini-1.5-flash';
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
   const aiRes = await fetch(url, {
@@ -67,9 +67,10 @@ export async function POST(request) {
   });
 
   if (!aiRes.ok) {
-    console.error('Gemini API error:', aiRes.status, await aiRes.text());
+    const errText = await aiRes.text();
+    console.error('Gemini API error:', aiRes.status, errText);
     return Response.json({
-      reply: "Sorry — I'm having trouble right now. Try again in a moment or email sales@alsyedigroup.com.",
+      reply: `AI error (${aiRes.status}): ${errText.slice(0, 200)}`,
     });
   }
 
