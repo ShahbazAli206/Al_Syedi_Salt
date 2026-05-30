@@ -143,4 +143,30 @@ const FLAGS = {
       <polygon points="0,7 21,20 0,33" fill="#000" />
     </g>
   ),
+  it: (
+    <g>
+      <rect width="20" height="40" fill="#009246" />
+      <rect x="20" width="20" height="40" fill="#fff" />
+      <rect x="40" width="20" height="40" fill="#CE2B37" />
+    </g>
+  ),
+  es: (
+    <g>
+      <rect width="60" height="40" fill="#AA151B" />
+      <rect y="10" width="60" height="20" fill="#F1BF00" />
+    </g>
+  ),
+  pl: (
+    <g>
+      <rect width="60" height="20" fill="#fff" />
+      <rect y="20" width="60" height="20" fill="#DC143C" />
+    </g>
+  ),
+  se: (
+    <g>
+      <rect width="60" height="40" fill="#006AA7" />
+      <rect x="16" width="8" height="40" fill="#FECC02" />
+      <rect y="16" width="60" height="8" fill="#FECC02" />
+    </g>
+  ),
 };
