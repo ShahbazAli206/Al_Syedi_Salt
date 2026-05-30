@@ -18,12 +18,12 @@ const NAV = [
       {
         title: 'By Category',
         items: [
-          { href: '/products',  icon: 'grid',    title: 'All Products',     desc: '22+ salt SKUs across 5 categories' },
-          { href: '/products',  icon: 'spoon',   title: 'Edible Salts',     desc: 'Pink, white &amp; black — fine to flake' },
-          { href: '/products',  icon: 'leaf',    title: 'Bath &amp; Spa',       desc: 'Therapeutic &amp; scented salt blends' },
-          { href: '/products',  icon: 'lamp',    title: 'Lamps &amp; Decor',    desc: 'Hand-carved Himalayan lamps' },
-          { href: '/products',  icon: 'brick',   title: 'Bricks &amp; Tiles',   desc: 'Halotherapy &amp; construction grade' },
-          { href: '/products',  icon: 'gear',    title: 'Industrial Salt',  desc: 'Lick, softener, de-icing, chemical' },
+          { href: '/products',                         icon: 'grid',    title: 'All Products',     desc: '22+ salt SKUs across 5 categories' },
+          { href: '/products?category=edible',        icon: 'spoon',   title: 'Edible Salts',     desc: 'Pink, white &amp; black — fine to flake' },
+          { href: '/products?category=bath',           icon: 'leaf',    title: 'Bath &amp; Spa',       desc: 'Therapeutic &amp; scented salt blends' },
+          { href: '/products?category=lifestyle',      icon: 'lamp',    title: 'Lamps &amp; Decor',    desc: 'Hand-carved Himalayan lamps' },
+          { href: '/products?category=construction',   icon: 'brick',   title: 'Bricks &amp; Tiles',   desc: 'Halotherapy &amp; construction grade' },
+          { href: '/products?category=industrial',     icon: 'gear',    title: 'Industrial Salt',  desc: 'Lick, softener, de-icing, chemical' },
         ],
       },
       {
@@ -65,10 +65,10 @@ const NAV = [
 
   {
     type: 'mega',
-    label: 'Company',
+    label: 'About Us',
     columns: [
       {
-        title: 'About Us',
+        title: 'Our Story',
         items: [
           { href: '/#about',       icon: 'mountain', title: 'About Al Syedi',         desc: 'Our mine-to-market story since 1998' },
           { href: '/#benefits',    icon: 'leaf',     title: 'Health Benefits',        desc: '84 trace minerals — pink salt advantage' },
@@ -154,6 +154,7 @@ export default function Navbar() {
   const [activeMega, setActiveMega] = useState(null); // which mega is open inline on mobile
   const [country, setCountry] = useState(COUNTRIES[0]);
   const [countryOpen, setCountryOpen] = useState(false);
+  const [mobileCountryOpen, setMobileCountryOpen] = useState(false); // country picker inside mobile drawer
   const [scrolled, setScrolled] = useState(false);
   const [light, setLight] = useState(false);
   const countryRef = useRef(null);
@@ -210,6 +211,7 @@ export default function Navbar() {
   function closeAll() {
     setOpen(false);
     setActiveMega(null);
+    setMobileCountryOpen(false);
   }
 
   return (
@@ -398,9 +400,35 @@ export default function Navbar() {
         </nav>
 
         <div className="mobile-drawer-foot">
-          <div className="mobile-country">
-            <Flag code={country.code} />
-            <span>{country.name}</span>
+          <div className="mobile-country-select">
+            <button
+              type="button"
+              className="mobile-country"
+              onClick={() => setMobileCountryOpen((v) => !v)}
+              aria-expanded={mobileCountryOpen}
+            >
+              <Flag code={country.code} />
+              <span>{country.name}</span>
+              <svg className={`m-country-chev${mobileCountryOpen ? ' open' : ''}`} width="11" height="7" viewBox="0 0 10 6" fill="none">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+            </button>
+            {mobileCountryOpen && (
+              <ul className="mobile-country-list" role="listbox">
+                {COUNTRIES.map((c) => (
+                  <li key={c.code}>
+                    <button
+                      type="button"
+                      onClick={() => { pickCountry(c); setMobileCountryOpen(false); }}
+                      className={c.code === country.code ? 'active' : ''}
+                    >
+                      <Flag code={c.code} />
+                      <span>{c.name}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
           <Link href="/contact" className="btn btn-gold" onClick={closeAll}>
             Request a Quote

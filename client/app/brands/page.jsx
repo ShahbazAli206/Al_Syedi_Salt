@@ -4,11 +4,9 @@ import Footer from '@/components/Footer';
 import FinalCTA from '@/components/FinalCTA';
 import PageHeader from '@/components/PageHeader';
 import Chatbot from '@/components/Chatbot';
-import { fetchJSON } from '@/lib/api';
-
 export const metadata = { title: 'Salt Collections — Al Syedi Group' };
 
-const FALLBACK_COLLECTIONS = [
+const COLLECTIONS = [
   { name: 'Pink Edible Range',        icon: 'spoon',   description: 'Our flagship food-grade Himalayan Pink Salt — fine, coarse, granular and gourmet flakes. The cleanest pink crystal on the global market, lab-verified to 99.8% NaCl with the trace mineral signature that defines premium quality.' },
   { name: 'White Refined Range',      icon: 'crystal', description: 'Iodized and non-iodized refined white salt for retail and food-service. Free-flowing, anti-caking treated where required, with consistent crystal size and full traceability from mine to pack.' },
   { name: 'Black Salt (Kala Namak)',  icon: 'flask',   description: 'South-Asian culinary classic — sulfur-rich, smoky and pungent. Stone-mined, traditionally kiln-fired and ground to chef-grade specifications. Vegan egg-substitute favourite worldwide.' },
@@ -19,17 +17,8 @@ const FALLBACK_COLLECTIONS = [
   { name: 'Industrial Salt Range',    icon: 'gear',    description: 'Animal lick salts, water-softener pellets, de-icing rock salt, chemical-grade NaCl and tanning salt. Container-load shipments for agricultural, municipal and industrial customers.' },
 ];
 
-async function getBrands() {
-  try {
-    const data = await fetchJSON('/brands');
-    return Array.isArray(data) && data.length > 0 ? data : FALLBACK_COLLECTIONS;
-  } catch {
-    return FALLBACK_COLLECTIONS;
-  }
-}
-
 export default async function BrandsPage() {
-  const collections = await getBrands();
+  const collections = COLLECTIONS;
 
   return (
     <>

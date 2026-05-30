@@ -52,9 +52,9 @@ export default function ScrollAnimator() {
     );
     offscreen.forEach((el) => oneShotObserver.observe(el));
 
-    // ----- Scroll-direction toggle reveals (data-reveal-toggle) -----
+    // ----- Scroll-direction toggle reveals (data-reveal-toggle + data-reveal-toggle-stagger) -----
     // appears when scrolled into view going down, hides when leaving going up
-    const toggles = Array.from(document.querySelectorAll('[data-reveal-toggle]'));
+    const toggles = Array.from(document.querySelectorAll('[data-reveal-toggle], [data-reveal-toggle-stagger]'));
     toggles.forEach((el) => {
       const r = el.getBoundingClientRect();
       if (r.top < vh && r.bottom > 0) el.classList.add('in-view');

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { api } from '@/lib/api';
 
 const initial = { name: '', email: '', phone: '', message: '' };
 
@@ -17,8 +16,14 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus({ state: 'loading', message: '' });
     try {
-      const res = await api.submitContact(form);
-      setStatus({ state: 'success', message: res.message || 'Message sent.' });
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Submission failed.');
+      setStatus({ state: 'success', message: data.message || 'Message sent.' });
       setForm(initial);
     } catch (err) {
       setStatus({ state: 'error', message: err.message });

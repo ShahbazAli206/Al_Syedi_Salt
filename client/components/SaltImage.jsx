@@ -11,6 +11,7 @@ import { useState } from 'react';
 const PHOTOS = {
   'pink-fine':        'https://images.unsplash.com/photo-1614759258004-39da973d3268?w=700&q=80',
   'pink-coarse':      'https://images.unsplash.com/photo-1584683596603-61fbfa842a47?w=700&q=80',
+  'burst-crystal':    'https://images.unsplash.com/photo-1614163977904-62b4f8a8d898?w=1400&q=90',
   'pink-granular':    'https://images.unsplash.com/photo-1605705712924-ab42d6bb9de7?w=700&q=80',
   'pink-flakes':      'https://images.unsplash.com/photo-1645007489014-235185d38791?w=700&q=80',
   'crystal-display':  'https://images.unsplash.com/photo-1612708043745-7a5526b5f7c0?w=700&q=80',
@@ -61,6 +62,7 @@ const VARIANTS = {
   'pink-granular':   { bg: 'dark',   salt: 'pink',       pattern: 'granules' },
   'pink-flakes':     { bg: 'dark',   salt: 'pink-light', pattern: 'flakes' },
   'crystal-display': { bg: 'dark',   salt: 'pink',       pattern: 'chunks', accent: 'sparkle' },
+  'burst-crystal':   { bg: 'dark',   salt: 'pink',       pattern: 'chunks', accent: 'sparkle' },
   'white-refined':   { bg: 'darker', salt: 'white',      pattern: 'mound' },
   'black-salt':      { bg: 'darker', salt: 'black',      pattern: 'chunks', accent: 'smoke' },
   'sea-flakes':      { bg: 'spa',    salt: 'white',      pattern: 'flakes', accent: 'wave' },

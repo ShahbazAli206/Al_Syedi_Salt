@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import SaltImage from './SaltImage';
 
 const FILTERS = [
@@ -12,8 +12,27 @@ const FILTERS = [
   { key: 'industrial',   label: 'Industrial' },
 ];
 
+const VALID_KEYS = new Set(FILTERS.map((f) => f.key));
+
 export default function ProductGrid({ products = [] }) {
-  const [filter, setFilter] = useState('all');
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const raw = searchParams.get('category') || 'all';
+  const filter = VALID_KEYS.has(raw) ? raw : 'all';
+
+  function selectFilter(key) {
+    const params = new URLSearchParams(searchParams.toString());
+    if (key === 'all') {
+      params.delete('category');
+    } else {
+      params.set('category', key);
+    }
+    const q = params.toString();
+    router.push(pathname + (q ? `?${q}` : ''), { scroll: false });
+  }
+
   const visible = filter === 'all' ? products : products.filter((p) => p.category === filter);
 
   return (
@@ -23,7 +42,7 @@ export default function ProductGrid({ products = [] }) {
           <button
             key={f.key}
             className={`filter-btn${filter === f.key ? ' active' : ''}`}
-            onClick={() => setFilter(f.key)}
+            onClick={() => selectFilter(f.key)}
           >
             {f.label}
           </button>

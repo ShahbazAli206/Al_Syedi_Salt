@@ -6,32 +6,10 @@ import SaltImage from '@/components/SaltImage';
 import Flag from '@/components/Flag';
 import Chatbot from '@/components/Chatbot';
 import FAQ from '@/components/FAQ';
-import { fetchJSON } from '@/lib/api';
-
-async function getVarieties() {
-  try {
-    return await fetchJSON('/ingredients');
-  } catch {
-    return [];
-  }
-}
-
-const FALLBACK_VARIETIES = [
-  { name: 'Himalayan Pink Salt',     latin: 'Edible · 99.8% NaCl',     note: 'Bestseller',     kind: 'pink-fine' },
-  { name: 'Pure White Salt',         latin: 'Edible · Refined',        note: 'Food Grade',     kind: 'white-refined' },
-  { name: 'Black Salt (Kala Namak)', latin: 'Edible · Sulfur-rich',    note: 'Specialty',      kind: 'black-salt' },
-  { name: 'Coarse Pink Crystals',    latin: 'Grinder Grade',           note: 'Best for Mills', kind: 'pink-coarse' },
-  { name: 'Pink Salt Flakes',        latin: 'Gourmet Grade',           note: 'Hand-Harvested', kind: 'pink-flakes' },
-  { name: 'Bath & Spa Salt',         latin: 'Therapeutic Grade',       note: 'Wellness',       kind: 'bath-lavender' },
-  { name: 'Pink Salt Bricks',        latin: 'Construction Grade',      note: 'Salt Rooms',     kind: 'salt-brick' },
-  { name: 'Decorative Salt Lamps',   latin: 'Hand-Carved',             note: 'Lifestyle',      kind: 'lamp-natural' },
-  { name: 'Animal Lick Salt',        latin: 'Livestock Grade',         note: 'Farm Supply',    kind: 'animal-lick' },
-  { name: 'De-Icing Rock Salt',      latin: 'Industrial Grade',        note: 'Winter Use',     kind: 'de-icing' },
-];
+import { VARIETIES } from '@/data/catalog';
 
 export default async function Home() {
-  const apiVarieties = await getVarieties();
-  const varieties = apiVarieties.length > 0 ? apiVarieties : FALLBACK_VARIETIES;
+  const varieties = VARIETIES;
 
   return (
     <>
@@ -39,13 +17,23 @@ export default async function Home() {
 
       {/* HERO */}
       <section className="hero">
+        {/* Ken Burns animated mountain background */}
+        <div className="hero-bg" aria-hidden="true" />
+        {/* Floating orbs + dust particles */}
         <div className="sparkles" aria-hidden="true">
-          <span></span><span></span><span></span>
-          <span></span><span></span><span></span>
+          <span className="orb"></span><span className="orb"></span>
+          <span className="orb"></span><span className="orb"></span>
+          <span className="orb"></span><span className="orb"></span>
+          <span className="dust"></span><span className="dust"></span>
+          <span className="dust"></span><span className="dust"></span>
+          <span className="dust"></span><span className="dust"></span>
+          <span className="dust"></span><span className="dust"></span>
         </div>
         <div className="hero-content" data-reveal-stagger>
           <div className="hero-tag">
-            Premium <span className="pill">Himalayan Pink Salt</span> Manufacturer · Since 1998
+            <span>Premium</span>
+            <span className="pill">Himalayan Pink Salt</span>
+            <span>Since 1998</span>
           </div>
           <h1>
             Bulk Salt Manufacturing<br />
@@ -56,13 +44,12 @@ export default async function Home() {
             Al Syedi Group is a trusted manufacturer and exporter of premium Himalayan Pink Salt, edible salts, bath &amp; spa salts, decorative salt lamps, salt bricks and industrial-grade salts — shipped in bulk to clients across the UK, US, Canada, Europe and the Middle East.
           </p>
           <div className="hero-actions">
-            <Link href="/contact" className="btn btn-gold">
-              Request a Quote
+            <Link href="/products" className="btn btn-outline">
+              View Salt Products
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
             </Link>
-            <Link href="/products" className="btn btn-outline">View Salt Products</Link>
           </div>
           <div className="hero-stats">
             <div className="hero-stat">
@@ -85,37 +72,15 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* FEATURES STRIP */}
-      <section className="features-strip">
-        <div className="features-grid" data-reveal-stagger>
-          {[
-            { title: 'Mine to\nMarket Supply', icon: 'mountain' },
-            { title: 'Lab Tested\nPurity', icon: 'beaker' },
-            { title: 'Private Label\nPackaging', icon: 'box' },
-            { title: 'Worldwide\nShipping', icon: 'ship' },
-            { title: '24/7 B2B\nSupport', icon: 'support' },
-          ].map((f) => (
-            <div className="feature-item" key={f.title}>
-              <FeatureIcon name={f.icon} />
-              <div className="feature-item-title">
-                {f.title.split('\n').map((t, i) => (
-                  <span key={i}>{t}{i === 0 && <br />}</span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* CAPABILITIES */}
       <section className="section capabilities" id="services">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">What We Offer</div>
           <h2 className="section-title">End-to-End <span className="gold-word">B2B Salt Solutions</span></h2>
           <div className="title-rule"></div>
         </div>
         <div className="container">
-          <div className="cap-grid" data-reveal-stagger>
+          <div className="cap-grid" data-reveal-toggle-stagger>
             <CapCard id="bulk" icon="cubes" title="Bulk Salt Supply"
               desc="High-volume edible &amp; industrial salt from our Khewra-source mines. Container loads (20ft / 40ft FCL) shipped worldwide. MOQ from 1 metric ton." />
             <CapCard id="private-label" icon="box" title="Private Label &amp; Packaging"
@@ -125,6 +90,23 @@ export default async function Home() {
             <CapCard id="lifestyle" icon="lamp" title="Salt Lamps, Bricks &amp; Spa"
               desc="Hand-carved Himalayan salt lamps, polished salt tiles for halotherapy rooms, bath &amp; spa salt blends — all manufactured to export standards." />
           </div>
+          {/* Feature strip inside capabilities */}
+          <div className="cap-features" data-reveal-toggle-stagger>
+            {[
+              { icon: 'mountain', label: 'Mine to Market',  sub: 'Full Traceability' },
+              { icon: 'beaker',   label: 'Lab Tested',      sub: 'Every Batch' },
+              { icon: 'ship',     label: 'Secure Shipping', sub: 'Global Coverage' },
+              { icon: 'support',  label: '24/7 B2B Support',sub: 'Dedicated Team' },
+            ].map((f) => (
+              <div className="cap-feature" key={f.label}>
+                <div className="cap-feature-icon"><FeatureIcon name={f.icon} /></div>
+                <div className="cap-feature-text">
+                  <strong>{f.label}</strong>
+                  <span>{f.sub}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -133,7 +115,7 @@ export default async function Home() {
         <div className="about-grid">
           <div className="about-text" data-reveal-toggle="left">
             <div className="eyebrow">About Al Syedi Group</div>
-            <h2>From the Khewra Salt Range to Kitchens &amp; Spas Worldwide</h2>
+            <h2>From the Khewra Salt Range to <span className="gold-word">Kitchens &amp; Spas Worldwide</span></h2>
             <p>
               For over two decades, Al Syedi Group has been a trusted name in the global salt trade — quarrying, refining and exporting the world&apos;s purest Himalayan Pink Salt from the legendary Khewra Salt Range, the second-largest salt mine on Earth.
             </p>
@@ -157,13 +139,29 @@ export default async function Home() {
             </ul>
             <Link href="/contact" className="btn btn-gold">Partner With Us</Link>
           </div>
-          <div className="about-images" data-reveal-toggle="right">
-            <div className="big">
-              <SaltImage kind="crystal-display" alt="Khewra Pink Salt Crystals" />
-            </div>
-            <div className="row">
-              <SaltImage kind="pink-coarse" alt="Pink Salt Coarse" />
-              <SaltImage kind="lamp-natural" alt="Hand-Carved Salt Lamp" />
+          <div className="about-images" data-reveal-toggle="up">
+            <div className="about-main-img">
+              <SaltImage kind="burst-crystal" alt="Khewra Pink Salt Crystals" />
+              <div className="about-overlay-cards">
+                <div className="about-overlay-card">
+                  <div className="aoc-thumb">
+                    <SaltImage kind="pink-coarse" alt="Raw Himalayan Salt" />
+                  </div>
+                  <div>
+                    <div className="aoc-label">Raw Himalayan Salt</div>
+                    <div className="aoc-sub">Direct from Khewra Mines</div>
+                  </div>
+                </div>
+                <div className="about-overlay-card">
+                  <div className="aoc-thumb">
+                    <SaltImage kind="lamp-natural" alt="Salt Lamps & Decor" />
+                  </div>
+                  <div>
+                    <div className="aoc-label">Salt Lamps &amp; Decor</div>
+                    <div className="aoc-sub">Handcrafted Excellence</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -171,24 +169,28 @@ export default async function Home() {
 
       {/* HEALTH BENEFITS — Why Pink Salt */}
       <section className="benefits" id="benefits">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
-          <div className="eyebrow">Why Himalayan Pink Salt</div>
-          <h2 className="section-title">The Difference is in the <span className="gold-word">Crystal</span></h2>
-          <div className="title-rule"></div>
+        {/* Decorative crystal photo — bleeds from the right edge */}
+        <div className="benefits-crystal" aria-hidden="true">
+          <SaltImage kind="pink-coarse" alt="" />
         </div>
-        <div className="container">
-          <div className="benefits-grid" data-reveal-stagger>
-            <BenefitCard num="84" title="Trace Minerals" desc="Naturally occurring trace elements including magnesium, potassium, calcium and iron — the source of the iconic pink hue." />
-            <BenefitCard num="0%" title="Anti-Caking Agents" desc="No additives, no bleaches, no anti-caking chemicals. Just hand-mined, sun-dried crystal salt straight from the rock." />
-            <BenefitCard num="250M" title="Years Old" desc="Sourced from ancient seabed deposits that crystallized 250+ million years ago — sealed away from modern pollution." />
-            <BenefitCard num="99.8%" title="Pure NaCl" desc="Laboratory verified to 99.8% sodium chloride with the remaining 0.2% being the precious trace mineral signature." />
+        <div className="container benefits-inner">
+          <div className="benefits-header" data-reveal="up">
+            <div className="eyebrow">Why Himalayan Pink Salt</div>
+            <h2 className="section-title benefits-title">The Difference is in the <span className="gold-word">Crystal</span></h2>
+            <div className="title-rule benefits-rule"></div>
+          </div>
+          <div className="benefits-grid" data-reveal-toggle-stagger>
+            <BenefitCard icon="crystal" num="84"    title="Trace Minerals"     desc="Naturally occurring trace elements including magnesium, potassium, calcium and iron — the source of the iconic pink hue." />
+            <BenefitCard icon="beaker" num="0%"    title="Anti-Caking Agents" desc="No additives, no bleaches, no anti-caking chemicals. Just hand-mined, sun-dried crystal salt straight from the rock." />
+            <BenefitCard icon="diamond" num="250M" title="Years Old"           desc="Sourced from ancient seabed deposits that crystallised 250+ million years ago — sealed away from modern pollution." />
+            <BenefitCard icon="shield" num="99.8%" title="Pure NaCl"           desc="Laboratory verified to 99.8% sodium chloride with the remaining 0.2% being the precious trace mineral signature." />
           </div>
         </div>
       </section>
 
       {/* MINERAL COMPOSITION TABLE */}
       <section className="minerals" id="composition">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Typical Analysis</div>
           <h2 className="section-title">Mineral <span className="gold-word">Composition</span></h2>
           <div className="title-rule"></div>
@@ -229,12 +231,12 @@ export default async function Home() {
 
       {/* PROCESS */}
       <section className="process" id="process">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Our Mine-to-Market Process</div>
           <h2 className="section-title">From the <span className="gold-word">Khewra Range</span> to Your Warehouse</h2>
         </div>
         <div className="container">
-          <div className="process-steps" data-reveal-stagger>
+          <div className="process-steps" data-reveal-toggle-stagger>
             {[
               { label: '1. Hand\nMining',       icon: 'pickaxe' },
               { label: '2. Sorting\n&amp; Grading', icon: 'sort' },
@@ -261,7 +263,7 @@ export default async function Home() {
 
       {/* SALT GRADE REFERENCE CHART */}
       <section className="grades" id="grades">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Grain Size Reference</div>
           <h2 className="section-title">Pick Your <span className="gold-word">Grade</span></h2>
           <div className="title-rule"></div>
@@ -270,7 +272,7 @@ export default async function Home() {
           </p>
         </div>
         <div className="container">
-          <div className="grade-bar" data-reveal-stagger>
+          <div className="grade-bar" data-reveal-toggle-stagger>
             <GradeStep name="Powder"  spec="< 0.2 mm"   use="Seasoning blends, bakery, pharma" dotCount={36} dotSize={1.4} />
             <GradeStep name="Fine"    spec="0.2–0.5 mm" use="Table salt, retail jars, food service" dotCount={24} dotSize={2.4} />
             <GradeStep name="Medium"  spec="0.5–1.5 mm" use="Cooking, brining, gourmet retail" dotCount={16} dotSize={3.5} />
@@ -281,7 +283,7 @@ export default async function Home() {
       </section>
 
       {/* PARTNERS MARQUEE */}
-      <section className="partners" id="partners" data-reveal="fade">
+      <section className="partners" id="partners" data-reveal-toggle="fade">
         <div className="eyebrow">Trusted by Distributors &amp; Retailers Worldwide</div>
         <h3>Powering Salt Brands Across the UK · USA · Canada · EU · MENA</h3>
         <div className="marquee">
@@ -299,59 +301,95 @@ export default async function Home() {
 
       {/* SALT COLLECTIONS */}
       <section className="houses" id="collections">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Our Salt Collections</div>
           <h2 className="section-title">Six Specialist Ranges, <span className="gold-word">One Source</span></h2>
-          <div className="title-rule"></div>
+          <p className="section-subtitle" style={{ color:'var(--text-dim)',maxWidth:560,margin:'.75rem auto 0',fontSize:'.95rem' }}>
+            Premium Himalayan Pink Salt for every industry, application, and lifestyle.
+          </p>
         </div>
-        <div className="houses-carousel" data-reveal-stagger>
-          {[
-            { name: 'Edible Range',     icon: 'spoon',    desc: 'Food-grade pink, white &amp; black salts — fine, coarse &amp; gourmet flakes.' },
-            { name: 'Pink Crystal',     icon: 'crystal',  desc: 'Premium Himalayan rock crystals — for grinders, lamps &amp; gourmet retail.' },
-            { name: 'Bath &amp; Spa',       icon: 'leaf',     desc: 'Therapeutic bath salts, foot soaks &amp; spa-grade pink salt blends.' },
-            { name: 'Lifestyle',        icon: 'lamp',     desc: 'Hand-carved salt lamps, USB lamps, candle holders &amp; salt tealights.' },
-            { name: 'Construction',     icon: 'brick',    desc: 'Polished salt bricks &amp; tiles for halotherapy rooms &amp; salt walls.' },
-            { name: 'Industrial',       icon: 'gear',     desc: 'Animal lick salts, water-softener pellets, de-icing &amp; chemical grades.' },
-          ].map((h) => (
-            <div className="house-card" key={h.name}>
-              <div className="house-icon"><CollectionIcon name={h.icon} /></div>
-              <h4>{h.name}</h4>
-              <div className="house-rule"></div>
-              <p dangerouslySetInnerHTML={{ __html: h.desc }} />
-            </div>
-          ))}
-        </div>
-        <div className="houses-cta">
-          <Link href="/products" className="btn btn-ghost">View All Products</Link>
+        <div className="container">
+          <div className="houses-carousel" data-reveal-toggle-stagger>
+            {[
+              { name: 'Edible Range',  icon: 'spoon',   kind: 'pink-fine',       desc: 'Food grade pink, white & black salts in fine, coarse & gourmet variants.' },
+              { name: 'Pink Crystal',  icon: 'crystal', kind: 'crystal-display', desc: 'Premium Himalayan rock crystal salt for grinders & retail.' },
+              { name: 'Bath & Spa',    icon: 'leaf',    kind: 'bath-lavender',   desc: 'Therapeutic bath salts, soak & spa-grade blends.' },
+              { name: 'Lifestyle',     icon: 'lamp',    kind: 'lamp-natural',    desc: 'Himalayan salt lamps, USB lamps & candle holders.' },
+              { name: 'Construction',  icon: 'brick',   kind: 'salt-brick',      desc: 'Polished salt bricks & tiles for halotherapy rooms & salt walls.' },
+              { name: 'Industrial',    icon: 'gear',    kind: 'animal-lick',     desc: 'Animal lick salts, water softener pellets & de-icing salt.' },
+            ].map((h) => (
+              <div className="house-card" key={h.name}>
+                <div className="house-card-top">
+                  <div className="house-icon"><CollectionIcon name={h.icon} /></div>
+                </div>
+                <div className="house-card-img">
+                  <SaltImage kind={h.kind} alt={h.name} />
+                </div>
+                <div className="house-card-body">
+                  <h4>{h.name}</h4>
+                  <p>{h.desc}</p>
+                  <span className="house-card-arrow">→</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="houses-cta">
+            <Link href="/products" className="btn btn-gold">
+              View All Products
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* SALT VARIETIES horizontal scroller */}
+      {/* SALT VARIETIES */}
       <section className="ingredients" id="varieties">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Explore Our Varieties</div>
           <h2 className="section-title">Every Grade, Every Grind, Every <span className="gold-word">Use Case</span></h2>
-          <p style={{ color: 'var(--text-dim)', fontSize: '.92rem', maxWidth: 620, margin: '0 auto' }}>
-            Scroll horizontally to browse 10+ salt varieties — from gourmet pink flakes to industrial de-icing salt.
+          <p style={{ color: 'var(--text-dim)', fontSize: '.95rem', maxWidth: 560, margin: '.75rem auto 0' }}>
+            From gourmet pink flakes to industrial de-icing salt, we deliver purity in every grain.
           </p>
         </div>
-        <div className="ingredients-grid" data-reveal-stagger>
-          {varieties.map((ing) => (
-            <div className="ingredient-card" key={ing._id || ing.name}>
-              <SaltImage kind={ing.kind || 'pink-fine'} alt={ing.name} />
-              <div className="ingredient-label">
-                <div className="note">{ing.note}</div>
-                <h5>{ing.name}</h5>
-                <small>{ing.latin}</small>
+        <div className="container">
+          <div className="ingredients-grid" data-reveal-toggle-stagger>
+            {varieties.map((ing) => (
+              <div className="ingredient-card" key={ing._id || ing.name}>
+                <SaltImage kind={ing.kind || 'pink-fine'} alt={ing.name} />
+                <div className="ingredient-label">
+                  <div className="ingredient-badge">{ing.note}</div>
+                  <h5>{ing.name}</h5>
+                  <small>{ing.latin}</small>
+                  <span className="ingredient-arrow">→</span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          {/* Bottom feature trust strip */}
+          <div className="variety-features" data-reveal-toggle-stagger>
+            {[
+              { icon: 'leaf',    label: '100% Natural',      sub: 'Pure & Unrefined' },
+              { icon: 'beaker',  label: 'Rich in Minerals',  sub: '84+ Trace Minerals' },
+              { icon: 'mountain',label: 'Sustainable Source', sub: 'Ethically Mined' },
+              { icon: 'shield',  label: 'Global Standards',  sub: 'ISO & HACCP Certified' },
+            ].map((f) => (
+              <div className="variety-feature" key={f.label}>
+                <div className="vf-icon"><FeatureIcon name={f.icon} /></div>
+                <div className="vf-text">
+                  <strong>{f.label}</strong>
+                  <span>{f.sub}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* PACKAGING OPTIONS */}
       <section className="packaging" id="packaging">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Packaging Options</div>
           <h2 className="section-title">From Mine Bag to <span className="gold-word">Retail Shelf</span></h2>
           <div className="title-rule"></div>
@@ -360,7 +398,7 @@ export default async function Home() {
           </p>
         </div>
         <div className="container">
-          <div className="pack-grid" data-reveal-stagger>
+          <div className="pack-grid" data-reveal-toggle-stagger>
             <PackCard icon="fibc" name="FIBC Big Bag" spec="1,000 kg" />
             <PackCard icon="ppbag" name="PP Woven Bag" spec="25 / 50 kg" />
             <PackCard icon="jute" name="Jute Bag" spec="25 / 40 kg" />
@@ -379,7 +417,7 @@ export default async function Home() {
 
       {/* BULK PRICING TIERS */}
       <section className="pricing" id="pricing">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Indicative Bulk Pricing</div>
           <h2 className="section-title">Volume Tiers <span className="gold-word">FOB Karachi</span></h2>
           <div className="title-rule"></div>
@@ -388,7 +426,7 @@ export default async function Home() {
           </p>
         </div>
         <div className="container">
-          <div className="pricing-grid" data-reveal-stagger>
+          <div className="pricing-grid" data-reveal-toggle-stagger>
             <PriceTier
               name="Trial Order"
               vol="1 – 5 MT"
@@ -424,13 +462,13 @@ export default async function Home() {
 
       {/* PROMISE */}
       <section className="section promise" id="promise">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Why Importers Choose Us</div>
           <h2 className="section-title">The <span className="gold-word">Al Syedi</span> Promise</h2>
           <div className="title-rule"></div>
         </div>
         <div className="container">
-          <div className="promise-grid" data-reveal-stagger>
+          <div className="promise-grid" data-reveal-toggle-stagger>
             <PromiseCard icon="purity" title="99.8% Pure Crystal" desc="Hand-mined from the deepest seams of the Khewra Salt Range and lab-verified to deliver consistent purity batch after batch." />
             <PromiseCard icon="grade" title="Every Grade On Demand" desc="Powder, fine, medium, coarse, chunk, lump — milled and screened to your exact specification with full traceability." />
             <PromiseCard icon="price" title="Direct-from-Mine Pricing" desc="No middlemen. Vertical integration means margins for you and quality that the high-street can&apos;t match." />
@@ -441,13 +479,13 @@ export default async function Home() {
 
       {/* CERTIFICATIONS */}
       <section className="certifications" id="certifications">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Audited &amp; Certified</div>
           <h2 className="section-title">Compliance You Can <span className="gold-word">Stake Your Brand On</span></h2>
           <div className="title-rule"></div>
         </div>
         <div className="container">
-          <div className="cert-grid" data-reveal-stagger>
+          <div className="cert-grid" data-reveal-toggle-stagger>
             <CertCard icon="iso" name="ISO 22000" desc="Food Safety" />
             <CertCard icon="haccp" name="HACCP" desc="Hazard Control" />
             <CertCard icon="brc" name="BRC AA+" desc="Global Standard" />
@@ -466,7 +504,7 @@ export default async function Home() {
 
       {/* GLOBAL MARKETS */}
       <section className="markets" id="markets">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Where We Ship</div>
           <h2 className="section-title">Active in <span className="gold-word">42 Countries</span> — and Growing</h2>
           <div className="title-rule"></div>
@@ -475,7 +513,7 @@ export default async function Home() {
           </p>
         </div>
         <div className="container">
-          <div className="markets-grid" data-reveal-stagger>
+          <div className="markets-grid" data-reveal-toggle-stagger>
             <MarketCard code="gb" country="United Kingdom" meta="London · Manchester · Birmingham" />
             <MarketCard code="us" country="United States"  meta="New York · Chicago · Los Angeles" />
             <MarketCard code="ca" country="Canada"         meta="Toronto · Vancouver · Montréal" />
@@ -494,7 +532,7 @@ export default async function Home() {
 
       {/* GOOGLE REVIEWS */}
       <section className="testimonials" id="reviews">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">What Our B2B Clients Say</div>
           <h2 className="section-title">Trusted by Importers <span className="gold-word">Across 4 Continents</span></h2>
           <div className="title-rule"></div>
@@ -510,7 +548,7 @@ export default async function Home() {
           </div>
         </div>
         <div className="container">
-          <div className="testimonials-grid" data-reveal-stagger>
+          <div className="testimonials-grid" data-reveal-toggle-stagger>
             {reviews.map((t, i) => (
               <div className="testimonial" key={i}>
                 <div className="google-badge">
@@ -538,9 +576,9 @@ export default async function Home() {
       </section>
 
       {/* BRAND STRIP */}
-      <section className="brand-strip" id="brands-labeled" data-reveal="fade">
+      <section className="brand-strip" id="brands-labeled" data-reveal-toggle="fade">
         <div className="brand-strip-title">Brands We&apos;ve Privately Labelled For</div>
-        <div className="brand-strip-track" data-reveal-stagger>
+        <div className="brand-strip-track" data-reveal-toggle-stagger>
           {[
             { name: 'PINK PEAK',      region: 'London, UK' },
             { name: 'CRYSTAL CO.',    region: 'New York, USA' },
@@ -557,7 +595,7 @@ export default async function Home() {
       </section>
 
       {/* MID CTA */}
-      <section className="cta-section" data-reveal="scale">
+      <section className="cta-section" data-reveal-toggle="scale">
         <h2>Looking for a <span className="gold-word">Reliable</span> Salt Supplier?</h2>
         <p>Partner with Al Syedi Group for direct-from-mine pricing, private label flexibility and a logistics partner who actually picks up the phone.</p>
         <Link href="/contact" className="btn btn-gold">Request a Quote Now</Link>
@@ -608,13 +646,13 @@ export default async function Home() {
 
       {/* FROM OUR MINE — insights teaser */}
       <section className="insights" id="insights">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
+        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">From Our Mine</div>
           <h2 className="section-title">B2B Salt <span className="gold-word">Insights</span></h2>
           <div className="title-rule"></div>
         </div>
         <div className="container">
-          <div className="insights-grid" data-reveal-stagger>
+          <div className="insights-grid" data-reveal-toggle-stagger>
             <InsightCard
               kind="pink-coarse"
               tag="Market Report"
@@ -640,7 +678,6 @@ export default async function Home() {
         </div>
       </section>
 
-      <FinalCTA />
       <Footer />
       <Chatbot />
     </>
@@ -781,9 +818,20 @@ function MarketCard({ code, country, meta }) {
   );
 }
 
-function BenefitCard({ num, title, desc }) {
+function BenefitCard({ icon, num, title, desc }) {
+  const icons = {
+    crystal: <><polygon points="12,2 20,9 16,22 8,22 4,9"/><path d="M12 2v20M4 9h16"/></>,
+    beaker:  <><path d="M9 3h6M10 3v6L4 20a1 1 0 001 1h14a1 1 0 001-1l-6-11V3"/><path d="M6 16h12"/></>,
+    diamond: <><polygon points="12,2 22,9 18,20 6,20 2,9"/><line x1="2" y1="9" x2="22" y2="9"/></>,
+    shield:  <><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></>,
+  };
   return (
     <div className="benefit-card">
+      <div className="benefit-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          {icons[icon] || icons.crystal}
+        </svg>
+      </div>
       <div className="benefit-num">{num}</div>
       <h4>{title}</h4>
       <p>{desc}</p>
