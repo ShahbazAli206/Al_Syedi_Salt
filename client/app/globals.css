@@ -1080,14 +1080,20 @@ body.light-mode .cap-feature:hover{background:rgba(168,72,72,.05)}
 .cap-feature-text strong{display:block;font-size:.85rem;font-weight:700;color:var(--text)}
 .cap-feature-text span{display:block;font-size:.74rem;color:var(--text-dim);margin-top:.18rem}
 
-/* ===== About Split ===== */
-.about{background:var(--bg-3);color:var(--text);padding:6rem 1.5rem}
-body.light-mode .about{background:#fff;color:var(--ink)}
+/* ===== About — left text + right image panel ===== */
+.about{background:var(--bg-3);color:var(--text);padding:0;overflow:hidden}
+body.light-mode .about{background:#1c172c;color:var(--text)}
 .about-grid{
-  display:grid;grid-template-columns:1fr;gap:3rem;
-  max-width:1240px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  min-height:640px;
 }
-.about-text{max-width:780px}
+.about-text{
+  padding:6rem 4rem 6rem 5rem;
+  max-width:600px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+@media (max-width:1400px){.about-text{padding:5rem 3rem 5rem 4rem}}
+@media (max-width:1100px){.about-text{padding:4rem 2rem 4rem 2rem;max-width:none}}
 .about-text .eyebrow{color:var(--rose)}
 .about h2{
   font-family:'Playfair Display',serif;
@@ -1106,11 +1112,24 @@ body.light-mode .checklist li{color:#2a2620}
   color:#fff;display:flex;align-items:center;justify-content:center;
 }
 
-/* About image with overlay cards */
-.about-images{height:580px;position:relative}
+/* About — right image panel */
+.about-images{
+  position:relative;
+  min-height:640px;height:100%;
+}
+/* Left-edge gradient so image blends into the text background */
+.about-images::before{
+  content:"";position:absolute;top:0;left:0;width:35%;height:100%;
+  background:linear-gradient(to right, var(--bg-3) 0%, transparent 100%);
+  z-index:3;pointer-events:none;
+}
+body.light-mode .about-images::before{
+  background:linear-gradient(to right, #1c172c 0%, transparent 100%);
+}
 .about-main-img{
-  position:relative;width:100%;height:100%;border-radius:20px;overflow:hidden;
-  box-shadow:0 32px 80px rgba(0,0,0,.6);
+  position:absolute;inset:0;
+  border-radius:0;overflow:hidden;
+  box-shadow:none;
 }
 .about-main-img .salt-img{width:100%;height:100%}
 .about-main-img .salt-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
