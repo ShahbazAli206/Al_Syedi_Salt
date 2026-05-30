@@ -189,7 +189,7 @@ export default async function Home() {
           </div>
           <div className="about-images" data-reveal-toggle="right">
             <div className="about-main-img">
-              <SaltImage kind="burst-crystal" alt="Khewra Pink Salt Crystals" />
+              <SaltImage kind="crystal-display" alt="Khewra Pink Salt Crystals" />
               <div className="about-overlay-cards">
                 <div className="about-overlay-card">
                   <div className="aoc-thumb">

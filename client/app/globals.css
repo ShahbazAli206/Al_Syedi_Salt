@@ -1085,7 +1085,7 @@ body.light-mode .cap-feature:hover{background:rgba(168,72,72,.05)}
 body.light-mode .about{background:#1c172c;color:var(--text)}
 .about-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:0;
-  min-height:640px;
+  min-height:640px;align-items:stretch;
 }
 .about-text{
   padding:6rem 4rem 6rem 5rem;
@@ -1115,11 +1115,13 @@ body.light-mode .checklist li{color:#2a2620}
 /* About — right image panel */
 .about-images{
   position:relative;
-  min-height:640px;height:100%;
+  min-height:640px;
+  /* stretch to grid cell height */
+  align-self:stretch;
 }
 /* Left-edge gradient so image blends into the text background */
 .about-images::before{
-  content:"";position:absolute;top:0;left:0;width:35%;height:100%;
+  content:"";position:absolute;top:0;left:0;width:30%;height:100%;
   background:linear-gradient(to right, var(--bg-3) 0%, transparent 100%);
   z-index:3;pointer-events:none;
 }
@@ -1131,6 +1133,9 @@ body.light-mode .about-images::before{
   border-radius:0;overflow:hidden;
   box-shadow:none;
 }
+/* Ensure both photo and SVG fill the panel */
+.about-main-img .salt-img{position:absolute;inset:0;width:100%;height:100%}
+.about-main-img .salt-img img{width:100%;height:100%;object-fit:cover;object-position:center}
 .about-main-img .salt-img{width:100%;height:100%}
 .about-main-img .salt-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
 .about-main-img:hover .salt-img img{transform:scale(1.04)}
