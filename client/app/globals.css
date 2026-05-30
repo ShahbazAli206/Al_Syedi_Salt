@@ -2155,7 +2155,7 @@ body.light-mode .benefit-card p{color:var(--text-dim)}
 
 /* ===== Mineral Composition Table ===== */
 /* ===== Mineral Composition — redesigned ===== */
-.minerals{background:var(--bg-2);padding:5rem 1.5rem 0}
+.minerals{background:var(--bg-2);padding:5rem 1.5rem 5rem}
 .minerals-wrap{
   display:grid;grid-template-columns:1fr 1.1fr;gap:2rem;align-items:stretch;
   max-width:1200px;margin:3rem auto 0;
@@ -2239,7 +2239,7 @@ body.light-mode .benefit-card p{color:var(--text-dim)}
 .minerals-stat-text span{display:block;font-size:.72rem;color:var(--text-dim);margin-top:.12rem}
 
 /* ===== Process — redesigned ===== */
-.process{background:var(--cream);color:var(--ink);padding:5rem 1.5rem 0}
+.process{background:var(--cream);color:var(--ink);padding:5rem 1.5rem 5rem}
 body.light-mode .process{background:#fff}
 .process .eyebrow{color:var(--rose-deep)}
 .process .section-title{color:var(--ink)}
