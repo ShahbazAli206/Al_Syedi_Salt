@@ -21,10 +21,12 @@ import asyncio
 import os
 import signal
 import socket
+import subprocess
 import sys
 import urllib.error
 import urllib.request
 import webbrowser
+from datetime import datetime
 from pathlib import Path
 
 # ---------- Console encoding ----------
@@ -231,6 +233,84 @@ def print_banner(backend_port, frontend_port):
     print(f"  {C.GREY}Backend  ← CORS:   CLIENT_URL=http://localhost:{frontend_port}{C.RESET}")
     print(f"{C.ROSE_DEEP}{bar}{C.RESET}")
     print(f"  {C.DIM}Press Ctrl+C to stop both services.{C.RESET}\n")
+
+
+# ===================================================================
+# Auto Git Push (every 2 minutes)
+# ===================================================================
+GIT_PUSH_INTERVAL = 120   # seconds between checks
+
+async def git_auto_push():
+    """
+    Every GIT_PUSH_INTERVAL seconds:
+      1. Run `git status --porcelain` — skip if nothing changed.
+      2. `git add -A`
+      3. `git commit -m "Updates on HH-MM-SS DD-MM-YYYY"`
+      4. `git push`
+    Runs as a background asyncio task alongside the dev servers.
+    """
+    print(f"{C.DIM}[autopush] Started — will check for changes every {GIT_PUSH_INTERVAL}s.{C.RESET}")
+
+    while True:
+        await asyncio.sleep(GIT_PUSH_INTERVAL)
+
+        try:
+            # ── 1. Check for any changes ──────────────────────────────
+            status = await asyncio.to_thread(
+                subprocess.run,
+                ["git", "status", "--porcelain"],
+                cwd=str(ROOT),
+                capture_output=True,
+                text=True,
+            )
+            if not status.stdout.strip():
+                print(f"{C.DIM}[autopush] No changes detected — skipping.{C.RESET}")
+                continue
+
+            # ── 2. Stage everything ───────────────────────────────────
+            await asyncio.to_thread(
+                subprocess.run,
+                ["git", "add", "-A"],
+                cwd=str(ROOT),
+                capture_output=True,
+            )
+
+            # ── 3. Commit with timestamp message ─────────────────────
+            now = datetime.now()
+            msg = f"Updates on {now.strftime('%H-%M-%S')} {now.strftime('%d-%m-%Y')}"
+            commit = await asyncio.to_thread(
+                subprocess.run,
+                ["git", "commit", "-m", msg],
+                cwd=str(ROOT),
+                capture_output=True,
+                text=True,
+            )
+            if commit.returncode != 0:
+                print(f"{C.YELLOW}[autopush] ⚠ Commit failed: {commit.stderr.strip()}{C.RESET}")
+                continue
+
+            # ── 4. Push ───────────────────────────────────────────────
+            push = await asyncio.to_thread(
+                subprocess.run,
+                ["git", "push"],
+                cwd=str(ROOT),
+                capture_output=True,
+                text=True,
+            )
+            if push.returncode == 0:
+                print(f"{C.GREEN}[autopush] ✓ Pushed: \"{msg}\"{C.RESET}")
+            else:
+                err = push.stderr.strip() or push.stdout.strip()
+                print(f"{C.YELLOW}[autopush] ⚠ Push failed: {err}{C.RESET}")
+
+        except asyncio.CancelledError:
+            print(f"{C.DIM}[autopush] Stopped.{C.RESET}")
+            raise
+        except FileNotFoundError:
+            print(f"{C.RED}[autopush] 'git' not found in PATH — auto-push disabled.{C.RESET}")
+            return
+        except Exception as exc:
+            print(f"{C.RED}[autopush] Unexpected error: {exc}{C.RESET}")
 
 
 # ===================================================================
