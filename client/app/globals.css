@@ -1459,58 +1459,223 @@ html.reveals-on .houses-carousel.in-view > .house-card{
 }
 .reviews-summary .stars-big{color:#f5b339;font-size:1.5rem;letter-spacing:.1em}
 
-/* ===== Certifications ===== */
-.certifications{background:var(--bg-2);padding:5rem 1.5rem}
-.cert-grid{
-  display:grid;grid-template-columns:repeat(6,1fr);gap:1.25rem;
-  margin-top:2.5rem;
+/* ===== Hero — Left-aligned redesign ===== */
+.hero-content--left{
+  text-align:left;max-width:640px;margin:0;
 }
-.cert-card{
-  background:var(--card);border:1px solid var(--border);
-  padding:1.5rem 1rem;text-align:center;border-radius:6px;
-  transition:all .3s;
+.hero-content--left h1{text-align:left;font-size:clamp(2.2rem,4.8vw,4.6rem);line-height:1.08}
+.hero-content--left .hero-actions{justify-content:flex-start}
+.hero-content--left p{margin-left:0;margin-right:0;max-width:560px}
+/* Cert badge row */
+.hero-certs{display:flex;gap:.65rem;flex-wrap:wrap;margin:1.75rem 0 2rem}
+.hero-cert{
+  display:flex;align-items:center;gap:.6rem;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(232,165,160,.22);border-radius:8px;
+  padding:.5rem .85rem;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:border-color .2s,background .2s;
 }
-.cert-card:hover{border-color:var(--rose);transform:translateY(-4px);
-  background:linear-gradient(180deg,var(--card),rgba(232,165,160,.05))}
-.cert-icon{
-  width:56px;height:56px;border-radius:50%;
-  background:linear-gradient(135deg,rgba(244,199,194,.2),rgba(232,165,160,.08));
+.hero-cert:hover{border-color:rgba(232,165,160,.45);background:rgba(255,255,255,.1)}
+.hero-cert-icon{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  border:1px solid rgba(232,165,160,.4);
+  background:linear-gradient(135deg,rgba(232,165,160,.15),rgba(168,72,72,.1));
   color:var(--rose);display:flex;align-items:center;justify-content:center;
-  margin:0 auto 1rem;
 }
-.cert-name{
-  font-size:.85rem;font-weight:700;color:var(--text);letter-spacing:.05em;
+.hero-cert-label{font-size:.72rem;line-height:1.25;color:rgba(240,237,248,.85)}
+.hero-cert-label strong{display:block;font-weight:700;color:#fff}
+/* Bottom full-width stats bar */
+.hero-bottom-strip{
+  position:absolute;bottom:0;left:0;right:0;z-index:2;
+  display:flex;
+  background:rgba(8,6,18,.65);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-top:1px solid rgba(232,165,160,.1);
 }
-.cert-desc{font-size:.7rem;color:var(--text-mute);margin-top:.3rem}
+.hbs-item{
+  flex:1;text-align:center;padding:1.4rem 1rem;
+  border-right:1px solid rgba(232,165,160,.1);
+}
+.hbs-item:last-child{border-right:none}
+.hbs-num{display:block;font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:#fff;line-height:1}
+.hbs-lbl{display:block;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,199,194,.5);margin-top:.35rem}
 
-/* ===== Global Markets ===== */
-.markets{
-  background:var(--bg);padding:6rem 1.5rem;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(232,165,160,.06) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(168,72,72,.05) 0%, transparent 50%);
+/* ===== Product Showcase — "Our Salt. Your Brand. Worldwide." ===== */
+.showcase{padding:6rem 1.5rem;background:var(--bg)}
+.showcase-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,3.5vw,3rem);font-weight:700;
+  color:var(--text);text-align:center;line-height:1.15;
 }
-.markets-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+.showcase-title .t1{color:var(--text)}
+.showcase-title .t2{color:var(--rose)}
+.showcase-sub{text-align:center;color:var(--text-dim);font-size:.95rem;max-width:520px;margin:.75rem auto 3rem}
+.showcase-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;
+  max-width:1280px;margin:0 auto;
+}
+.showcase-card{
+  background:var(--card);border:1px solid rgba(232,165,160,.1);
+  border-radius:12px;overflow:hidden;cursor:pointer;
+  transition:transform .4s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .4s;
+}
+.showcase-card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(232,165,160,.3);
+  box-shadow:0 18px 48px rgba(0,0,0,.5);
+}
+.showcase-img{aspect-ratio:4/3;overflow:hidden;position:relative}
+.showcase-img img{width:100%;height:100%;object-fit:cover;
+  transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.showcase-card:hover .showcase-img img{transform:scale(1.1)}
+.showcase-img-overlay{
+  position:absolute;bottom:0;left:0;right:0;height:40%;
+  background:linear-gradient(to top,rgba(10,8,20,.75),transparent);
+  pointer-events:none;
+}
+.showcase-body{padding:.9rem 1rem 1.1rem}
+.showcase-name{font-weight:700;font-size:.9rem;color:var(--text);margin-bottom:.18rem}
+.showcase-cat{font-size:.72rem;color:var(--rose);letter-spacing:.08em}
+/* B2B feature strip below showcase */
+.showcase-b2b{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  max-width:1280px;margin:2.5rem auto 0;
+  border:1px solid rgba(232,165,160,.1);border-radius:12px;overflow:hidden;
+  background:var(--card);
+}
+.showcase-b2b-item{
+  display:flex;align-items:center;gap:.85rem;
+  padding:1.4rem 1.5rem;border-right:1px solid rgba(232,165,160,.1);
+  transition:background .25s;
+}
+.showcase-b2b-item:last-child{border-right:none}
+.showcase-b2b-item:hover{background:var(--card-2)}
+.showcase-b2b-icon{
+  width:40px;height:40px;border-radius:50%;flex-shrink:0;
+  border:1px solid rgba(232,165,160,.25);color:var(--rose);
+  background:linear-gradient(135deg,rgba(232,165,160,.12),rgba(168,72,72,.06));
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .25s;
+}
+.showcase-b2b-item:hover .showcase-b2b-icon{transform:rotate(-6deg) scale(1.08)}
+.showcase-b2b-text strong{display:block;font-size:.82rem;font-weight:700;color:var(--text)}
+.showcase-b2b-text span{display:block;font-size:.72rem;color:var(--text-dim);margin-top:.12rem}
+.showcase-cta{text-align:center;margin-top:2.5rem}
+.showcase-cta .btn{text-transform:none;letter-spacing:.04em;font-size:.92rem;padding:1rem 2.2rem}
+
+/* ===== Certifications — Badge design ===== */
+.certifications{background:var(--bg-3);padding:6rem 1.5rem}
+.certifications .container{max-width:1200px}
+.certifications-sub{
+  color:var(--text-dim);font-size:.95rem;max-width:580px;margin:.75rem auto 0;text-align:center;
+}
+.cert-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;
   margin-top:3rem;
 }
-.market-card{
-  background:var(--card);border:1px solid var(--border);
-  padding:1.5rem 1.25rem;display:flex;align-items:center;gap:1rem;
-  border-radius:6px;transition:all .3s;
+/* Row 2 of certifications */
+.cert-grid-row2{margin-top:1rem}
+.cert-card{
+  background:linear-gradient(145deg,#1a1730,#141028);
+  border:1px solid rgba(232,165,160,.12);
+  padding:1.4rem .85rem;text-align:center;border-radius:10px;
+  transition:all .35s;display:flex;flex-direction:column;align-items:center;gap:.6rem;
 }
-.market-card:hover{transform:translateX(6px);border-color:var(--rose)}
+.cert-card:hover{
+  border-color:rgba(232,165,160,.38);
+  transform:translateY(-5px);
+  box-shadow:0 12px 32px rgba(0,0,0,.5);
+}
+.cert-icon{
+  width:54px;height:54px;border-radius:50%;
+  border:2px solid rgba(168,72,72,.55);
+  background:linear-gradient(135deg,rgba(168,72,72,.18),rgba(232,165,160,.08));
+  color:var(--rose);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  transition:border-color .3s,background .3s;
+}
+.cert-card:hover .cert-icon{
+  border-color:var(--rose);
+  background:linear-gradient(135deg,rgba(168,72,72,.3),rgba(232,165,160,.15));
+}
+.cert-name{font-size:.82rem;font-weight:700;color:var(--text);letter-spacing:.04em;line-height:1.2}
+.cert-desc{font-size:.68rem;color:var(--text-mute);margin-top:.1rem}
+.cert-footer{
+  text-align:center;margin-top:2.5rem;
+}
+.cert-footer p{color:var(--text-dim);font-size:.88rem;margin-bottom:1.25rem}
+.cert-footer .btn{text-transform:none;letter-spacing:.04em;font-size:.85rem}
+
+/* ===== Global Markets — split with world map ===== */
+.markets{background:var(--bg-2);padding:0;overflow:hidden}
+.markets-split{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:620px;max-width:1800px;margin:0 auto;
+}
+.markets-left{
+  padding:5rem 4rem 5rem 5rem;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.markets-left .eyebrow{color:var(--rose)}
+.markets-left h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,2.8vw,2.7rem);color:var(--text);
+  margin:.5rem 0 .75rem;line-height:1.18;
+}
+.markets-left p{color:var(--text-dim);font-size:.95rem;margin-bottom:2rem;max-width:500px;line-height:1.7}
+.markets-grid-new{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;
+  margin-bottom:2rem;
+}
+.market-card{
+  background:var(--card);border:1px solid rgba(232,165,160,.1);
+  padding:1rem 1.1rem;display:flex;align-items:center;gap:.75rem;
+  border-radius:10px;transition:all .3s;cursor:default;
+}
+.market-card:hover{transform:translateY(-3px);border-color:rgba(232,165,160,.3);
+  box-shadow:0 8px 24px rgba(0,0,0,.35)}
 .market-flag{
-  width:54px;height:36px;border-radius:4px;overflow:hidden;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+  width:40px;height:28px;border-radius:4px;overflow:hidden;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
   background:var(--bg-2);
 }
-.market-info .market-country{
-  font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text);
-  font-weight:600;
+.market-info .market-country{font-size:.82rem;font-weight:700;color:var(--text)}
+.market-info .market-meta{font-size:.66rem;color:var(--text-dim);margin-top:.1rem}
+.markets-btn .btn{text-transform:none;letter-spacing:.04em;font-size:.88rem}
+
+/* Right panel — world map */
+.markets-right{
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:flex-end;justify-content:center;
+  padding:3rem 4rem;
 }
-.market-info .market-meta{font-size:.72rem;color:var(--rose);letter-spacing:.15em;
-  text-transform:uppercase;margin-top:.15rem}
+.markets-map-img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+  opacity:.45;filter:hue-rotate(180deg) saturate(1.2);
+}
+.markets-map-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--bg-2) 0%,rgba(13,11,30,.6) 50%,rgba(13,11,30,.4) 100%);
+}
+.markets-stat-panel{
+  position:relative;z-index:2;text-align:right;
+}
+.markets-stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:6rem;font-weight:700;line-height:1;
+  background:linear-gradient(135deg,#f4c7c2,#e08a83);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.markets-stat-lbl{
+  font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;
+  color:rgba(244,199,194,.65);margin-top:.4rem;
+}
+.markets-tagline{
+  margin-top:2rem;font-family:'Playfair Display',serif;
+  font-size:1.5rem;color:var(--text);line-height:1.3;text-align:right;
+}
+.markets-tagline .gold-word{display:block}
 
 /* ===== Brand Strip ===== */
 .brand-strip{
