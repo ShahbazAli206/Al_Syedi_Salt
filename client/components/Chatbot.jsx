@@ -83,7 +83,7 @@ export default function Chatbot() {
         <a
           className="fab green"
           aria-label="Chat on WhatsApp"
-          href="https://wa.me/923004567890"
+          href="https://wa.me/923235383806"
           target="_blank"
           rel="noopener noreferrer"
         >

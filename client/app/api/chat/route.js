@@ -17,7 +17,7 @@ About Al Syedi Group:
 - Certifications: ISO 22000, HACCP, BRC AA+, Halal (JAKIM), Kosher (OU), FDA Registered, USDA Organic (bath range), GMP, Non-GMO Project Verified, Vegan Society, ISO 14001
 - Head office: Khewra Salt Range, District Jhelum, Punjab, Pakistan
 - Regional sales offices: UK (Manchester), USA (Newark NJ), Canada (Mississauga), UAE (Jebel Ali), Germany (Hamburg)
-- Contact: sales@alsyedigroup.com · +92 300 456 7890 (WhatsApp) · Mon–Sat 9 AM – 6 PM PKT
+- Contact: sales@alsyedigroup.com · +92 323 538 3806 (WhatsApp) · Mon–Sat 9 AM – 6 PM PKT
 - Response promise: within 24 business hours
 
 Guidelines:

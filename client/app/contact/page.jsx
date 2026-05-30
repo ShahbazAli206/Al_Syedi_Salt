@@ -34,7 +34,7 @@ export default function ContactPage() {
                 <InfoRow label="Email" value="sales@alsyedigroup.com" icon={
                   <><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></>
                 } />
-                <InfoRow label="Phone / WhatsApp" value="+92 300 456 7890" icon={
+                <InfoRow label="Phone / WhatsApp" value="+92 323 538 3806" icon={
                   <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/>
                 } />
                 <InfoRow label="Working Hours" value="Monday – Saturday · 9:00 AM – 6:00 PM PKT" icon={
@@ -60,7 +60,7 @@ export default function ContactPage() {
             <Office code="us" name="United States"  region="Americas Sales" addr="2200 Pink Crystal Ave, Suite 410, Newark NJ 07102, USA" phone="+1 973 555 0124" />
             <Office code="ca" name="Canada"         region="North America" addr="88 Mineral Drive, Mississauga ON L5T 2N5, Canada" phone="+1 905 555 0167" />
             <Office code="ae" name="UAE"            region="MENA & GCC" addr="Warehouse 8, Jebel Ali Free Zone, Dubai, UAE" phone="+971 4 555 0142" />
-            <Office code="pk" name="Pakistan (HQ)"  region="Manufacturing" addr="Khewra Salt Range, District Jhelum, Punjab 49100" phone="+92 300 456 7890" />
+            <Office code="pk" name="Pakistan (HQ)"  region="Manufacturing" addr="Khewra Salt Range, District Jhelum, Punjab 49100" phone="+92 323 538 3806" />
             <Office code="de" name="Germany"        region="DACH Region" addr="Hafenstraße 17, 20457 Hamburg, Deutschland" phone="+49 40 555 0173" />
           </div>
         </div>

@@ -41,7 +41,7 @@ const ITEMS = [
   },
   {
     q: 'How do I request a formal quotation?',
-    a: 'Email sales@alsyedigroup.com or WhatsApp +92 300 456 7890 with: (1) product / grade, (2) quantity per SKU, (3) destination port, (4) Incoterm preference. We respond with a formal proforma invoice within 24 business hours.',
+    a: 'Email sales@alsyedigroup.com or WhatsApp +92 323 538 3806 with: (1) product / grade, (2) quantity per SKU, (3) destination port, (4) Incoterm preference. We respond with a formal proforma invoice within 24 business hours.',
   },
 ];
 
