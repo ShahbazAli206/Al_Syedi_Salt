@@ -3009,7 +3009,7 @@ body.light-mode .process{background:#fff}
   .dual-col .image-side{flex:none;grid-template-columns:1fr 1fr 1fr;height:320px}
   .process-steps{grid-template-columns:repeat(3,1fr);gap:2rem}
   .process-steps::before{display:none}
-  .testimonials-grid{columns:2}
+  .review-card{width:300px}
   .footer-inner{grid-template-columns:1fr 1fr 1fr;gap:1.5rem}
   .footer-decor{display:none}
   .footer-strip-grid{grid-template-columns:1fr;gap:1rem}
@@ -3034,7 +3034,7 @@ body.light-mode .process{background:#fff}
   .prod-bulk-cards{grid-template-columns:1fr}
   .prod-trust-strip{grid-template-columns:1fr}
   .prod-trust-item{border-right:none;border-bottom:1px solid var(--border)}
-  .testimonials-grid{columns:1}
+  .review-card{width:270px}
   .process-steps{grid-template-columns:repeat(2,1fr)}
   .footer-inner{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;text-align:center}
