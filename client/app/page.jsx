@@ -442,10 +442,10 @@ export default async function Home() {
             From gourmet pink flakes to industrial de-icing salt, we deliver purity in every grain.
           </p>
         </div>
-        <div className="container">
-          <div className="ingredients-grid" data-reveal-toggle-stagger>
-            {varieties.map((ing) => (
-              <div className="ingredient-card" key={ing._id || ing.name}>
+        <div className="ingredients-marquee-outer">
+          <div className="ingredients-marquee-track">
+            {[...varieties, ...varieties].map((ing, i) => (
+              <div className="ingredient-card" key={i} aria-hidden={i >= varieties.length}>
                 <SaltImage kind={ing.kind || 'pink-fine'} alt={ing.name} />
                 <div className="ingredient-label">
                   <div className="ingredient-badge">{ing.note}</div>
@@ -456,6 +456,8 @@ export default async function Home() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="container">
           {/* Bottom feature trust strip */}
           <div className="variety-features" data-reveal-toggle-stagger>
             {[

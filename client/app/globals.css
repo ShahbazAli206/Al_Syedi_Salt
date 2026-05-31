@@ -1320,22 +1320,43 @@ html.reveals-on .houses-carousel.in-view > .house-card{
 }
 
 /* ===== Ingredients / Salt Varieties ===== */
-.ingredients{background:var(--bg);padding:6rem 1.5rem}
-.ingredients-grid{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:.85rem;
-  margin-top:3rem;max-width:1280px;margin-left:auto;margin-right:auto;
+.ingredients{background:var(--bg);padding:6rem 0}
+.ingredients .container{padding:0 1.5rem}
+
+/* Marquee wrapper — clips overflow, matches page max-width */
+.ingredients-marquee-outer{
+  overflow:hidden;
+  max-width:1280px;
+  margin:3rem auto 0;
+  position:relative;
+  /* fade edges */
+  -webkit-mask-image:linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image:linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
+
+/* Scrolling track — duplicated cards = seamless */
+.ingredients-marquee-track{
+  display:flex;
+  gap:1rem;
+  width:max-content;
+  animation:scroll-varieties 35s linear infinite;
+}
+.ingredients-marquee-track:hover{animation-play-state:paused}
+
+@keyframes scroll-varieties{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
 .ingredient-card{
   position:relative;border-radius:12px;overflow:hidden;
-  aspect-ratio:3/4;cursor:pointer;
+  width:220px;height:300px;flex-shrink:0;cursor:pointer;
   border:1px solid rgba(232,165,160,.08);
   transition:transform .4s cubic-bezier(.22,1,.36,1),
              border-color .3s, box-shadow .4s;
 }
 .ingredient-card:hover{
-  transform:translateY(-8px);
+  transform:translateY(-6px);
   border-color:rgba(232,165,160,.3);
   box-shadow:0 18px 45px rgba(0,0,0,.55);
 }
