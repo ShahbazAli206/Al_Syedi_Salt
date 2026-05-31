@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
+import ContactImage from '@/components/ContactImage';
 import Chatbot from '@/components/Chatbot';
 
 export const metadata = { title: 'Contact — Al Syedi Group' };
@@ -57,28 +58,16 @@ export default function ContactPage() {
       <Navbar />
 
       <section className="cp-page">
-        {/* Salt-bowl image — bleeds into the top-right corner */}
-        <div className="cp-hero-img" aria-hidden="true" />
-
         <div className="cp-inner">
 
-          {/* ── Header row: title (left) + intro (right) ── */}
-          <div className="cp-header">
-            <div className="cp-header-left">
-              <h1 className="cp-title">Contact Us</h1>
-              <div className="cp-title-rule" />
-            </div>
-            <div className="cp-header-right">
-              <h2 className="cp-help-title">We&apos;re Here to Help Your Business</h2>
-              <p className="cp-help-sub">
-                Have questions about our pink salt products or need a custom bulk order?
-                Our team is ready to assist you with product details, pricing, samples, and logistics.
-              </p>
-            </div>
+          {/* Page title */}
+          <div className="cp-titlebar">
+            <h1 className="cp-title">Contact Us</h1>
+            <div className="cp-title-rule" />
           </div>
 
-          {/* ── Body row: form (left) + contact info (right) ── */}
-          <div className="cp-body">
+          {/* Two columns: form (left) + info (right) */}
+          <div className="cp-cols">
 
             {/* Left — form card */}
             <div className="cp-form-card">
@@ -92,9 +81,20 @@ export default function ContactPage() {
               <ContactForm />
             </div>
 
-            {/* Right — contact info */}
+            {/* Right — image + intro + contact info */}
             <div className="cp-info">
-              <div className="eyebrow cp-eyebrow" style={{ marginBottom: '1.25rem' }}>Contact Information</div>
+              {/* Small salt image above the heading */}
+              <div className="cp-thumb">
+                <ContactImage className="cp-thumb-img" />
+              </div>
+
+              <h2 className="cp-help-title">We&apos;re Here to Help Your Business</h2>
+              <p className="cp-help-sub">
+                Have questions about our pink salt products or need a custom bulk order?
+                Our team is ready to assist you with product details, pricing, samples, and logistics.
+              </p>
+
+              <div className="eyebrow cp-eyebrow" style={{ margin: '1.75rem 0 1.25rem' }}>Contact Information</div>
 
               <div className="cp-info-grid">
                 {INFO_CARDS.map((c) => (

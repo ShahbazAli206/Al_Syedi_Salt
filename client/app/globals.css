@@ -2292,46 +2292,19 @@ body.light-mode .prod-trust-item strong{color:var(--ink)}
 /* ===== Contact page (redesigned to match reference) ===== */
 .cp-eyebrow{color:var(--rose)}
 
-/* Page wrapper — holds the corner image + centered content */
+/* Page wrapper */
 .cp-page{
-  --cp-bg:#0d0b16;
   position:relative;overflow:hidden;
-  background:var(--cp-bg);
+  background:var(--bg);
   padding:7rem 0 0;
 }
-body.light-mode .cp-page{ --cp-bg:#fdf6f1; }
-
-/* Salt-bowl photo bleeding into the top-right corner.
-   Uses a local file — drop your image at: client/public/contact-hero.jpg
-   A warm fallback tone shows until the file is added (no broken icon). */
-.cp-hero-img{
-  position:absolute;top:0;right:0;z-index:0;
-  width:50%;height:460px;
-  background-color:#f1cfc6;
-  background-image:url('/contact-hero.jpg');
-  background-size:cover;background-position:center;
-}
-.cp-hero-img::before{
-  content:"";position:absolute;inset:0;
-  background:
-    linear-gradient(to right,  var(--cp-bg) 0%, rgba(0,0,0,0) 48%),
-    linear-gradient(to bottom, rgba(0,0,0,0) 60%, var(--cp-bg) 100%);
-}
-
-/* Centered content above the image */
+body.light-mode .cp-page{background:#fdf6f1}
 .cp-inner{
-  position:relative;z-index:1;
   max-width:1280px;margin:0 auto;padding:0 2rem 4rem;
 }
 
-/* ---- Header row ---- */
-/* Reserve vertical space for the corner image; the title stays at the top
-   while the "We're Here to Help" intro bottom-aligns below the image. */
-.cp-header{
-  display:grid;grid-template-columns:1fr 1fr;gap:3rem;
-  align-items:end;min-height:400px;margin-bottom:2.5rem;
-}
-.cp-header-left{align-self:start}
+/* ---- Title bar ---- */
+.cp-titlebar{margin-bottom:2.25rem}
 .cp-title{
   font-family:'Playfair Display',serif;
   font-size:clamp(2.6rem,5vw,4rem);
@@ -2342,7 +2315,20 @@ body.light-mode .cp-title{color:var(--ink)}
   width:64px;height:3px;border-radius:2px;margin-top:1.1rem;
   background:linear-gradient(90deg,var(--rose),var(--rose-deep));
 }
-.cp-header-right{padding-bottom:.5rem}
+
+/* ---- Two-column layout ---- */
+.cp-cols{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;
+}
+
+/* Small salt image above the "We're Here to Help" heading */
+.cp-thumb{
+  width:100%;height:210px;border-radius:16px;overflow:hidden;
+  margin-bottom:1.75rem;background:#f1cfc6;
+  box-shadow:0 16px 40px rgba(168,72,72,.14);
+}
+.cp-thumb-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .8s ease}
+.cp-thumb:hover .cp-thumb-img{transform:scale(1.04)}
 .cp-help-title{
   font-family:'Playfair Display',serif;
   font-size:clamp(1.5rem,2.6vw,1.95rem);
@@ -2350,11 +2336,6 @@ body.light-mode .cp-title{color:var(--ink)}
 }
 .cp-help-sub{color:var(--text-dim);font-size:.92rem;line-height:1.7;max-width:520px}
 body.light-mode .cp-help-sub{color:#5a4e48}
-
-/* ---- Body row ---- */
-.cp-body{
-  display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;
-}
 
 /* Left — form card */
 .cp-form-card{
