@@ -2936,7 +2936,28 @@ body.light-mode .footer-nl-input{
 }
 body.light-mode .footer-nl-input::placeholder{color:#b8aea8}
 body.light-mode .footer-nl-input:focus{border-color:var(--rose-deep)}
-body.light-mode .footer-global-map img{filter:none;opacity:.25;mix-blend-mode:multiply}
+/* Footer decor — cream background, natural image colours in light mode */
+body.light-mode .footer-decor{
+  background:linear-gradient(145deg,#fff8f5 0%,#fff2ed 100%);
+}
+body.light-mode .footer-decor::before{
+  background:
+    radial-gradient(circle at 50% 40%, rgba(232,165,160,.15) 0%, transparent 55%),
+    radial-gradient(circle at 50% 40%, transparent 40%, rgba(232,165,160,.08) 42%, transparent 44%),
+    radial-gradient(circle at 50% 40%, transparent 55%, rgba(232,165,160,.05) 57%, transparent 59%);
+}
+body.light-mode .footer-decor-img{
+  mix-blend-mode:normal;   /* ← removes the purple cast */
+  opacity:1;
+  object-position:center 40%;
+}
+/* Global reach — use a lighter world map look in light mode */
+body.light-mode .footer-global{background:rgba(232,165,160,.06)}
+body.light-mode .footer-global-map{width:58%;opacity:1}
+body.light-mode .footer-global-map img{
+  filter:grayscale(1) opacity(.18);
+  mix-blend-mode:normal;
+}
 body.light-mode .footer-global-lbl{color:var(--rose-deep)}
 body.light-mode .footer-global-num{
   background:linear-gradient(135deg,var(--rose-deep),#c46a64);
