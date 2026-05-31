@@ -1889,16 +1889,23 @@ html.reveals-on .houses-carousel.in-view > .house-card{
 }
 
 /* ── Strip: Head Office | Newsletter | Global Reach ── */
-.footer-strip{background:rgba(0,0,0,.22);padding:2rem 2rem 2.5rem}
+.footer-strip{
+  background:rgba(0,0,0,.18);
+  border-top:1px solid var(--border);
+  padding:2.5rem 2rem;
+}
 .footer-strip-grid{
   display:grid;grid-template-columns:1fr 1fr 1fr;
-  gap:1.25rem;max-width:1440px;margin:0 auto;
+  gap:0;max-width:1440px;margin:0 auto;
 }
+/* Panels blend into footer — no cards, just columns with dividers */
 .footer-panel{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:14px;padding:1.5rem 1.75rem;
+  padding:0 2rem;
   position:relative;overflow:hidden;
+  border-right:1px solid var(--border);
 }
+.footer-panel:first-child{padding-left:0}
+.footer-panel:last-child{border-right:none;padding-right:0}
 .footer-panel-hd{
   display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;
 }
