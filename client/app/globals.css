@@ -2909,14 +2909,11 @@ body.light-mode .process{background:#fff}
 .pkg-card-name{font-size:.8rem;font-weight:700;color:#1a0f0f;margin-bottom:.28rem;line-height:1.3}
 .pkg-card-spec{font-size:.65rem;color:#c8473a;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
 
-/* Packaging feature strip — constrained rose box */
+/* Packaging feature strip — inside inner, matches grid width */
 .pkg-feat-strip{
   display:grid;grid-template-columns:repeat(4,1fr);
   background:rgba(200,71,58,.08);border-radius:12px;
-  max-width:1200px;margin:0 auto;
-  margin-left:auto;margin-right:auto;
-  width:calc(100% - 4rem);
-  margin-bottom:3.5rem;overflow:hidden;
+  margin-top:2rem;overflow:hidden;
 }
 .pkg-feat{
   display:flex;align-items:flex-start;gap:.8rem;
@@ -2944,13 +2941,11 @@ body.light-mode .process{background:#fff}
 .cert-b-name{font-size:.8rem;font-weight:700;color:#1a0f0f;margin-bottom:.2rem;line-height:1.3}
 .cert-b-sub{font-size:.65rem;color:#5a4040}
 
-/* CTA bar — constrained rose box */
+/* CTA bar — inside inner, matches grid width */
 .certs-cta-bar{
   display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
   background:rgba(200,71,58,.08);border-radius:12px;
-  padding:1.4rem 2rem;
-  max-width:1200px;width:calc(100% - 4rem);
-  margin:0 auto 1rem;
+  padding:1.4rem 2rem;margin-top:2rem;
 }
 .certs-cta-left{display:flex;align-items:center;gap:1rem;flex:1}
 .certs-cta-left p{font-size:.9rem;color:#3a2020;line-height:1.5}

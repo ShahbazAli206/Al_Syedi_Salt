@@ -520,24 +520,24 @@ export default async function Home() {
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Feature strip — full width */}
-        <div className="pkg-feat-strip">
-          {[
-            { icon:'scissors',     label:'Custom Solutions',  sub:'Tailored packaging to fit your brand.' },
-            { icon:'shield-check', label:'Premium Quality',   sub:'Food-grade, durable & export ready.' },
-            { icon:'globe2',       label:'Global Standards',  sub:'Compliant with international packaging norms.' },
-            { icon:'truck',        label:'Secure Delivery',   sub:'Strong packaging for safe worldwide shipping.' },
-          ].map((f) => (
-            <div className="pkg-feat" key={f.label}>
-              <div className="pkg-feat-icon"><PkgFeatIcon name={f.icon} /></div>
-              <div className="pkg-feat-text">
-                <strong>{f.label}</strong>
-                <span>{f.sub}</span>
+          {/* Feature strip */}
+          <div className="pkg-feat-strip">
+            {[
+              { icon:'scissors',     label:'Custom Solutions',  sub:'Tailored packaging to fit your brand.' },
+              { icon:'shield-check', label:'Premium Quality',   sub:'Food-grade, durable & export ready.' },
+              { icon:'globe2',       label:'Global Standards',  sub:'Compliant with international packaging norms.' },
+              { icon:'truck',        label:'Secure Delivery',   sub:'Strong packaging for safe worldwide shipping.' },
+            ].map((f) => (
+              <div className="pkg-feat" key={f.label}>
+                <div className="pkg-feat-icon"><PkgFeatIcon name={f.icon} /></div>
+                <div className="pkg-feat-text">
+                  <strong>{f.label}</strong>
+                  <span>{f.sub}</span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -645,37 +645,37 @@ export default async function Home() {
               </div>
             ))}
           </div>
-        </div>
 
-        {/* CTA bar — full width */}
-        <div className="certs-cta-bar">
-          <div className="certs-cta-left">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c8473a" strokeWidth="1.5" style={{flexShrink:0}}>
-              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/>
-            </svg>
-            <p>Documentation, lab reports, and certificates available on request.</p>
-          </div>
-          <Link href="/contact" className="certs-dl-btn">
-            DOWNLOAD DOCUMENTS
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-          </Link>
-        </div>
-
-        {/* Trust strip */}
-        <div className="certs-trust-strip">
-          {[
-            { icon:<><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></>, label:'Trusted by 320+', sub:'B2B Clients' },
-            { icon:<><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></>, label:'Exporting to 42+', sub:'Countries' },
-            { icon:<><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></>, label:'Consistent Quality', sub:'Every Batch' },
-            { icon:<><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4M21 7v10l-9 4"/></>, label:'Long-Term', sub:'Partnerships' },
-          ].map((t) => (
-            <div className="certs-trust-item" key={t.label}>
-              <div className="certs-trust-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">{t.icon}</svg>
-              </div>
-              <div><strong>{t.label}</strong><span>{t.sub}</span></div>
+          {/* CTA bar */}
+          <div className="certs-cta-bar">
+            <div className="certs-cta-left">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c8473a" strokeWidth="1.5" style={{flexShrink:0}}>
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/>
+              </svg>
+              <p>Documentation, lab reports, and certificates available on request.</p>
             </div>
-          ))}
+            <Link href="/contact" className="certs-dl-btn">
+              DOWNLOAD DOCUMENTS
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </Link>
+          </div>
+
+          {/* Trust strip */}
+          <div className="certs-trust-strip">
+            {[
+              { icon:<><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></>, label:'Trusted by 320+', sub:'B2B Clients' },
+              { icon:<><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></>, label:'Exporting to 42+', sub:'Countries' },
+              { icon:<><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></>, label:'Consistent Quality', sub:'Every Batch' },
+              { icon:<><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4M21 7v10l-9 4"/></>, label:'Long-Term', sub:'Partnerships' },
+            ].map((t) => (
+              <div className="certs-trust-item" key={t.label}>
+                <div className="certs-trust-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">{t.icon}</svg>
+                </div>
+                <div><strong>{t.label}</strong><span>{t.sub}</span></div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
