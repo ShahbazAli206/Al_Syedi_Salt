@@ -2955,8 +2955,9 @@ body.light-mode .footer-decor-img{
 body.light-mode .footer-global{background:rgba(232,165,160,.06)}
 body.light-mode .footer-global-map{width:58%;opacity:1}
 body.light-mode .footer-global-map img{
-  filter:grayscale(1) opacity(.18);
+  filter:none;
   mix-blend-mode:normal;
+  opacity:1;
 }
 body.light-mode .footer-global-lbl{color:var(--rose-deep)}
 body.light-mode .footer-global-num{
