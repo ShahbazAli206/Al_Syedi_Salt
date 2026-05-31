@@ -478,53 +478,57 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* PACKAGING OPTIONS — redesigned */}
+      {/* PACKAGING OPTIONS */}
       <section className="pkg-section" id="packaging">
-        {/* Top: text left + decorative image right */}
-        <div className="pkg-top">
-          <div className="pkg-top-left" data-reveal-toggle="left">
-            <div className="pkg-eyebrow">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M5 12l5-5M5 12l5 5"/></svg>
-              PACKAGING OPTIONS
+        <div className="pkg-inner">
+          {/* Header: text LEFT + image RIGHT */}
+          <div className="pkg-header">
+            <div className="pkg-header-text">
+              <div className="pkg-eyebrow">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M5 12l5-5M5 12l5 5"/></svg>
+                PACKAGING OPTIONS
+              </div>
+              <h2 className="pkg-title">From Mine Bag to<br/><span className="pkg-accent">Retail Shelf</span></h2>
+              <p className="pkg-desc">Pick a packaging format that fits your supply chain —<br/>or hand us your brand brief and we&apos;ll design<br/>a custom solution.</p>
             </div>
-            <h2 className="pkg-title">From Mine Bag to<br/><span className="pkg-accent">Retail Shelf</span></h2>
-            <p className="pkg-desc">Pick a packaging format that fits your supply chain — or hand us your brand brief and we&apos;ll design a custom solution.</p>
+            <div className="pkg-header-img">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/salt-bg.jpg.png" alt="" />
+            </div>
           </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="pkg-bg-img" src="/salt-bg.jpg" alt="" aria-hidden="true" />
+
+          {/* 6-col card grid */}
+          <div className="pkg-grid">
+            {[
+              { icon:'fibc',      name:'FIBC Big Bag',       spec:'1,000 KG' },
+              { icon:'ppbag',     name:'PP Woven Bag',        spec:'25 / 50 KG' },
+              { icon:'jute',      name:'Jute Bag',            spec:'25 / 40 KG' },
+              { icon:'carton',    name:'Master Carton',       spec:'10 × 1 KG' },
+              { icon:'jar',       name:'Retail Glass Jar',    spec:'100 / 250 / 500 G' },
+              { icon:'pouch',     name:'Stand-Up Pouch',      spec:'100 / 250 / 500 G' },
+              { icon:'shaker',    name:'Salt Shaker',         spec:'50 / 100 G' },
+              { icon:'grinder',   name:'Refillable Grinder',  spec:'120 G' },
+              { icon:'giftbox',   name:'Gift Box',            spec:'3-PACK / 6-PACK' },
+              { icon:'bulk',      name:'Bulk Lump',           spec:'AS-MINED CHUNKS' },
+              { icon:'palletbox', name:'Pallet Box',          spec:'500–1000 KG' },
+              { icon:'vac',       name:'Vacuum Pack',         spec:'200 G – 5 KG' },
+            ].map((p) => (
+              <div className="pkg-card" key={p.name}>
+                <div className="pkg-card-icon"><PkgIcon name={p.icon} /></div>
+                <div className="pkg-card-name">{p.name}</div>
+                <div className="pkg-card-spec">{p.spec}</div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Card grid */}
-        <div className="pkg-grid-wrap">
+        {/* Feature strip — full width */}
+        <div className="pkg-feat-strip">
           {[
-            { icon:'fibc',      name:'FIBC Big Bag',       spec:'1,000 KG' },
-            { icon:'ppbag',     name:'PP Woven Bag',        spec:'25 / 50 KG' },
-            { icon:'jute',      name:'Jute Bag',            spec:'25 / 40 KG' },
-            { icon:'carton',    name:'Master Carton',       spec:'10 × 1 KG' },
-            { icon:'jar',       name:'Retail Glass Jar',    spec:'100 / 250 / 500 G' },
-            { icon:'pouch',     name:'Stand-Up Pouch',      spec:'100 / 250 / 500 G' },
-            { icon:'shaker',    name:'Salt Shaker',         spec:'50 / 100 G' },
-            { icon:'grinder',   name:'Refillable Grinder',  spec:'120 G' },
-            { icon:'giftbox',   name:'Gift Box',            spec:'3-PACK / 6-PACK' },
-            { icon:'bulk',      name:'Bulk Lump',           spec:'AS-MINED CHUNKS' },
-            { icon:'palletbox', name:'Pallet Box',          spec:'500–1000 KG' },
-            { icon:'vac',       name:'Vacuum Pack',         spec:'200 G – 5 KG' },
-          ].map((p) => (
-            <div className="pkg-card" key={p.name}>
-              <div className="pkg-card-icon"><PkgIcon name={p.icon} /></div>
-              <div className="pkg-card-name">{p.name}</div>
-              <div className="pkg-card-spec">{p.spec}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom feature strip */}
-        <div className="pkg-features">
-          {[
-            { icon:'scissors',    label:'Custom Solutions',  sub:'Tailored packaging to fit your brand.' },
-            { icon:'shield-check',label:'Premium Quality',   sub:'Food-grade, durable & export ready.' },
-            { icon:'globe2',      label:'Global Standards',  sub:'Compliant with international packaging norms.' },
-            { icon:'truck',       label:'Secure Delivery',   sub:'Strong packaging for safe worldwide shipping.' },
+            { icon:'scissors',     label:'Custom Solutions',  sub:'Tailored packaging to fit your brand.' },
+            { icon:'shield-check', label:'Premium Quality',   sub:'Food-grade, durable & export ready.' },
+            { icon:'globe2',       label:'Global Standards',  sub:'Compliant with international packaging norms.' },
+            { icon:'truck',        label:'Secure Delivery',   sub:'Strong packaging for safe worldwide shipping.' },
           ].map((f) => (
             <div className="pkg-feat" key={f.label}>
               <div className="pkg-feat-icon"><PkgFeatIcon name={f.icon} /></div>
@@ -599,73 +603,77 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* CERTIFICATIONS — redesigned */}
+      {/* CERTIFICATIONS */}
       <section className="certs-section" id="certifications">
-        {/* Top: text left + decorative image right */}
-        <div className="certs-top">
-          <div className="certs-top-left" data-reveal-toggle="left">
-            <div className="certs-eyebrow">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>
-              AUDITED &amp; CERTIFIED
+        <div className="certs-inner">
+          {/* Header: text LEFT + image RIGHT */}
+          <div className="certs-header">
+            <div className="certs-header-text">
+              <div className="certs-eyebrow">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>
+                AUDITED &amp; CERTIFIED
+              </div>
+              <h2 className="certs-title">Compliance You Can<br/><span className="certs-accent">Stake Your Brand On</span></h2>
+              <p className="certs-desc">We meet the world&apos;s most recognized food safety,<br/>quality and ethical standards — so you can sell<br/>with confidence.</p>
             </div>
-            <h2 className="certs-title">Compliance You Can<br/><span className="certs-accent">Stake Your Brand On</span></h2>
-            <p className="certs-desc">We meet the world&apos;s most recognized food safety, quality and ethical standards — so you can sell with confidence.</p>
+            <div className="certs-header-img">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/salt-bg.jpg.png" alt="" />
+            </div>
           </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="certs-bg-img" src="/salt-bg.jpg" alt="" aria-hidden="true" />
+
+          {/* 6-col cert grid */}
+          <div className="certs-grid">
+            {[
+              { type:'iso',    name:'ISO 22000',     sub:'Food Safety' },
+              { type:'haccp',  name:'HACCP',          sub:'Hazard Analysis' },
+              { type:'brc',    name:'BRC AA+',         sub:'Global Standard' },
+              { type:'halal',  name:'Halal',           sub:'Certified' },
+              { type:'kosher', name:'Kosher',          sub:'Certified' },
+              { type:'usda',   name:'USDA Organic',    sub:'Approved' },
+              { type:'fda',    name:'FDA Registered',  sub:'USA' },
+              { type:'eu',     name:'EU Compliant',    sub:'REACH' },
+              { type:'gmp',    name:'GMP',             sub:'Good Practice' },
+              { type:'nongmo', name:'Non-GMO',         sub:'Verified' },
+              { type:'vegan',  name:'Vegan Society',   sub:'Registered' },
+              { type:'iso14k', name:'ISO 14001',       sub:'Environment' },
+            ].map((c) => (
+              <div className="cert-b-card" key={c.name}>
+                <div className="cert-b-logo"><CertBadgeLogo type={c.type} /></div>
+                <div className="cert-b-name">{c.name}</div>
+                <div className="cert-b-sub">{c.sub}</div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Cert badge grid */}
-        <div className="certs-grid-wrap">
-          {[
-            { type:'iso',    name:'ISO 22000',      sub:'Food Safety' },
-            { type:'haccp',  name:'HACCP',           sub:'Hazard Analysis' },
-            { type:'brc',    name:'BRC AA+',          sub:'Global Standard' },
-            { type:'halal',  name:'Halal',            sub:'Certified' },
-            { type:'kosher', name:'Kosher',           sub:'Certified' },
-            { type:'usda',   name:'USDA Organic',     sub:'Approved' },
-            { type:'fda',    name:'FDA Registered',   sub:'USA' },
-            { type:'eu',     name:'EU Compliant',     sub:'REACH' },
-            { type:'gmp',    name:'GMP',              sub:'Good Practice' },
-            { type:'nongmo', name:'Non-GMO',          sub:'Verified' },
-            { type:'vegan',  name:'Vegan Society',    sub:'Registered' },
-            { type:'iso14k', name:'ISO 14001',        sub:'Environment' },
-          ].map((c) => (
-            <div className="cert-b-card" key={c.name}>
-              <div className="cert-b-logo"><CertBadgeLogo type={c.type} /></div>
-              <div className="cert-b-name">{c.name}</div>
-              <div className="cert-b-sub">{c.sub}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA bar */}
+        {/* CTA bar — full width */}
         <div className="certs-cta-bar">
           <div className="certs-cta-left">
-            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{flexShrink:0,color:'#c8473a'}}>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c8473a" strokeWidth="1.5" style={{flexShrink:0}}>
               <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/>
             </svg>
             <p>Documentation, lab reports, and certificates available on request.</p>
           </div>
           <Link href="/contact" className="certs-dl-btn">
             DOWNLOAD DOCUMENTS
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
           </Link>
         </div>
 
         {/* Trust strip */}
         <div className="certs-trust-strip">
           {[
-            { icon:<><path d="M17 11H7a5 5 0 000 10h10a5 5 0 000-10z"/><path d="M12 11V4M9 7l3-3 3 3"/></>, label:'Trusted by 320+ B2B Clients' },
-            { icon:<><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></>, label:'Exporting to 42+ Countries' },
-            { icon:<><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></>, label:'Consistent Quality Every Batch' },
-            { icon:<><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4M21 7v10l-9 4"/></>, label:'Long-Term Partnerships' },
+            { icon:<><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></>, label:'Trusted by 320+', sub:'B2B Clients' },
+            { icon:<><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></>, label:'Exporting to 42+', sub:'Countries' },
+            { icon:<><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></>, label:'Consistent Quality', sub:'Every Batch' },
+            { icon:<><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4M21 7v10l-9 4"/></>, label:'Long-Term', sub:'Partnerships' },
           ].map((t) => (
             <div className="certs-trust-item" key={t.label}>
               <div className="certs-trust-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">{t.icon}</svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">{t.icon}</svg>
               </div>
-              <span>{t.label}</span>
+              <div><strong>{t.label}</strong><span>{t.sub}</span></div>
             </div>
           ))}
         </div>
