@@ -493,7 +493,7 @@ export default async function Home() {
             </div>
             <div className="pkg-header-img">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/salt-bg.jpg.png" alt="" />
+              <img src="/salt-bg.jpg" alt="" />
             </div>
           </div>
 
@@ -618,7 +618,7 @@ export default async function Home() {
             </div>
             <div className="certs-header-img">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/salt-bg.jpg.png" alt="" />
+              <img src="/salt-bg.jpg" alt="" />
             </div>
           </div>
 
