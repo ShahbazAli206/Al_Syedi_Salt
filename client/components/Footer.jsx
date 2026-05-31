@@ -184,7 +184,7 @@ export default function Footer() {
           <div className="footer-decor">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://images.unsplash.com/photo-1584683596603-61fbfa842a47?w=700&q=85"
+              src="https://images.unsplash.com/photo-1614759258004-39da973d3268?w=700&q=85"
               alt="Himalayan Pink Salt"
               className="footer-decor-img"
             />
