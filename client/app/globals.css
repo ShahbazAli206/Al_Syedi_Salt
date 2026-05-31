@@ -2937,7 +2937,7 @@ body.light-mode .process{background:#fff}
 /* ===== Responsive ===== */
 @media (max-width: 1100px){
   .houses-carousel{grid-template-columns:repeat(3,1fr)}
-  .ingredients-grid{grid-template-columns:repeat(3,1fr)}
+  .ingredients-marquee-outer{max-width:100%}
   .variety-features{grid-template-columns:repeat(2,1fr)}
   .cert-grid{grid-template-columns:repeat(3,1fr)}
   .markets-grid{grid-template-columns:repeat(2,1fr)}
@@ -3008,7 +3008,7 @@ body.light-mode .process{background:#fff}
   .hero-stats{gap:.6rem}
   .hero-stat{flex:1 1 140px;padding:1.25rem 1rem}
   .houses-carousel{grid-template-columns:repeat(2,1fr)}
-  .ingredients-grid{grid-template-columns:repeat(2,1fr)}
+  .ingredient-card{width:180px;height:260px}
   .variety-features{grid-template-columns:1fr 1fr}
   .cert-grid{grid-template-columns:repeat(2,1fr)}
   .markets-split{grid-template-columns:1fr}
