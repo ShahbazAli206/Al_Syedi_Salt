@@ -2321,23 +2321,24 @@ body.light-mode .cp-title{color:var(--ink)}
   display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;
 }
 
-/* Salt image stretched as a faint background behind the whole info section.
-   Edges fade out (CSS mask) so it blends into the page; low opacity keeps
-   the heading and text fully readable. */
-.cp-info{position:relative}
+/* Salt image as a bold photo in the TOP-RIGHT corner of the info section.
+   Its left + bottom edges fade out (CSS mask) so it blends into the page,
+   while the heading and text sit clear of it on the left. */
+.cp-info{position:relative;min-height:360px}
 .cp-info-bg{
-  position:absolute;inset:0;width:100%;height:100%;z-index:0;
+  position:absolute;top:0;right:0;z-index:0;
+  width:54%;height:340px;
   object-fit:cover;object-position:center;pointer-events:none;
-  opacity:.30;
+  opacity:1;
   -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, #000 22%),
-    linear-gradient(to top,   transparent 0%, #000 16%);
+    linear-gradient(to right, transparent 0%, #000 44%),
+    linear-gradient(to top,   transparent 0%, #000 28%);
   -webkit-mask-repeat:no-repeat;
   -webkit-mask-size:100% 100%;
   -webkit-mask-composite:source-in;
           mask-image:
-    linear-gradient(to right, transparent 0%, #000 22%),
-    linear-gradient(to top,   transparent 0%, #000 16%);
+    linear-gradient(to right, transparent 0%, #000 44%),
+    linear-gradient(to top,   transparent 0%, #000 28%);
           mask-repeat:no-repeat;
           mask-size:100% 100%;
           mask-composite:intersect;
@@ -2348,8 +2349,9 @@ body.light-mode .cp-title{color:var(--ink)}
   font-family:'Playfair Display',serif;
   font-size:clamp(1.5rem,2.6vw,1.95rem);
   color:var(--rose);font-weight:700;line-height:1.25;margin-bottom:.75rem;
+  max-width:55%;
 }
-.cp-help-sub{color:var(--text-dim);font-size:.92rem;line-height:1.7;max-width:520px}
+.cp-help-sub{color:var(--text-dim);font-size:.92rem;line-height:1.7;max-width:340px}
 body.light-mode .cp-help-sub{color:#5a4e48}
 
 /* Left — form card */
@@ -2524,6 +2526,8 @@ body.light-mode .cp-trust-item strong{color:var(--ink)}
 @media (max-width:1100px){
   .cp-page{padding-top:6rem}
   .cp-cols{grid-template-columns:1fr;gap:2.5rem}
+  .cp-info-bg{width:46%;height:320px}
+  .cp-help-title{max-width:60%}
   .cp-trust-strip{grid-template-columns:repeat(2,1fr)}
   .cp-trust-item:nth-child(2){border-right:none}
   .cp-trust-item:nth-child(-n+2){border-bottom:1px solid var(--border)}
@@ -2534,6 +2538,10 @@ body.light-mode .cp-trust-item strong{color:var(--ink)}
   .cp-form-card{padding:1.75rem 1.4rem}
   .cform-row{grid-template-columns:1fr}
   .cp-info-grid{grid-template-columns:1fr}
+  /* On phones the corner image becomes a faint full-width top backdrop */
+  .cp-info-bg{width:100%;height:220px;opacity:.4}
+  .cp-help-title{max-width:100%}
+  .cp-help-sub{max-width:100%}
   .cp-promise{flex-wrap:wrap}
   .cp-trust-strip{grid-template-columns:1fr}
   .cp-trust-item{border-right:none;border-bottom:1px solid var(--border)}
