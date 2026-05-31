@@ -2958,11 +2958,10 @@ body.light-mode .process{background:#fff}
 }
 .certs-dl-btn:hover{background:#a83530;box-shadow:0 6px 18px rgba(200,71,58,.4)}
 
-/* Trust strip — constrained */
+/* Trust strip — inside inner */
 .certs-trust-strip{
   display:grid;grid-template-columns:repeat(4,1fr);
-  padding:1.5rem 0 2.5rem;
-  max-width:1200px;width:calc(100% - 4rem);margin:0 auto;
+  padding:1.75rem 0 .5rem;
   justify-items:center;
 }
 .certs-trust-item{
