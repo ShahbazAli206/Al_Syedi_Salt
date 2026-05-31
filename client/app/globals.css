@@ -2807,3 +2807,57 @@ body.light-mode .faq-item.open{border-color:var(--rose-deep)}
 body.light-mode .faq-item.open .faq-q{color:var(--rose-deep)}
 
 /* ----- Subtle background drift in light mode (already handled in ::before) ----- */
+
+/* ================================================================
+   LIGHT MODE — Footer overrides
+   ================================================================ */
+body.light-mode .footer{background:#faf8f5}
+body.light-mode .footer-main{background:#faf8f5}
+body.light-mode .footer-inner{}
+body.light-mode .footer-tagline{color:#9a8a80}
+body.light-mode .footer-tagline::before,body.light-mode .footer-tagline::after{background:rgba(168,72,72,.2)}
+body.light-mode .footer-brand > p{color:#6a5c55}
+/* Cert badges */
+body.light-mode .footer-cert{background:#fff;border-color:rgba(168,72,72,.2)}
+body.light-mode .footer-cert-icon{
+  background:linear-gradient(135deg,rgba(168,72,72,.08),rgba(232,165,160,.12));
+  border-color:rgba(168,72,72,.25);
+}
+body.light-mode .footer-cert-text{color:#7a6a62}
+body.light-mode .footer-cert-text strong{color:#2a1f1a}
+/* Social icons */
+body.light-mode .social-icon{background:#fff;border-color:rgba(168,72,72,.2);color:#6a5c55}
+body.light-mode .social-icon:hover{border-color:var(--rose-deep);color:var(--rose-deep);background:rgba(168,72,72,.06)}
+/* Nav cols */
+body.light-mode .footer-nav-title{color:var(--rose-deep);border-bottom-color:var(--rose-deep)}
+body.light-mode .footer-links a{color:#6a5c55}
+body.light-mode .footer-links a:hover{color:var(--rose-deep)}
+body.light-mode .footer-links a::before{color:var(--rose-deep)}
+/* Divider */
+body.light-mode .footer-divider{border-color:rgba(168,72,72,.15)}
+/* Strip */
+body.light-mode .footer-strip{background:#f3ece8;border-top-color:rgba(168,72,72,.15)}
+body.light-mode .footer-panel{border-right-color:rgba(168,72,72,.15)}
+body.light-mode .footer-panel-icon{
+  background:linear-gradient(135deg,rgba(168,72,72,.08),rgba(232,165,160,.12));
+  border-color:rgba(168,72,72,.25);
+}
+body.light-mode .footer-ci-icon{border-color:rgba(168,72,72,.25)}
+body.light-mode .footer-ci{color:#5a4e48}
+body.light-mode .footer-nl-desc{color:#6a5c55}
+body.light-mode .footer-nl-input{
+  background:#fff;border-color:rgba(168,72,72,.2);color:#2a1f1a;
+}
+body.light-mode .footer-nl-input::placeholder{color:#b8aea8}
+body.light-mode .footer-nl-input:focus{border-color:var(--rose-deep)}
+body.light-mode .footer-global-map img{filter:none;opacity:.25;mix-blend-mode:multiply}
+body.light-mode .footer-global-lbl{color:var(--rose-deep)}
+body.light-mode .footer-global-num{
+  background:linear-gradient(135deg,var(--rose-deep),#c46a64);
+  -webkit-background-clip:text;background-clip:text;
+}
+/* Bottom bar */
+body.light-mode .footer-bottom{border-top-color:rgba(168,72,72,.15)}
+body.light-mode .footer-bottom p{color:#9a8a80}
+body.light-mode .footer-badges{color:#9a8a80}
+body.light-mode .footer-badges span{border-right-color:rgba(168,72,72,.2)}
