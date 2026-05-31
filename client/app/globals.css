@@ -2321,26 +2321,29 @@ body.light-mode .cp-title{color:var(--ink)}
   display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;
 }
 
-/* Small salt image above the "We're Here to Help" heading.
-   Bottom + left edges fade out (CSS mask) so it blends into the page
-   background instead of showing a hard border. */
-.cp-thumb{
-  width:100%;height:210px;overflow:hidden;margin-bottom:1.75rem;
-  border-radius:0;box-shadow:none;background:transparent;
+/* Salt image stretched as a faint background behind the whole info section.
+   Edges fade out (CSS mask) so it blends into the page; low opacity keeps
+   the heading and text fully readable. */
+.cp-info{position:relative}
+.cp-info-bg{
+  position:absolute;inset:0;width:100%;height:100%;z-index:0;
+  object-fit:cover;object-position:center;pointer-events:none;
+  opacity:.30;
   -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, #000 28%),
-    linear-gradient(to top,   transparent 0%, #000 32%);
+    linear-gradient(to right, transparent 0%, #000 22%),
+    linear-gradient(to top,   transparent 0%, #000 16%);
   -webkit-mask-repeat:no-repeat;
   -webkit-mask-size:100% 100%;
   -webkit-mask-composite:source-in;
           mask-image:
-    linear-gradient(to right, transparent 0%, #000 28%),
-    linear-gradient(to top,   transparent 0%, #000 32%);
+    linear-gradient(to right, transparent 0%, #000 22%),
+    linear-gradient(to top,   transparent 0%, #000 16%);
           mask-repeat:no-repeat;
           mask-size:100% 100%;
           mask-composite:intersect;
 }
-.cp-thumb-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+/* Keep all real content above the background image */
+.cp-info > *:not(.cp-info-bg){position:relative;z-index:1}
 .cp-help-title{
   font-family:'Playfair Display',serif;
   font-size:clamp(1.5rem,2.6vw,1.95rem);
@@ -2521,7 +2524,6 @@ body.light-mode .cp-trust-item strong{color:var(--ink)}
 @media (max-width:1100px){
   .cp-page{padding-top:6rem}
   .cp-cols{grid-template-columns:1fr;gap:2.5rem}
-  .cp-thumb{height:240px}
   .cp-trust-strip{grid-template-columns:repeat(2,1fr)}
   .cp-trust-item:nth-child(2){border-right:none}
   .cp-trust-item:nth-child(-n+2){border-bottom:1px solid var(--border)}

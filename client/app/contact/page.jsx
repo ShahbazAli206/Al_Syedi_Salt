@@ -81,12 +81,10 @@ export default function ContactPage() {
               <ContactForm />
             </div>
 
-            {/* Right — image + intro + contact info */}
+            {/* Right — intro + contact info, with salt image stretched behind */}
             <div className="cp-info">
-              {/* Small salt image above the heading */}
-              <div className="cp-thumb">
-                <ContactImage className="cp-thumb-img" />
-              </div>
+              {/* Salt image as a faint stretched background for this section */}
+              <ContactImage className="cp-info-bg" />
 
               <h2 className="cp-help-title">We&apos;re Here to Help Your Business</h2>
               <p className="cp-help-sub">
