@@ -1137,6 +1137,66 @@ function ReviewAvatar({ name }) {
   );
 }
 
+/* ── Packaging icon SVGs ── */
+function PkgIcon({ name }) {
+  const p = {
+    fibc:      <><path d="M5 4h14l-1 4-5 1-2-1H6L5 4z"/><path d="M6 8l-1 12h14l-1-12"/><path d="M12 4v-2M9 2h6"/></>,
+    ppbag:     <><path d="M5 6h14v14H5z"/><path d="M5 10h14M9 6v4M15 6v4"/></>,
+    jute:      <><path d="M6 4h12l-1 4-4 1-3-1H7L6 4z"/><path d="M7 8l-1 12h12l-1-12"/><path d="M9 12l2 4M15 12l-2 4"/></>,
+    carton:    <><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/></>,
+    jar:       <><rect x="7" y="8" width="10" height="13" rx="1"/><path d="M9 8V5h6v3"/><rect x="8" y="12" width="8" height="5" fill="currentColor" opacity=".15"/></>,
+    pouch:     <><path d="M7 4h10l-1 17H8L7 4z"/><path d="M9 4V2h6v2"/></>,
+    shaker:    <><rect x="8" y="6" width="8" height="15" rx="2"/><circle cx="11" cy="9" r=".5" fill="currentColor"/><circle cx="13" cy="11" r=".5" fill="currentColor"/><circle cx="12" cy="13" r=".5" fill="currentColor"/></>,
+    grinder:   <><path d="M9 3h6v3l1 2v3l-1 1v7H8v-7l-1-1V8l1-2V3z"/></>,
+    giftbox:   <><rect x="3" y="9" width="18" height="12"/><path d="M3 9h18M12 9v12M8 9V6a3 3 0 013-3 3 3 0 011 3M16 9V6a3 3 0 00-3-3 3 3 0 00-1 3"/></>,
+    bulk:      <><polygon points="12,4 18,12 22,20 2,20 6,12"/></>,
+    palletbox: <><rect x="3" y="5" width="18" height="13"/><path d="M3 18h18M5 18v3M19 18v3M9 18v3M15 18v3"/></>,
+    vac:       <><path d="M5 5h14v14H5z"/><path d="M5 9h14M8 13h8M9 17h6"/></>,
+  };
+  return (
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      {p[name] || <rect x="4" y="4" width="16" height="16"/>}
+    </svg>
+  );
+}
+
+function PkgFeatIcon({ name }) {
+  const p = {
+    scissors:     <><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"/></>,
+    'shield-check': <><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></>,
+    globe2:       <><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></>,
+    truck:        <><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></>,
+  };
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+      {p[name]}
+    </svg>
+  );
+}
+
+/* ── Cert badge logos ── */
+function CertBadgeLogo({ type }) {
+  const logos = {
+    iso:    <><circle cx="12" cy="12" r="11" fill="#1565C0" opacity=".12"/><circle cx="12" cy="12" r="11" fill="none" stroke="#1565C0" strokeWidth="1.5"/><text x="12" y="11" textAnchor="middle" fontSize="6" fontWeight="800" fill="#1565C0" fontFamily="Arial">ISO</text><text x="12" y="17" textAnchor="middle" fontSize="4.5" fontWeight="700" fill="#1565C0" fontFamily="Arial">22000</text></>,
+    haccp:  <><circle cx="12" cy="12" r="11" fill="#00695C" opacity=".1"/><circle cx="12" cy="12" r="11" fill="none" stroke="#00695C" strokeWidth="1.5"/><path d="M7 12l3.5 3.5L17 8.5" stroke="#00695C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><text x="12" y="20" textAnchor="middle" fontSize="3.5" fontWeight="700" fill="#00695C" fontFamily="Arial">HACCP</text></>,
+    brc:    <><circle cx="12" cy="12" r="11" fill="#E65100" opacity=".1"/><circle cx="12" cy="12" r="11" fill="none" stroke="#E65100" strokeWidth="1.5"/><text x="12" y="11" textAnchor="middle" fontSize="5.5" fontWeight="800" fill="#E65100" fontFamily="Arial">BRGS</text><text x="12" y="17" textAnchor="middle" fontSize="4" fontWeight="600" fill="#E65100" fontFamily="Arial">AA+</text></>,
+    halal:  <><circle cx="12" cy="12" r="11" fill="#2E7D32" opacity=".1"/><circle cx="12" cy="12" r="11" fill="none" stroke="#2E7D32" strokeWidth="1.5"/><path d="M16 9a5 5 0 11-7.5 4.3" stroke="#2E7D32" strokeWidth="1.8" fill="none"/><circle cx="15" cy="8" r="1.2" fill="#2E7D32"/><text x="12" y="20" textAnchor="middle" fontSize="3.8" fontWeight="700" fill="#2E7D32" fontFamily="Arial">HALAL</text></>,
+    kosher: <><circle cx="12" cy="12" r="11" fill="#1A237E" opacity=".1"/><circle cx="12" cy="12" r="11" fill="none" stroke="#1A237E" strokeWidth="1.5"/><polygon points="12,4.5 13.5,9 18,9 14.2,11.5 15.7,16 12,13.5 8.3,16 9.8,11.5 6,9 10.5,9" fill="none" stroke="#1A237E" strokeWidth="1.2"/></>,
+    usda:   <><circle cx="12" cy="12" r="11" fill="#2E7D32" opacity=".12"/><circle cx="12" cy="12" r="11" fill="none" stroke="#2E7D32" strokeWidth="1.5"/><text x="12" y="10" textAnchor="middle" fontSize="4.5" fontWeight="800" fill="#2E7D32" fontFamily="Arial">USDA</text><text x="12" y="15" textAnchor="middle" fontSize="3.5" fontWeight="600" fill="#2E7D32" fontFamily="Arial">ORGANIC</text></>,
+    fda:    <><circle cx="12" cy="12" r="11" fill="#0D47A1" opacity=".1"/><circle cx="12" cy="12" r="11" fill="none" stroke="#0D47A1" strokeWidth="1.5"/><text x="12" y="11.5" textAnchor="middle" fontSize="6.5" fontWeight="800" fill="#0D47A1" fontFamily="Arial">FDA</text><text x="12" y="17" textAnchor="middle" fontSize="3.5" fontWeight="600" fill="#0D47A1" fontFamily="Arial">Registered</text></>,
+    eu:     <><circle cx="12" cy="12" r="11" fill="#1565C0" opacity=".12"/><circle cx="12" cy="12" r="11" fill="none" stroke="#1565C0" strokeWidth="1.5"/>{[0,1,2,3,4,5,6,7,8,9,10,11].map(i=><circle key={i} cx={12+7.5*Math.cos(i*Math.PI/6-Math.PI/2)} cy={12+7.5*Math.sin(i*Math.PI/6-Math.PI/2)} r="1" fill="#1565C0"/>)}</>,
+    gmp:    <><circle cx="12" cy="12" r="11" fill="#00695C" opacity=".1"/><circle cx="12" cy="12" r="11" fill="none" stroke="#00695C" strokeWidth="1.5"/><text x="12" y="14" textAnchor="middle" fontSize="7" fontWeight="800" fill="#00695C" fontFamily="Arial">GMP</text></>,
+    nongmo: <><circle cx="12" cy="12" r="11" fill="#558B2F" opacity=".12"/><circle cx="12" cy="12" r="11" fill="none" stroke="#558B2F" strokeWidth="1.5"/><path d="M12 18s-5-4-5-8a5 5 0 0110 0c0 4-5 8-5 8z" fill="#558B2F" opacity=".25"/><path d="M12 18s-5-4-5-8a5 5 0 0110 0c0 4-5 8-5 8z" stroke="#558B2F" strokeWidth="1.2" fill="none"/><line x1="12" y1="10" x2="12" y2="18" stroke="#558B2F" strokeWidth="1.2"/></>,
+    vegan:  <><circle cx="12" cy="12" r="11" fill="#2E7D32" opacity=".1"/><circle cx="12" cy="12" r="11" fill="none" stroke="#2E7D32" strokeWidth="1.5"/><path d="M12 18C8 14 6 10 8 7c2-2 4 0 4 3 0-3 2-5 4-3 2 3 0 7-4 11z" fill="#2E7D32" opacity=".3"/><path d="M12 18C8 14 6 10 8 7c2-2 4 0 4 3 0-3 2-5 4-3 2 3 0 7-4 11z" stroke="#2E7D32" strokeWidth="1.3" fill="none"/></>,
+    iso14k: <><circle cx="12" cy="12" r="11" fill="#1565C0" opacity=".1"/><circle cx="12" cy="12" r="11" fill="none" stroke="#1565C0" strokeWidth="1.5"/><text x="12" y="10" textAnchor="middle" fontSize="4.5" fontWeight="800" fill="#1565C0" fontFamily="Arial">ISO</text><text x="12" y="15.5" textAnchor="middle" fontSize="4" fontWeight="700" fill="#1565C0" fontFamily="Arial">14001</text></>,
+  };
+  return (
+    <svg width="56" height="56" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      {logos[type]}
+    </svg>
+  );
+}
+
 const reviews = [
   { quote: "Al Syedi has been our pink salt supplier for four years now. Container after container — same purity, same color, same lead time. They simply do not miss.", name: 'James Holloway', role: 'Procurement Director, Pink Peak Foods · UK' },
   { quote: "We trialled three Pakistani suppliers before signing with Al Syedi. The difference in lab consistency and packaging quality was night-and-day. They are now our sole source for retail private label.", name: 'Sarah Mitchell', role: 'Founder, Crystal Co. Wellness · USA' },
