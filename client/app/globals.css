@@ -2392,48 +2392,10 @@ body.light-mode .cform-field textarea::placeholder{color:#a8948e}
 .cform-msg--success{background:rgba(100,200,120,.12);color:#4a9e5c;border:1px solid rgba(100,200,120,.3)}
 .cform-msg--error  {background:rgba(200,80,80,.10); color:#c05050;border:1px solid rgba(200,80,80,.25)}
 
-/* ---- Right: info column ---- */
-.cp-info-col{
-  position:relative;overflow:hidden;
-  display:flex;flex-direction:column;
-}
-/* Salt photo in top-right corner */
-.cp-hero-img{
-  position:absolute;top:0;right:0;
-  width:65%;height:58%;
-  overflow:hidden;z-index:0;
-}
-.cp-hero-img::before{
-  content:"";position:absolute;inset:0;z-index:1;
-  background:
-    linear-gradient(to right, var(--bg) 0%, rgba(0,0,0,0) 30%),
-    linear-gradient(to top,   var(--bg) 0%, rgba(0,0,0,0) 30%);
-}
-body.light-mode .cp-hero-img::before{
-  background:
-    linear-gradient(to right,#fdf6f1 0%,rgba(253,246,241,0) 30%),
-    linear-gradient(to top,  #fdf6f1 0%,rgba(253,246,241,0) 30%);
-}
-.cp-hero-img img{width:100%;height:100%;object-fit:cover;object-position:center}
-
-/* Info content sits above the image */
-.cp-info-content{
-  position:relative;z-index:2;
-  padding:3.5rem 2.5rem 3.5rem 2.5rem;
-  flex:1;display:flex;flex-direction:column;justify-content:flex-start;
-}
-.cp-info-heading{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.4rem,2.5vw,1.85rem);
-  color:var(--rose);font-weight:700;line-height:1.25;
-  margin-bottom:.65rem;margin-top:2.5rem;
-}
-.cp-info-sub{color:var(--text-dim);font-size:.9rem;line-height:1.7;margin-bottom:1.5rem}
-body.light-mode .cp-info-sub{color:#5a4e48}
-
+/* ---- Right: contact info column ---- */
 /* 2×2 info cards grid */
 .cp-info-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.1rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1rem;
 }
 .cp-info-card{
   background:var(--card);border:1px solid var(--border);
@@ -2480,21 +2442,22 @@ body.light-mode .cp-promise-body p{color:#5a4e48}
 .cp-promise-badge span{font-size:1.3rem;font-weight:800;line-height:1}
 .cp-promise-badge small{font-size:.48rem;letter-spacing:.15em;font-weight:700;opacity:.9}
 
-/* ---- Trust strip ---- */
+/* ---- Trust strip (bordered rounded container) ---- */
 .cp-trust-strip{
   display:grid;grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--border);
-  background:var(--bg);
+  margin-top:3rem;
+  border:1px solid var(--border);border-radius:16px;overflow:hidden;
+  background:var(--card);
 }
-body.light-mode .cp-trust-strip{background:rgba(254,246,238,.84);border-top-color:rgba(168,72,72,.12)}
+body.light-mode .cp-trust-strip{background:rgba(255,255,255,.55);border-color:#f0ddd6}
 .cp-trust-item{
   display:flex;align-items:center;gap:.85rem;
-  padding:1.5rem 1.75rem;border-right:1px solid var(--border);
+  padding:1.5rem 1.5rem;border-right:1px solid var(--border);
   transition:background .2s;
 }
-body.light-mode .cp-trust-item{border-right-color:rgba(168,72,72,.12)}
+body.light-mode .cp-trust-item{border-right-color:#f0ddd6}
 .cp-trust-item:last-child{border-right:none}
-.cp-trust-item:hover{background:var(--card)}
+.cp-trust-item:hover{background:var(--card-2)}
 .cp-trust-icon{
   width:46px;height:46px;border-radius:50%;flex-shrink:0;
   background:rgba(232,165,160,.1);border:1px solid rgba(232,165,160,.22);
@@ -2506,22 +2469,26 @@ body.light-mode .cp-trust-item strong{color:var(--ink)}
 
 /* ---- Responsive ---- */
 @media (max-width:1100px){
-  .cp-wrap{grid-template-columns:1fr;padding-top:108px}
-  .cp-form-col{border-right:none;border-bottom:1px solid var(--border);padding:3rem 2rem}
-  .cp-info-col{min-height:auto}
-  .cp-hero-img{width:55%;height:260px;position:relative;top:0;right:auto;margin-left:auto}
-  .cp-info-content{padding:2rem 2rem 3rem}
+  .cp-page{padding-top:6rem}
+  .cp-hero-img{width:55%;height:340px}
+  .cp-header{grid-template-columns:1fr;gap:1.5rem;margin-bottom:2rem}
+  .cp-header-right{padding-top:.5rem}
+  .cp-body{grid-template-columns:1fr;gap:2rem}
   .cp-trust-strip{grid-template-columns:repeat(2,1fr)}
-  .cp-trust-item{border-bottom:1px solid var(--border)}
+  .cp-trust-item:nth-child(2){border-right:none}
+  .cp-trust-item:nth-child(-n+2){border-bottom:1px solid var(--border)}
+  body.light-mode .cp-trust-item:nth-child(-n+2){border-bottom-color:#f0ddd6}
 }
 @media (max-width:640px){
-  .cp-form-col{padding:2rem 1.25rem}
+  .cp-inner{padding:0 1.25rem 3rem}
+  .cp-form-card{padding:1.75rem 1.4rem}
   .cform-row{grid-template-columns:1fr}
   .cp-info-grid{grid-template-columns:1fr}
-  .cp-hero-img{display:none}
-  .cp-info-content{padding:1.5rem 1.25rem 2.5rem}
+  .cp-hero-img{width:100%;height:240px;opacity:.5}
+  .cp-promise{flex-wrap:wrap}
   .cp-trust-strip{grid-template-columns:1fr}
-  .cp-trust-item{border-right:none}
+  .cp-trust-item{border-right:none;border-bottom:1px solid var(--border)}
+  .cp-trust-item:last-child{border-bottom:none}
 }
 
 /* ===== SaltImage (SVG product visuals) ===== */
