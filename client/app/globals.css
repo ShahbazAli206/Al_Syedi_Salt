@@ -2534,7 +2534,6 @@ body.light-mode .cp-trust-item strong{color:var(--ink)}
   .cp-form-card{padding:1.75rem 1.4rem}
   .cform-row{grid-template-columns:1fr}
   .cp-info-grid{grid-template-columns:1fr}
-  .cp-thumb{height:190px}
   .cp-promise{flex-wrap:wrap}
   .cp-trust-strip{grid-template-columns:1fr}
   .cp-trust-item{border-right:none;border-bottom:1px solid var(--border)}
