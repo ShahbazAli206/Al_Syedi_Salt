@@ -23,7 +23,7 @@ About Al Syedi Group:
 Guidelines:
 - Keep replies under 4 sentences unless the user explicitly asks for detail
 - For exact quotations or custom briefs, direct users to request a quote or email sales@alsyedigroup.com
-- Never invent specifics (exact lead times for unstated destinations, certifications not listed above)
+- Never invent specifics not listed above
 - If asked something off-topic, gently steer back to salt manufacturing and supply`;
 
 export async function POST(request) {
@@ -33,51 +33,48 @@ export async function POST(request) {
     return Response.json({ error: 'messages array is required' }, { status: 400 });
   }
 
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
     return Response.json({
       reply: "AI assistant isn't configured yet. Email sales@alsyedigroup.com for a quick response.",
     });
   }
 
-  const contents = messages
-    .filter((m) => m && m.content)
-    .map((m) => ({
-      role: m.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: String(m.content).slice(0, 4000) }],
-    }));
+  // Build messages array with system prompt first, then conversation
+  const groqMessages = [
+    { role: 'system', content: SYSTEM_PROMPT },
+    ...messages
+      .filter((m) => m && m.content)
+      .map((m) => ({
+        role: m.role === 'assistant' ? 'assistant' : 'user',
+        content: String(m.content).slice(0, 4000),
+      })),
+  ];
 
-  const model = 'gemini-2.0-flash-lite';
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-
-  const aiRes = await fetch(url, {
+  const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
-      systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-      contents,
-      generationConfig: { temperature: 0.7, maxOutputTokens: 600 },
-      safetySettings: [
-        { category: 'HARM_CATEGORY_HARASSMENT',        threshold: 'BLOCK_ONLY_HIGH' },
-        { category: 'HARM_CATEGORY_HATE_SPEECH',       threshold: 'BLOCK_ONLY_HIGH' },
-        { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_ONLY_HIGH' },
-        { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_ONLY_HIGH' },
-      ],
+      model: 'llama3-8b-8192',
+      messages: groqMessages,
+      temperature: 0.7,
+      max_tokens: 600,
     }),
   });
 
-  if (!aiRes.ok) {
-    const errText = await aiRes.text();
-    console.error('Gemini API error:', aiRes.status, errText);
+  if (!res.ok) {
+    const errText = await res.text();
+    console.error('Groq API error:', res.status, errText);
     return Response.json({
-      reply: `AI error (${aiRes.status}): ${errText.slice(0, 200)}`,
+      reply: "Sorry — I'm having trouble right now. Please email sales@alsyedigroup.com for a quick response.",
     });
   }
 
-  const data = await aiRes.json();
-  const reply =
-    data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-    "I didn't catch that — could you rephrase?";
+  const data = await res.json();
+  const reply = data?.choices?.[0]?.message?.content || "I didn't catch that — could you rephrase?";
 
   return Response.json({ reply });
 }
