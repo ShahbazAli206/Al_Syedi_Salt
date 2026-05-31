@@ -2235,35 +2235,90 @@ body.light-mode .prod-trust-item strong{color:var(--ink)}
 .brand-card-rule{width:40px;height:1px;background:var(--rose);margin-bottom:1rem}
 .brand-card p{color:var(--text-dim);font-size:.95rem;line-height:1.65}
 
-/* ===== Contact page (redesigned) ===== */
+/* ===== Contact page (redesigned to match reference) ===== */
 .cp-eyebrow{color:var(--rose)}
 
-/* Outer two-column wrapper */
-.cp-wrap{
-  display:grid;grid-template-columns:1fr 1fr;
-  min-height:100vh;padding-top:108px; /* clear fixed header */
-  background:var(--bg);
+/* Page wrapper — holds the corner image + centered content */
+.cp-page{
+  --cp-bg:#0d0b16;
+  position:relative;overflow:hidden;
+  background:var(--cp-bg);
+  padding:7rem 0 0;
 }
-body.light-mode .cp-wrap{background:#fdf6f1}
+body.light-mode .cp-page{ --cp-bg:#fdf6f1; }
 
-/* ---- Left: form column ---- */
-.cp-form-col{
-  padding:3.5rem 3rem 4rem;
-  display:flex;flex-direction:column;justify-content:flex-start;
-  border-right:1px solid var(--border);
+/* Salt-bowl photo bleeding into the top-right corner.
+   Uses a local file — drop your image at: client/public/contact-hero.jpg
+   A warm fallback tone shows until the file is added (no broken icon). */
+.cp-hero-img{
+  position:absolute;top:0;right:0;z-index:0;
+  width:46%;height:540px;
+  background-color:#f1cfc6;
+  background-image:url('/contact-hero.jpg');
+  background-size:cover;background-position:center;
 }
-body.light-mode .cp-form-col{border-right-color:rgba(168,72,72,.12)}
-.cp-form-card{max-width:520px}
+.cp-hero-img::before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(to right,  var(--cp-bg) 0%, rgba(0,0,0,0) 42%),
+    linear-gradient(to bottom, rgba(0,0,0,0) 46%, var(--cp-bg) 100%);
+}
+
+/* Centered content above the image */
+.cp-inner{
+  position:relative;z-index:1;
+  max-width:1280px;margin:0 auto;padding:0 2rem 4rem;
+}
+
+/* ---- Header row ---- */
+.cp-header{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;
+  align-items:start;margin-bottom:3rem;
+}
+.cp-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.6rem,5vw,4rem);
+  color:var(--text);font-weight:700;letter-spacing:-.015em;line-height:1.05;
+}
+body.light-mode .cp-title{color:var(--ink)}
+.cp-title-rule{
+  width:64px;height:3px;border-radius:2px;margin-top:1.1rem;
+  background:linear-gradient(90deg,var(--rose),var(--rose-deep));
+}
+.cp-header-right{padding-top:1.5rem}
+.cp-help-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.5rem,2.6vw,1.95rem);
+  color:var(--rose);font-weight:700;line-height:1.25;margin-bottom:.75rem;
+}
+.cp-help-sub{color:var(--text-dim);font-size:.92rem;line-height:1.7;max-width:520px}
+body.light-mode .cp-help-sub{color:#5a4e48}
+
+/* ---- Body row ---- */
+.cp-body{
+  display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;
+}
+
+/* Left — form card */
+.cp-form-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:18px;padding:2.5rem;
+  box-shadow:0 20px 50px rgba(0,0,0,.18);
+}
+body.light-mode .cp-form-card{
+  background:#fff;border-color:#f0ddd6;
+  box-shadow:0 16px 44px rgba(168,72,72,.08);
+}
 .cp-form-title{
   font-family:'Playfair Display',serif;
-  font-size:clamp(1.6rem,2.8vw,2.1rem);
+  font-size:clamp(1.5rem,2.6vw,2rem);
   color:var(--text);font-weight:700;line-height:1.2;
-  margin:.5rem 0 .75rem;
+  margin:.5rem 0 .6rem;
 }
 body.light-mode .cp-form-title{color:var(--ink)}
-.cp-form-sub{color:var(--text-dim);font-size:.92rem;line-height:1.7;margin-bottom:1.75rem}
+.cp-form-sub{color:var(--text-dim);font-size:.9rem;line-height:1.7;margin-bottom:1.6rem}
 
-/* New form */
+/* Form fields */
 .cform{display:flex;flex-direction:column;gap:.85rem}
 .cform-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
 .cform-field{

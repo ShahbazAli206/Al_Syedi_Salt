@@ -56,96 +56,101 @@ export default function ContactPage() {
     <>
       <Navbar />
 
-      {/* ── Main contact area ── */}
-      <div className="cp-wrap">
+      <section className="cp-page">
+        {/* Salt-bowl image — bleeds into the top-right corner */}
+        <div className="cp-hero-img" aria-hidden="true" />
 
-        {/* Left — form card */}
-        <div className="cp-form-col">
-          <div className="cp-form-card">
-            <div className="eyebrow cp-eyebrow">Get in Touch</div>
-            <h2 className="cp-form-title">
-              Let&apos;s Discuss Your <span className="gold-word">Salt Requirements</span>
-            </h2>
-            <p className="cp-form-sub">
-              Fill out the form below and our B2B team will get back to you within 24 business hours.
-            </p>
-            <ContactForm />
-          </div>
-        </div>
+        <div className="cp-inner">
 
-        {/* Right — info + background image */}
-        <div className="cp-info-col">
-          {/* Decorative salt image — top right */}
-          <div className="cp-hero-img" aria-hidden="true">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://images.unsplash.com/photo-1584683596603-61fbfa842a47?w=900&q=88"
-              alt=""
-            />
+          {/* ── Header row: title (left) + intro (right) ── */}
+          <div className="cp-header">
+            <div className="cp-header-left">
+              <h1 className="cp-title">Contact Us</h1>
+              <div className="cp-title-rule" />
+            </div>
+            <div className="cp-header-right">
+              <h2 className="cp-help-title">We&apos;re Here to Help Your Business</h2>
+              <p className="cp-help-sub">
+                Have questions about our pink salt products or need a custom bulk order?
+                Our team is ready to assist you with product details, pricing, samples, and logistics.
+              </p>
+            </div>
           </div>
 
-          <div className="cp-info-content">
-            <h3 className="cp-info-heading">We&apos;re Here to Help Your Business</h3>
-            <p className="cp-info-sub">
-              Have questions about our pink salt products or need a custom bulk order?
-              Our team is ready to assist you with product details, pricing, samples, and logistics.
-            </p>
+          {/* ── Body row: form (left) + contact info (right) ── */}
+          <div className="cp-body">
 
-            <div className="eyebrow cp-eyebrow" style={{ marginBottom: '1rem' }}>Contact Information</div>
+            {/* Left — form card */}
+            <div className="cp-form-card">
+              <div className="eyebrow cp-eyebrow">Get in Touch</div>
+              <h3 className="cp-form-title">
+                Let&apos;s Discuss Your <span className="gold-word">Salt Requirements</span>
+              </h3>
+              <p className="cp-form-sub">
+                Fill out the form below and our B2B team will get back to you within 24 business hours.
+              </p>
+              <ContactForm />
+            </div>
 
-            <div className="cp-info-grid">
-              {INFO_CARDS.map((c) => (
-                <div className="cp-info-card" key={c.title}>
-                  <div className="cp-info-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                      {c.icon}
-                    </svg>
+            {/* Right — contact info */}
+            <div className="cp-info">
+              <div className="eyebrow cp-eyebrow" style={{ marginBottom: '1.25rem' }}>Contact Information</div>
+
+              <div className="cp-info-grid">
+                {INFO_CARDS.map((c) => (
+                  <div className="cp-info-card" key={c.title}>
+                    <div className="cp-info-icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                        {c.icon}
+                      </svg>
+                    </div>
+                    <div>
+                      <strong>{c.title}</strong>
+                      {c.lines.map((l, i) => <span key={i}>{l}</span>)}
+                    </div>
                   </div>
-                  <div>
-                    <strong>{c.title}</strong>
-                    {c.lines.map((l, i) => <span key={i}>{l}</span>)}
-                  </div>
+                ))}
+              </div>
+
+              {/* 24h promise */}
+              <div className="cp-promise">
+                <div className="cp-promise-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                    <path d="M3 11a9 9 0 0118 0M12 11v5l3 2"/><circle cx="12" cy="11" r="9"/>
+                  </svg>
                 </div>
-              ))}
-            </div>
-
-            {/* 24h promise */}
-            <div className="cp-promise">
-              <div className="cp-promise-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                  <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-                </svg>
-              </div>
-              <div className="cp-promise-body">
-                <strong>24-Hour Response Promise</strong>
-                <p>
-                  Every B2B inquiry is important to us. We guarantee a response within 24 business
-                  hours with pricing, lead times, and sample availability.
-                </p>
-              </div>
-              <div className="cp-promise-badge">
-                <span>24h</span>
-                <small>RESPONSE</small>
+                <div className="cp-promise-body">
+                  <strong>24-Hour Response Promise</strong>
+                  <p>
+                    Every B2B inquiry is important to us. We guarantee a response within 24 business
+                    hours with pricing, lead times, and sample availability.
+                  </p>
+                </div>
+                <div className="cp-promise-badge">
+                  <span>24h</span>
+                  <small>RESPONSE</small>
+                </div>
               </div>
             </div>
           </div>
+
+          {/* ── Trust strip ── */}
+          <div className="cp-trust-strip">
+            {TRUST.map((t) => (
+              <div className="cp-trust-item" key={t.title}>
+                <div className="cp-trust-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">{t.icon}</svg>
+                </div>
+                <div>
+                  <strong>{t.title}</strong>
+                  <span>{t.sub}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
-      </div>
-
-      {/* ── Trust strip ── */}
-      <div className="cp-trust-strip">
-        {TRUST.map((t) => (
-          <div className="cp-trust-item" key={t.title}>
-            <div className="cp-trust-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">{t.icon}</svg>
-            </div>
-            <div>
-              <strong>{t.title}</strong>
-              <span>{t.sub}</span>
-            </div>
-          </div>
-        ))}
-      </div>
+      </section>
 
       <Footer />
       <Chatbot />
