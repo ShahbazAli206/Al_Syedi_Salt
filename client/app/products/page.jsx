@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import FinalCTA from '@/components/FinalCTA';
 import PageHeader from '@/components/PageHeader';
 import ProductGrid from '@/components/ProductGrid';
 import Chatbot from '@/components/Chatbot';
@@ -32,7 +31,6 @@ export default async function ProductsPage() {
         </div>
       </section>
 
-      <FinalCTA />
       <Footer />
       <Chatbot />
     </>
