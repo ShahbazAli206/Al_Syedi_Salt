@@ -2322,9 +2322,9 @@ body.light-mode .cp-title{color:var(--ink)}
   display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;
 }
 
-/* Salt image as a bold photo in the TOP-RIGHT corner of the info section.
-   Its left + bottom edges fade out (CSS mask) so it blends into the page,
-   while the heading and text sit clear of it on the left. */
+/* Salt image (client/public/salt-bg.jpg) as a bold photo in the TOP-RIGHT
+   corner of the info section. Its left + bottom edges fade out (CSS mask)
+   so it blends into the page, with heading + text clear on the left. */
 .cp-info{position:relative;min-height:360px}
 .cp-info-bg{
   position:absolute;top:0;right:0;z-index:0;

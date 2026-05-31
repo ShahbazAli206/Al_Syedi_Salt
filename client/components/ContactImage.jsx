@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 
-// Tries your local file first (client/public/contact-hero.jpg).
+// Tries your local file first (client/public/salt-bg.jpg).
 // If it's not there yet, falls back to a hosted Himalayan-salt photo
 // so an image always shows.
 const FALLBACK = 'https://images.unsplash.com/photo-1584683596603-61fbfa842a47?w=700&q=85';
 
 export default function ContactImage({ className = '' }) {
-  const [src, setSrc] = useState('/contact-hero.jpg');
+  const [src, setSrc] = useState('/salt-bg.jpg');
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
