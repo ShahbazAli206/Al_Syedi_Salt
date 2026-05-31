@@ -2321,14 +2321,21 @@ body.light-mode .cp-title{color:var(--ink)}
   display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;
 }
 
-/* Small salt image above the "We're Here to Help" heading */
+/* Small salt image above the "We're Here to Help" heading.
+   Bottom + left edges fade out (CSS mask) so it blends into the page
+   background instead of showing a hard border. */
 .cp-thumb{
-  width:100%;height:210px;border-radius:16px;overflow:hidden;
-  margin-bottom:1.75rem;background:#f1cfc6;
-  box-shadow:0 16px 40px rgba(168,72,72,.14);
+  width:100%;height:210px;overflow:hidden;margin-bottom:1.75rem;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 26%),
+    linear-gradient(to top,   transparent 0%, #000 30%);
+  -webkit-mask-composite:source-in;
+          mask-image:
+    linear-gradient(to right, transparent 0%, #000 26%),
+    linear-gradient(to top,   transparent 0%, #000 30%);
+          mask-composite:intersect;
 }
-.cp-thumb-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .8s ease}
-.cp-thumb:hover .cp-thumb-img{transform:scale(1.04)}
+.cp-thumb-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .cp-help-title{
   font-family:'Playfair Display',serif;
   font-size:clamp(1.5rem,2.6vw,1.95rem);
