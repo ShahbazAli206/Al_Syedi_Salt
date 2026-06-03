@@ -792,46 +792,6 @@ export default async function Home() {
       </section>
 
 
-      {/* DUAL COL 1 — Naturally Sourced */}
-      <section className="dual-col">
-        <div className="text-side" data-reveal-toggle="left">
-          <div className="eyebrow">Naturally Sourced</div>
-          <h3 className="serif">From a 250 Million-Year-Old <span className="gold-word">Salt Range</span></h3>
-          <p>
-            Every grain we ship is hand-mined from the Khewra Salt Range in Pakistan — the world&apos;s second-largest salt mine and the source of the original, fossilized seabed deposits that give Himalayan Pink its iconic rose hue.
-          </p>
-          <Link href="/products" className="btn btn-gold">
-            Explore Our Range
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
-          </Link>
-        </div>
-        <div className="image-side" data-reveal-toggle="right">
-          <SaltImage kind="crystal-display" alt="Pink salt display" />
-          <SaltImage kind="pink-coarse"     alt="Pink coarse crystals" />
-          <SaltImage kind="lamp-natural"    alt="Hand-carved salt lamp" />
-        </div>
-      </section>
-
-      {/* DUAL COL 2 — Global Export */}
-      <section className="dual-col">
-        <div className="image-side" data-reveal-toggle="left">
-          <SaltImage kind="salt-brick" alt="Salt bricks" />
-          <SaltImage kind="bath-lavender" alt="Bath salt with lavender" />
-          <SaltImage kind="salt-tile" alt="Salt tiles" />
-        </div>
-        <div className="text-side cream" data-reveal-toggle="right">
-          <div className="eyebrow">Global Export</div>
-          <h3 className="serif">FCL &amp; LCL Shipping to <span className="gold-word">42 Countries</span></h3>
-          <p>
-            From small trial shipments to weekly 40ft container loads, our in-house logistics team handles customs, certifications, port handling and last-mile distribution — so your warehouse simply sees deliveries arrive on time.
-          </p>
-          <Link href="/contact" className="btn btn-gold">
-            Discuss Your Volume
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
-          </Link>
-        </div>
-      </section>
-
       {/* FAQ */}
       <FAQ />
 
