@@ -386,7 +386,7 @@ body.light-mode{ background: transparent; }
   box-shadow:0 8px 32px rgba(0,0,0,.25);
 }
 body.light-mode .navbar{
-  background:rgba(250,243,238,.88);
+  background:rgba(255,255,255,.99);
   border:1px solid rgba(168,72,72,.18);
   box-shadow:0 8px 28px rgba(168,72,72,.08);
 }
