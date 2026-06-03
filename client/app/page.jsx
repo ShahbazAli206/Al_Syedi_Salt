@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import FinalCTA from '@/components/FinalCTA';
 import SaltImage from '@/components/SaltImage';
 import Flag from '@/components/Flag';
 import Chatbot from '@/components/Chatbot';
@@ -792,12 +791,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* MID CTA */}
-      <section className="cta-section" data-reveal-toggle="scale">
-        <h2>Looking for a <span className="gold-word">Reliable</span> Salt Supplier?</h2>
-        <p>Partner with Al Syedi Group for direct-from-mine pricing, private label flexibility and a logistics partner who actually picks up the phone.</p>
-        <Link href="/contact" className="btn btn-gold">Request a Quote Now</Link>
-      </section>
 
       {/* DUAL COL 1 — Naturally Sourced */}
       <section className="dual-col">

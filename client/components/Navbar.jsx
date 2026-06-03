@@ -1,9 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Logo from './Logo';
-import Flag from './Flag';
 
 /* ============================================================
    Sitemap — every meaningful section on every page is here.
@@ -29,10 +28,10 @@ const NAV = [
       {
         title: 'Featured',
         items: [
-          { href: '/brands',     icon: 'crystal', title: 'Salt Collections', desc: 'Our 8 specialist ranges' },
-          { href: '/#varieties', icon: 'sparkle', title: 'Salt Varieties',   desc: 'Browse 10+ salt types' },
-          { href: '/#grades',    icon: 'chart',   title: 'Grade Reference',  desc: 'Powder → chunk · grain sizes' },
-          { href: '/#packaging', icon: 'box',     title: 'Packaging Options', desc: 'FIBC, PP, jute, retail jars' },
+          { href: '/products#collections', icon: 'crystal', title: 'Salt Collections', desc: 'Our 8 specialist ranges' },
+          { href: '/products#varieties',   icon: 'sparkle', title: 'Salt Varieties',   desc: 'Browse 10+ salt types' },
+          { href: '/products#grades',      icon: 'chart',   title: 'Grade Reference',  desc: 'Powder → chunk · grain sizes' },
+          { href: '/products#packaging',   icon: 'box',     title: 'Packaging Options', desc: 'FIBC, PP, jute, retail jars' },
         ],
       },
     ],
@@ -137,39 +136,24 @@ const NAV = [
   { type: 'link', label: 'Contact', href: '/contact' },
 ];
 
-const COUNTRIES = [
-  { code: 'gb', name: 'United Kingdom' },
-  { code: 'us', name: 'United States' },
-  { code: 'ca', name: 'Canada' },
-  { code: 'ae', name: 'UAE' },
-  { code: 'de', name: 'Germany' },
-  { code: 'pk', name: 'Pakistan' },
-];
-
 /* ============================================================
    Navbar component
    ============================================================ */
 export default function Navbar() {
   const [open, setOpen] = useState(false);            // mobile drawer
   const [activeMega, setActiveMega] = useState(null); // which mega is open inline on mobile
-  const [country, setCountry] = useState(COUNTRIES[0]);
-  const [countryOpen, setCountryOpen] = useState(false);
-  const [mobileCountryOpen, setMobileCountryOpen] = useState(false); // country picker inside mobile drawer
   const [scrolled, setScrolled] = useState(false);
-  const [light, setLight] = useState(false);
-  const countryRef = useRef(null);
+  const [light, setLight] = useState(true);
 
   // Init theme + scroll listener
   useEffect(() => {
     const saved = localStorage.getItem('alsyedi-theme');
-    if (saved === 'light') {
+    if (saved === 'dark') {
+      document.body.classList.remove('light-mode');
+      setLight(false);
+    } else {
       document.body.classList.add('light-mode');
       setLight(true);
-    }
-    const savedCountry = localStorage.getItem('alsyedi-country');
-    if (savedCountry) {
-      const c = COUNTRIES.find((c) => c.code === savedCountry);
-      if (c) setCountry(c);
     }
     const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -183,18 +167,6 @@ export default function Navbar() {
     return () => document.body.classList.remove('no-scroll');
   }, [open]);
 
-  // Click-outside for country selector
-  useEffect(() => {
-    if (!countryOpen) return;
-    const onDown = (e) => {
-      if (countryRef.current && !countryRef.current.contains(e.target)) {
-        setCountryOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', onDown);
-    return () => document.removeEventListener('mousedown', onDown);
-  }, [countryOpen]);
-
   function toggleTheme() {
     const next = !light;
     document.body.classList.toggle('light-mode', next);
@@ -202,16 +174,9 @@ export default function Navbar() {
     setLight(next);
   }
 
-  function pickCountry(c) {
-    setCountry(c);
-    localStorage.setItem('alsyedi-country', c.code);
-    setCountryOpen(false);
-  }
-
   function closeAll() {
     setOpen(false);
     setActiveMega(null);
-    setMobileCountryOpen(false);
   }
 
   return (
@@ -266,38 +231,6 @@ export default function Navbar() {
         </ul>
 
         <div className="nav-actions">
-          {/* Country selector */}
-          <div className="country-select desktop-only" ref={countryRef}>
-            <button
-              type="button"
-              className="country-trigger"
-              onClick={() => setCountryOpen((v) => !v)}
-              aria-expanded={countryOpen}
-            >
-              <Flag code={country.code} />
-              <span className="country-name">{country.name}</span>
-              <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            </button>
-            {countryOpen && (
-              <ul className="country-list" role="listbox">
-                {COUNTRIES.map((c) => (
-                  <li key={c.code}>
-                    <button
-                      type="button"
-                      onClick={() => pickCountry(c)}
-                      className={c.code === country.code ? 'active' : ''}
-                    >
-                      <Flag code={c.code} />
-                      <span>{c.name}</span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-
           {/* Theme toggle */}
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
             {light ? (
@@ -312,15 +245,7 @@ export default function Navbar() {
             )}
           </button>
 
-          <Link href="/contact" className="btn btn-gold quote-btn">Request a Quote</Link>
-          <Link href="/contact" className="cart-btn" aria-label="Request basket">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-              <path d="M3 3h2l2.4 12.4a2 2 0 002 1.6h9.7a2 2 0 002-1.6L23 6H6"/>
-              <circle cx="9" cy="21" r="1.5"/>
-              <circle cx="18" cy="21" r="1.5"/>
-            </svg>
-            <span className="cart-badge">0</span>
-          </Link>
+          <Link href="/contact" className="quote-btn">Request a Quote</Link>
           <button
             className={`menu-toggle${open ? ' active' : ''}`}
             onClick={() => setOpen((v) => !v)}
@@ -395,36 +320,6 @@ export default function Navbar() {
         </nav>
 
         <div className="mobile-drawer-foot">
-          <div className="mobile-country-select">
-            <button
-              type="button"
-              className="mobile-country"
-              onClick={() => setMobileCountryOpen((v) => !v)}
-              aria-expanded={mobileCountryOpen}
-            >
-              <Flag code={country.code} />
-              <span>{country.name}</span>
-              <svg className={`m-country-chev${mobileCountryOpen ? ' open' : ''}`} width="11" height="7" viewBox="0 0 10 6" fill="none">
-                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            </button>
-            {mobileCountryOpen && (
-              <ul className="mobile-country-list" role="listbox">
-                {COUNTRIES.map((c) => (
-                  <li key={c.code}>
-                    <button
-                      type="button"
-                      onClick={() => { pickCountry(c); setMobileCountryOpen(false); }}
-                      className={c.code === country.code ? 'active' : ''}
-                    >
-                      <Flag code={c.code} />
-                      <span>{c.name}</span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
           <Link href="/contact" className="btn btn-gold" onClick={closeAll}>
             Request a Quote
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
