@@ -6,7 +6,7 @@ export default function Logo({ width = 140, height = 56 }) {
       alt="Al Syedi Salt Group"
       width={width}
       height={height}
-      style={{ objectFit: 'contain', display: 'block' }}
+      style={{ objectFit: 'cover', display: 'block', borderRadius: '50%' }}
     />
   );
 }
