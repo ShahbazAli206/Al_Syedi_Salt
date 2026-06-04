@@ -13,6 +13,7 @@ const NAV = [
   {
     type: 'mega',
     label: 'Products',
+    href: '/products',
     columns: [
       {
         title: 'By Category',
