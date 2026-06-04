@@ -35,16 +35,6 @@ export default function AboutPage() {
           </div>
           <div className="about-pg-hero-img">
             <SaltImage kind="crystal-display" alt="Khewra Pink Salt Crystals" />
-            <div className="about-pg-hero-cards">
-              <div className="about-pg-mini-card">
-                <div className="aoc-thumb"><SaltImage kind="pink-coarse" alt="Raw Himalayan Salt" /></div>
-                <div><div className="aoc-label">Raw Himalayan Salt</div><div className="aoc-sub">Direct from Khewra Mines</div></div>
-              </div>
-              <div className="about-pg-mini-card">
-                <div className="aoc-thumb"><SaltImage kind="lamp-natural" alt="Salt Lamps" /></div>
-                <div><div className="aoc-label">Salt Lamps &amp; Decor</div><div className="aoc-sub">Handcrafted Excellence</div></div>
-              </div>
-            </div>
           </div>
         </div>
         <div className="about-pg-stats">
