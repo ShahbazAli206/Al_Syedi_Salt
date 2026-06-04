@@ -390,9 +390,9 @@ body.light-mode .navbar{
   border:1px solid rgba(168,72,72,.18);
   box-shadow:0 8px 28px rgba(168,72,72,.08);
 }
-.logo{display:flex;align-items:center;gap:.5rem;transition:opacity .2s}
+.logo{display:flex;align-items:center;gap:.5rem;transition:opacity .2s;margin:-.75rem 0}
 .logo:hover{opacity:.85}
-.logo img,.logo svg{height:58px;width:auto}
+.logo img,.logo svg{height:80px;width:auto}
 
 img.img-fallback{
   background:linear-gradient(135deg,#1a1517,#3a2123,#1a1517);
