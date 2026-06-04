@@ -12,7 +12,7 @@ export default function ServicesPage() {
       <Navbar />
 
       {/* ── Hero ── */}
-      <section className="svc-hero">
+      <section className="svc-hero svc-odd">
         <div className="svc-hero-inner">
           <div className="svc-hero-text">
             <div className="eyebrow">Our Services</div>
@@ -53,7 +53,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── What We Do ── */}
-      <section className="section capabilities" id="services">
+      <section className="section capabilities svc-even" id="services">
         <div className="container" style={{ textAlign: 'center' }}>
           <div className="eyebrow">What We Offer</div>
           <h2 className="section-title">Four Core <span className="gold-word">Service Areas</span></h2>
@@ -90,7 +90,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Mine-to-Market Process ── */}
-      <section className="process" id="process">
+      <section className="process svc-odd" id="process">
         <div className="container" style={{ textAlign: 'center' }}>
           <div className="eyebrow">Our Mine-to-Market Process</div>
           <h2 className="section-title">From the <span className="gold-word">Khewra Range</span> to Your Warehouse</h2>
@@ -135,7 +135,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Quality Promise ── */}
-      <section className="section promise" id="promise">
+      <section className="section promise svc-even" id="promise">
         <div className="container" style={{ textAlign: 'center' }}>
           <div className="eyebrow">Why Importers Choose Us</div>
           <h2 className="section-title">The <span className="gold-word">Al Syedi</span> Promise</h2>
@@ -152,7 +152,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Retail Partners ── */}
-      <section className="partners" id="partners">
+      <section className="partners svc-odd" id="partners">
         <div className="eyebrow">Trusted by Distributors &amp; Retailers Worldwide</div>
         <h3>Powering Salt Brands Across the UK · USA · Canada · EU · MENA</h3>
         <div className="marquee">
