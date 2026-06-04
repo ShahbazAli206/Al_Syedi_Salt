@@ -23,25 +23,16 @@ function ProductCard({ p }) {
         <SaltImage kind={p.kind || 'pink-fine'} alt={p.name} />
       </div>
       <div className="product-info">
-        <h4>{p.name}</h4>
+        <div className="product-name-row">
+          <h4>{p.name}</h4>
+          {p.price && (
+            <div className="price">
+              {p.price} <small>/ {p.unit || 'kg'}</small>
+            </div>
+          )}
+        </div>
         <span className="product-type">{p.type}</span>
         {p.desc && <p className="product-desc">{p.desc}</p>}
-        {p.price && (
-          <div className="price">
-            {p.price} <small>/ {p.unit || 'kg'}</small>
-          </div>
-        )}
-        <div className="product-actions">
-          <Link href="/contact" className="product-view-btn">
-            View Details
-          </Link>
-          <Link href="/contact" className="product-cart-btn" aria-label="Request quote">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-              <path d="M3 3h2l2.4 12.4a2 2 0 002 1.6h9.7a2 2 0 002-1.6L23 6H6"/>
-              <circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/>
-            </svg>
-          </Link>
-        </div>
       </div>
     </div>
   );
