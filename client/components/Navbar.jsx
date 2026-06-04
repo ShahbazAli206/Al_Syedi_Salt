@@ -86,21 +86,22 @@ const NAV = [
   {
     type: 'mega',
     label: 'B2B',
+    href: '/b2b',
     columns: [
       {
         title: 'Commercial',
         items: [
-          { href: '/#pricing',   icon: 'chart',  title: 'Bulk Pricing Tiers', desc: 'Trial · Standard · Container · Enterprise' },
-          { href: '/#packaging', icon: 'box',    title: 'Packaging Options',  desc: '12 formats from FIBC to retail jar' },
-          { href: '/#grades',    icon: 'grind',  title: 'Salt Grade Chart',   desc: 'Pick the right grain size for your line' },
-          { href: '/contact',    icon: 'mail',   title: 'Request a Quote',    desc: 'First quote within 24 business hours' },
+          { href: '/b2b#services', icon: 'cubes', title: 'B2B Salt Solutions',  desc: 'Bulk supply, private label & custom grinds' },
+          { href: '/b2b#pricing',  icon: 'chart', title: 'Bulk Pricing Tiers', desc: 'Trial · Standard · Container · Enterprise' },
+          { href: '/b2b#insights', icon: 'book',  title: 'B2B Salt Insights',  desc: 'Market reports, spec sheets & quality guides' },
+          { href: '/contact',      icon: 'mail',  title: 'Request a Quote',    desc: 'First quote within 24 business hours' },
         ],
       },
       {
         title: 'Logistics',
         items: [
-          { href: '/#markets',   icon: 'globe',   title: 'Shipping Markets',  desc: 'FCL / LCL to 42 countries' },
-          { href: '/#promise',   icon: 'shield',  title: 'Quality Promise',   desc: 'COA · MSDS · COO with every shipment' },
+          { href: '/#markets',  icon: 'globe',  title: 'Shipping Markets', desc: 'FCL / LCL to 42 countries' },
+          { href: '/#promise',  icon: 'shield', title: 'Quality Promise',  desc: 'COA · MSDS · COO with every shipment' },
         ],
       },
     ],

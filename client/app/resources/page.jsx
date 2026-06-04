@@ -53,9 +53,6 @@ export default function ResourcesPage() {
 
       {/* ── HEALTH BENEFITS — Why Pink Salt ── */}
       <section className="benefits res-section-pink" id="benefits">
-        <div className="benefits-crystal" aria-hidden="true">
-          <SaltImage kind="pink-coarse" alt="" />
-        </div>
         <div className="container benefits-inner">
           <div className="benefits-header" data-reveal="up">
             <div className="eyebrow">Why Himalayan Pink Salt</div>

@@ -119,45 +119,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* CAPABILITIES */}
-      <section className="section capabilities hp-odd" id="services">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
-          <div className="eyebrow">What We Offer</div>
-          <h2 className="section-title">End-to-End <span className="gold-word">B2B Salt Solutions</span></h2>
-          <div className="title-rule"></div>
-        </div>
-        <div className="container">
-          <div className="cap-grid" data-reveal-toggle-stagger>
-            <CapCard id="bulk" icon="cubes" title="Bulk Salt Supply"
-              desc="High-volume edible &amp; industrial salt from our Khewra-source mines. Container loads (20ft / 40ft FCL) shipped worldwide. MOQ from 1 metric ton." />
-            <CapCard id="private-label" icon="box" title="Private Label &amp; Packaging"
-              desc="Your brand, our salt. Custom retail jars, pouches, gift boxes &amp; pallet packs. Full label design, barcoding &amp; regulatory dossiers included." />
-            <CapCard id="custom" icon="grind" title="Custom Grinds &amp; Blends"
-              desc="Fine, medium, coarse, granular, powder &amp; chunk — tailored to your industry. Blended with herbs, citrus zest or mineral notes on request." />
-            <CapCard id="lifestyle" icon="lamp" title="Salt Lamps, Bricks &amp; Spa"
-              desc="Hand-carved Himalayan salt lamps, polished salt tiles for halotherapy rooms, bath &amp; spa salt blends — all manufactured to export standards." />
-          </div>
-          {/* Feature strip inside capabilities */}
-          <div className="cap-features" data-reveal-toggle-stagger>
-            {[
-              { icon: 'mountain', label: 'Mine to Market',  sub: 'Full Traceability' },
-              { icon: 'beaker',   label: 'Lab Tested',      sub: 'Every Batch' },
-              { icon: 'ship',     label: 'Secure Shipping', sub: 'Global Coverage' },
-              { icon: 'support',  label: '24/7 B2B Support',sub: 'Dedicated Team' },
-            ].map((f) => (
-              <div className="cap-feature" key={f.label}>
-                <div className="cap-feature-icon"><FeatureIcon name={f.icon} /></div>
-                <div className="cap-feature-text">
-                  <strong>{f.label}</strong>
-                  <span>{f.sub}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
       {/* PARTNERS MARQUEE */}
       <section className="partners hp-even" id="partners" data-reveal-toggle="fade">
         <div className="eyebrow">Trusted by Distributors &amp; Retailers Worldwide</div>
@@ -265,51 +226,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* BULK PRICING TIERS */}
-      <section className="pricing hp-odd" id="pricing">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
-          <div className="eyebrow">Indicative Bulk Pricing</div>
-          <h2 className="section-title">Volume Tiers <span className="gold-word">FOB Karachi</span></h2>
-          <div className="title-rule"></div>
-          <p style={{ color: 'var(--text-dim)', maxWidth: 640, margin: '0 auto', fontSize: '.95rem' }}>
-            Standard Pink Salt Fine, FOB Port Qasim. Pricing valid for the current quarter — final quote depends on grade, packaging and destination.
-          </p>
-        </div>
-        <div className="container">
-          <div className="pricing-grid" data-reveal-toggle-stagger>
-            <PriceTier
-              name="Trial Order"
-              vol="1 – 5 MT"
-              price="$0.85"
-              sub="per kg · LCL groupage"
-              feats={['LCL shipping included', '25 kg PP bags', 'Standard packaging', 'Standard COA & MSDS']}
-            />
-            <PriceTier
-              name="Standard"
-              vol="5 – 20 MT"
-              price="$0.72"
-              sub="per kg · 20ft FCL"
-              feats={['20ft FCL container', '25 / 50 kg bags', 'Customisable labels', 'Free samples · 5 SKU']}
-            />
-            <PriceTier
-              featured
-              name="Container Load"
-              vol="20 – 40 MT"
-              price="$0.58"
-              sub="per kg · 40ft FCL"
-              feats={['40ft FCL container', 'Mix-load up to 6 SKU', 'Private label included', 'Priority production slot', 'Dedicated account manager']}
-            />
-            <PriceTier
-              name="Enterprise"
-              vol="40+ MT / month"
-              price="Bespoke"
-              sub="contract pricing"
-              feats={['Recurring monthly shipments', 'Locked-in quarterly rates', 'Full private label suite', 'Direct mine traceability', 'On-site QC support']}
-            />
-          </div>
-        </div>
-      </section>
-
       {/* PROMISE */}
       <section className="section promise hp-even" id="promise">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
@@ -381,40 +297,6 @@ export default async function Home() {
       {/* FAQ */}
       <FAQ />
 
-      {/* FROM OUR MINE — insights teaser */}
-      <section className="insights hp-even" id="insights">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
-          <div className="eyebrow">From Our Mine</div>
-          <h2 className="section-title">B2B Salt <span className="gold-word">Insights</span></h2>
-          <div className="title-rule"></div>
-        </div>
-        <div className="container">
-          <div className="insights-grid" data-reveal-toggle-stagger>
-            <InsightCard
-              kind="pink-coarse"
-              tag="Market Report"
-              title="Himalayan Pink Salt Demand Hits Record High in EU"
-              body="Q1 export volumes from Pakistan to EU markets grew 18% year-on-year, driven by retail private-label launches and halotherapy growth."
-              meta="6 min read · April 2026"
-            />
-            <InsightCard
-              kind="salt-brick"
-              tag="Spec Sheet"
-              title="A Buyer's Guide to Salt Bricks for Halotherapy Rooms"
-              body="Everything UK and US wellness developers need to know about sourcing, dimensions, sealing, mortar, lighting and lifetime."
-              meta="9 min read · March 2026"
-            />
-            <InsightCard
-              kind="lamp-natural"
-              tag="Quality"
-              title="Why Some Pink Salt Lamps Sweat — and How to Prevent It"
-              body="Hygroscopy, packaging, transit humidity, and the three packaging tweaks that have eliminated 99% of moisture complaints."
-              meta="5 min read · February 2026"
-            />
-          </div>
-        </div>
-      </section>
-
       <Footer />
       <Chatbot />
     </>
@@ -438,19 +320,6 @@ function FeatureIcon({ name }) {
   );
 }
 
-function CapIcon({ name }) {
-  const paths = {
-    cubes: <><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></>,
-    box:   <><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4M21 7v10l-9 4M12 11v10"/></>,
-    grind: <><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></>,
-    lamp:  <><path d="M9 21h6M12 17v4M8 17h8l-1-6H9z"/><circle cx="12" cy="7" r="3"/></>,
-  };
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      {paths[name] || <circle cx="12" cy="12" r="9" />}
-    </svg>
-  );
-}
 
 function ProcessIcon({ name }) {
   const paths = {
@@ -485,15 +354,6 @@ function CollectionIcon({ name }) {
   );
 }
 
-function CapCard({ id, title, desc, icon }) {
-  return (
-    <div className="cap-card" id={id}>
-      <div className="cap-icon-circle"><CapIcon name={icon} /></div>
-      <h3 dangerouslySetInnerHTML={{ __html: title }} />
-      <p dangerouslySetInnerHTML={{ __html: desc }} />
-    </div>
-  );
-}
 
 function PromiseCard({ title, desc, icon }) {
   const paths = {
@@ -583,38 +443,6 @@ function PackCard({ icon, name, spec }) {
   );
 }
 
-function PriceTier({ name, vol, price, sub, feats, featured }) {
-  return (
-    <div className={`pricing-card${featured ? ' featured' : ''}`}>
-      <div className="pricing-tier-name">{name}</div>
-      <div className="pricing-tier-vol">{vol}</div>
-      <div className="pricing-tier-price">
-        {price}{price.startsWith('$') && <small> / kg</small>}
-      </div>
-      <div className="pricing-tier-sub">{sub}</div>
-      <ul className="pricing-tier-feats">
-        {feats.map((f) => <li key={f}>{f}</li>)}
-      </ul>
-      <div className="pricing-tier-cta">
-        <Link href="/contact">Get this quote</Link>
-      </div>
-    </div>
-  );
-}
-
-function InsightCard({ kind, tag, title, body, meta }) {
-  return (
-    <article className="insight-card">
-      <div className="insight-img"><SaltImage kind={kind} alt={title} /></div>
-      <div className="insight-body">
-        <div className="insight-tag">{tag}</div>
-        <h4>{title}</h4>
-        <p>{body}</p>
-        <div className="insight-meta">{meta}</div>
-      </div>
-    </article>
-  );
-}
 
 /* Avatar — deterministic gradient circle with initials */
 function ReviewAvatar({ name }) {
