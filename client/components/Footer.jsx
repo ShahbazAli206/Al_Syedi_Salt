@@ -113,7 +113,7 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="footer-brand">
-            <div className="logo-wrap"><Logo width={120} height={64} /></div>
+            <div className="logo-wrap"><Logo width={200} height={100} /></div>
             <div className="footer-tagline">Himalayan Salt Experts</div>
             <p>
               ISO 22000 &amp; HACCP certified manufacturer and exporter of premium Himalayan
