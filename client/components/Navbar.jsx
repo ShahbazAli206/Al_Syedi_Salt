@@ -47,7 +47,6 @@ const NAV = [
           { href: '/#services',      icon: 'cubes', title: 'Bulk Salt Supply',         desc: 'Container loads · FCL &amp; LCL' },
           { href: '/#private-label', icon: 'box',   title: 'Private Label',            desc: 'Your brand, our salt — full packaging' },
           { href: '/#custom',        icon: 'grind', title: 'Custom Grinds &amp; Blends',   desc: 'Powder, fine, coarse — to your spec' },
-          { href: '/#lifestyle',     icon: 'lamp',  title: 'Lamps, Bricks &amp; Spa',      desc: 'Hand-carved decor &amp; halotherapy' },
         ],
       },
       {
@@ -56,7 +55,6 @@ const NAV = [
           { href: '/#process',  icon: 'pickaxe', title: 'Mine-to-Market Process', desc: '7-step quality flow from mine to port' },
           { href: '/#promise',  icon: 'shield',  title: 'Quality Promise',        desc: 'What every Al Syedi shipment guarantees' },
           { href: '/#partners', icon: 'tag',     title: 'Retail Partners',        desc: 'Brands we supply across the world' },
-          { href: '/#brands-labeled', icon: 'sparkle', title: 'Private Label Brands', desc: 'Selected names we&apos;ve manufactured for' },
         ],
       },
     ],
