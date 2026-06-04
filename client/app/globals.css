@@ -3582,6 +3582,12 @@ body.light-mode .abt-even { background:#fdf6f1 !important; }
 .abt-odd  { background:var(--bg) !important; }
 .abt-even { background:rgba(255,255,255,.03) !important; }
 
+/* Home page alternating (odd=warm-white, even=white) */
+body.light-mode .hp-odd  { background:#fdf6f1 !important; }
+body.light-mode .hp-even { background:#ffffff !important; }
+.hp-odd  { background:rgba(255,255,255,.03) !important; }
+.hp-even { background:var(--bg) !important; }
+
 /* ============================================================
    LIGHT MODE OVERRIDES
    Sections that are intentionally kept dark in light mode

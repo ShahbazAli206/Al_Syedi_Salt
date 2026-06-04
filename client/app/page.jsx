@@ -15,7 +15,7 @@ export default async function Home() {
       <Navbar />
 
       {/* HERO */}
-      <section className="hero">
+      <section className="hero hp-odd">
         <div className="hero-bg" aria-hidden="true" />
         <div className="sparkles" aria-hidden="true">
           <span className="orb"></span><span className="orb"></span>
@@ -59,7 +59,7 @@ export default async function Home() {
       </section>
 
       {/* PRODUCT SHOWCASE — Our Salt. Your Brand. Worldwide. */}
-      <section className="showcase" id="products-overview">
+      <section className="showcase hp-even" id="products-overview">
         <div className="container">
           <h2 className="showcase-title" data-reveal-toggle="up">
             <span className="t1">Our Salt. </span>
@@ -120,7 +120,7 @@ export default async function Home() {
       </section>
 
       {/* CAPABILITIES */}
-      <section className="section capabilities" id="services">
+      <section className="section capabilities hp-odd" id="services">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">What We Offer</div>
           <h2 className="section-title">End-to-End <span className="gold-word">B2B Salt Solutions</span></h2>
@@ -159,7 +159,7 @@ export default async function Home() {
 
 
       {/* PARTNERS MARQUEE */}
-      <section className="partners" id="partners" data-reveal-toggle="fade">
+      <section className="partners hp-even" id="partners" data-reveal-toggle="fade">
         <div className="eyebrow">Trusted by Distributors &amp; Retailers Worldwide</div>
         <h3>Powering Salt Brands Across the UK · USA · Canada · EU · MENA</h3>
         <div className="marquee">
@@ -176,7 +176,7 @@ export default async function Home() {
       </section>
 
       {/* SALT COLLECTIONS */}
-      <section className="houses" id="collections">
+      <section className="houses hp-odd" id="collections">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Our Salt Collections</div>
           <h2 className="section-title">Six Specialist Ranges, <span className="gold-word">One Source</span></h2>
@@ -221,7 +221,7 @@ export default async function Home() {
       </section>
 
       {/* SALT VARIETIES */}
-      <section className="ingredients" id="varieties">
+      <section className="ingredients hp-even" id="varieties">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Explore Our Varieties</div>
           <h2 className="section-title">Every Grade, Every Grind, Every <span className="gold-word">Use Case</span></h2>
@@ -265,71 +265,8 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* PACKAGING OPTIONS */}
-      <section className="pkg-section" id="packaging">
-        <div className="pkg-inner">
-          {/* Header: text LEFT + image RIGHT */}
-          <div className="pkg-header">
-            <div className="pkg-header-text">
-              <div className="pkg-eyebrow">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M5 12l5-5M5 12l5 5"/></svg>
-                PACKAGING OPTIONS
-              </div>
-              <h2 className="pkg-title">From Mine Bag to<br/><span className="pkg-accent">Retail Shelf</span></h2>
-              <p className="pkg-desc">Pick a packaging format that fits your supply chain —<br/>or hand us your brand brief and we&apos;ll design<br/>a custom solution.</p>
-            </div>
-            <div className="pkg-header-img">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/salt-bg.jpg" alt="" />
-            </div>
-          </div>
-
-          {/* 6-col card grid */}
-          <div className="pkg-grid">
-            {[
-              { icon:'fibc',      name:'FIBC Big Bag',       spec:'1,000 KG' },
-              { icon:'ppbag',     name:'PP Woven Bag',        spec:'25 / 50 KG' },
-              { icon:'jute',      name:'Jute Bag',            spec:'25 / 40 KG' },
-              { icon:'carton',    name:'Master Carton',       spec:'10 × 1 KG' },
-              { icon:'jar',       name:'Retail Glass Jar',    spec:'100 / 250 / 500 G' },
-              { icon:'pouch',     name:'Stand-Up Pouch',      spec:'100 / 250 / 500 G' },
-              { icon:'shaker',    name:'Salt Shaker',         spec:'50 / 100 G' },
-              { icon:'grinder',   name:'Refillable Grinder',  spec:'120 G' },
-              { icon:'giftbox',   name:'Gift Box',            spec:'3-PACK / 6-PACK' },
-              { icon:'bulk',      name:'Bulk Lump',           spec:'AS-MINED CHUNKS' },
-              { icon:'palletbox', name:'Pallet Box',          spec:'500–1000 KG' },
-              { icon:'vac',       name:'Vacuum Pack',         spec:'200 G – 5 KG' },
-            ].map((p) => (
-              <div className="pkg-card" key={p.name}>
-                <div className="pkg-card-icon"><PkgIcon name={p.icon} /></div>
-                <div className="pkg-card-name">{p.name}</div>
-                <div className="pkg-card-spec">{p.spec}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Feature strip */}
-          <div className="pkg-feat-strip">
-            {[
-              { icon:'scissors',     label:'Custom Solutions',  sub:'Tailored packaging to fit your brand.' },
-              { icon:'shield-check', label:'Premium Quality',   sub:'Food-grade, durable & export ready.' },
-              { icon:'globe2',       label:'Global Standards',  sub:'Compliant with international packaging norms.' },
-              { icon:'truck',        label:'Secure Delivery',   sub:'Strong packaging for safe worldwide shipping.' },
-            ].map((f) => (
-              <div className="pkg-feat" key={f.label}>
-                <div className="pkg-feat-icon"><PkgFeatIcon name={f.icon} /></div>
-                <div className="pkg-feat-text">
-                  <strong>{f.label}</strong>
-                  <span>{f.sub}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* BULK PRICING TIERS */}
-      <section className="pricing" id="pricing">
+      <section className="pricing hp-odd" id="pricing">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Indicative Bulk Pricing</div>
           <h2 className="section-title">Volume Tiers <span className="gold-word">FOB Karachi</span></h2>
@@ -374,7 +311,7 @@ export default async function Home() {
       </section>
 
       {/* PROMISE */}
-      <section className="section promise" id="promise">
+      <section className="section promise hp-even" id="promise">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Why Importers Choose Us</div>
           <h2 className="section-title">The <span className="gold-word">Al Syedi</span> Promise</h2>
@@ -392,7 +329,7 @@ export default async function Home() {
 
 
       {/* GOOGLE REVIEWS */}
-      <section className="testimonials" id="reviews">
+      <section className="testimonials hp-odd" id="reviews">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">What Our B2B Clients Say</div>
           <h2 className="section-title">Trusted by Importers <span className="gold-word">Across 4 Continents</span></h2>
@@ -445,7 +382,7 @@ export default async function Home() {
       <FAQ />
 
       {/* FROM OUR MINE — insights teaser */}
-      <section className="insights" id="insights">
+      <section className="insights hp-even" id="insights">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">From Our Mine</div>
           <h2 className="section-title">B2B Salt <span className="gold-word">Insights</span></h2>
