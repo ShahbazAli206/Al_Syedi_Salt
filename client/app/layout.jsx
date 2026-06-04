@@ -17,9 +17,9 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: 'Al Syedi Group — Premium Himalayan Pink Salt Manufacturer & Wholesaler',
+  title: 'Syedi Salt - Premium Himalayan Pink Salt',
   description:
-    'Al Syedi Group is an ISO 22000 & HACCP certified manufacturer of premium Himalayan Pink Salt, edible salts, bath blends, salt lamps and industrial salts — bulk supply to 42+ countries including the UK, USA & Canada.',
+    'Syedi Salt is an ISO 22000 & HACCP certified manufacturer of premium Himalayan Pink Salt, edible salts, bath blends, salt lamps and industrial salts — bulk supply to 42+ countries including the UK, USA & Canada.',
   keywords: [
     'Himalayan Pink Salt',
     'Bulk Salt Supplier',
@@ -30,6 +30,10 @@ export const metadata = {
     'Private Label Salt',
     'Al Syedi Group',
   ],
+  icons: {
+    icon: '/web_logo_img.jpeg',
+    apple: '/web_logo_img.jpeg',
+  },
 };
 
 export default function RootLayout({ children }) {
