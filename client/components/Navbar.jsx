@@ -63,28 +63,6 @@ const NAV = [
 
   {
     type: 'mega',
-    label: 'About Us',
-    href: '/about',
-    columns: [
-      {
-        title: 'Our Story',
-        items: [
-          { href: '/about#about',       icon: 'mountain', title: 'About Al Syedi',   desc: 'Our mine-to-market story since 1998' },
-          { href: '/about#khewra',      icon: 'pickaxe',  title: 'The Khewra Range', desc: 'Hand-mined · 2nd-largest salt mine on Earth' },
-        ],
-      },
-      {
-        title: 'Compliance',
-        items: [
-          { href: '/about#certifications', icon: 'shield', title: 'Certifications', desc: 'ISO, HACCP, BRC, Halal, Kosher &amp; more' },
-          { href: '/about#markets',        icon: 'globe',  title: 'Global Markets', desc: '42 countries served — and growing' },
-        ],
-      },
-    ],
-  },
-
-  {
-    type: 'mega',
     label: 'B2B',
     href: '/b2b',
     columns: [
@@ -95,13 +73,6 @@ const NAV = [
           { href: '/b2b#pricing',  icon: 'chart', title: 'Bulk Pricing Tiers', desc: 'Trial · Standard · Container · Enterprise' },
           { href: '/b2b#insights', icon: 'book',  title: 'B2B Salt Insights',  desc: 'Market reports, spec sheets & quality guides' },
           { href: '/contact',      icon: 'mail',  title: 'Request a Quote',    desc: 'First quote within 24 business hours' },
-        ],
-      },
-      {
-        title: 'Logistics',
-        items: [
-          { href: '/#markets',  icon: 'globe',  title: 'Shipping Markets', desc: 'FCL / LCL to 42 countries' },
-          { href: '/#promise',  icon: 'shield', title: 'Quality Promise',  desc: 'COA · MSDS · COO with every shipment' },
         ],
       },
     ],
@@ -119,6 +90,28 @@ const NAV = [
           { href: '/resources#composition',    icon: 'beaker',  title: 'Mineral Composition',  desc: 'Trace-mineral breakdown' },
           { href: '/resources#grades',         icon: 'chart',   title: 'Salt Grade Chart',     desc: 'Grain sizes &amp; uses' },
           { href: '/resources#brands-labeled', icon: 'sparkle', title: 'Private Label Brands', desc: 'Brands we manufacture for' },
+        ],
+      },
+    ],
+  },
+
+  {
+    type: 'mega',
+    label: 'About Us',
+    href: '/about',
+    columns: [
+      {
+        title: 'Our Story',
+        items: [
+          { href: '/about#about',       icon: 'mountain', title: 'About Al Syedi',   desc: 'Our mine-to-market story since 1998' },
+          { href: '/about#khewra',      icon: 'pickaxe',  title: 'The Khewra Range', desc: 'Hand-mined · 2nd-largest salt mine on Earth' },
+        ],
+      },
+      {
+        title: 'Compliance',
+        items: [
+          { href: '/about#certifications', icon: 'shield', title: 'Certifications', desc: 'ISO, HACCP, BRC, Halal, Kosher &amp; more' },
+          { href: '/about#markets',        icon: 'globe',  title: 'Global Markets', desc: '42 countries served — and growing' },
         ],
       },
     ],
