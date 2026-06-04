@@ -61,8 +61,8 @@ export default async function ProductsPage() {
       </section>
 
       {/* ── Catalogue + Grid ── */}
-      <section className="section products-catalogue">
-        <div className="container" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+      <section className="section products-catalogue" style={{ paddingTop: '2rem' }}>
+        <div className="container" style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
           <div className="eyebrow">Our Catalogue</div>
           <h2 className="section-title">22+ SKUs · 5 Categories · <span className="gold-word">One Trusted Source</span></h2>
           <p style={{ color: 'var(--text-dim)', maxWidth: 620, margin: '.75rem auto 0', fontSize: '.95rem' }}>
