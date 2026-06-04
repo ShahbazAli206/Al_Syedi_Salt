@@ -13,47 +13,8 @@ export default function AboutPage() {
     <>
       <Navbar />
 
-      {/* ── Hero ── */}
-      <section className="about-pg-hero abt-odd">
-        <div className="about-pg-hero-inner">
-          <div className="about-pg-hero-text">
-            <div className="eyebrow">Our Story</div>
-            <h1 className="about-pg-title">
-              From the Khewra Mines to<br />
-              <span className="gold-word">Kitchens &amp; Spas Worldwide</span>
-            </h1>
-            <div className="about-pg-rule" />
-            <p className="about-pg-desc">
-              For over two decades, Al Syedi Group has been a trusted name in the global salt trade — quarrying, refining and exporting the world&apos;s purest Himalayan Pink Salt direct from the Khewra Salt Range, Pakistan.
-            </p>
-            <div className="about-pg-hero-actions">
-              <Link href="/contact" className="btn btn-gold">Partner With Us
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </Link>
-              <Link href="/products" className="btn btn-outline">View Products</Link>
-            </div>
-          </div>
-          <div className="about-pg-hero-img">
-            <SaltImage kind="crystal-display" alt="Khewra Pink Salt Crystals" />
-          </div>
-        </div>
-        <div className="about-pg-stats">
-          {[
-            { num: '1998',    lbl: 'Founded' },
-            { num: '25+',     lbl: 'Years Experience' },
-            { num: '320+',    lbl: 'B2B Clients' },
-            { num: '42+',     lbl: 'Countries Served' },
-          ].map((s) => (
-            <div className="about-pg-stat" key={s.lbl}>
-              <span className="about-pg-stat-num">{s.num}</span>
-              <span className="about-pg-stat-lbl">{s.lbl}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── About Al Syedi ── */}
-      <section className="about abt-even" id="about">
+      <section className="about abt-odd" id="about">
         <div className="about-grid">
           <div className="about-text">
             <div className="eyebrow">About Al Syedi Group</div>
