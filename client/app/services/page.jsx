@@ -168,19 +168,8 @@ export default function ServicesPage() {
         <div className="partners-note">Private Label &amp; Bulk Supply Partner — Names Indicate Retail Channels Served</div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="svc-cta">
-        <div className="svc-cta-inner">
-          <h2>Ready to Source Premium Salt at <span className="gold-word">Wholesale Prices?</span></h2>
-          <p>Get a personalised quote within 24 business hours — FOB Karachi or CIF to your nearest port.</p>
-          <Link href="/contact" className="btn btn-gold">
-            Request a Quote Now
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </Link>
-        </div>
-      </section>
 
-      <Footer />
+<Footer />
       <Chatbot />
     </>
   );

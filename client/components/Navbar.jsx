@@ -64,21 +64,20 @@ const NAV = [
   {
     type: 'mega',
     label: 'About Us',
+    href: '/about',
     columns: [
       {
         title: 'Our Story',
         items: [
-          { href: '/#about',       icon: 'mountain', title: 'About Al Syedi',         desc: 'Our mine-to-market story since 1998' },
-          { href: '/#benefits',    icon: 'leaf',     title: 'Health Benefits',        desc: '84 trace minerals — pink salt advantage' },
-          { href: '/#composition', icon: 'beaker',   title: 'Mineral Composition',    desc: 'Typical lab analysis · NaCl, CaSO₄, MgSO₄' },
-          { href: '/#process',     icon: 'pickaxe',  title: 'The Khewra Range',       desc: 'Hand-mined · 2nd-largest salt mine on Earth' },
+          { href: '/about#about',       icon: 'mountain', title: 'About Al Syedi',   desc: 'Our mine-to-market story since 1998' },
+          { href: '/about#khewra',      icon: 'pickaxe',  title: 'The Khewra Range', desc: 'Hand-mined · 2nd-largest salt mine on Earth' },
         ],
       },
       {
         title: 'Compliance',
         items: [
-          { href: '/#certifications', icon: 'shield', title: 'Certifications',  desc: 'ISO, HACCP, BRC, Halal, Kosher &amp; more' },
-          { href: '/#markets',        icon: 'globe',  title: 'Global Markets',  desc: '42 countries served — and growing' },
+          { href: '/about#certifications', icon: 'shield', title: 'Certifications', desc: 'ISO, HACCP, BRC, Halal, Kosher &amp; more' },
+          { href: '/about#markets',        icon: 'globe',  title: 'Global Markets', desc: '42 countries served — and growing' },
         ],
       },
     ],
