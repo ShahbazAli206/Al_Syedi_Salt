@@ -1282,16 +1282,30 @@ body.light-mode .process{background:#fff}
 
 /* New photo-card design */
 .house-card{
-  background:var(--card);border:1px solid rgba(232,165,160,.1);
-  border-radius:14px;overflow:hidden;cursor:pointer;
-  display:flex;flex-direction:column;
-  transition:transform .4s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .4s;
-  position:relative;
+  background:var(--card);
+  border:1.5px solid rgba(232,165,160,.25);
+  border-radius:18px;overflow:hidden;cursor:pointer;
+  display:flex;flex-direction:column;position:relative;
+  transition:transform .4s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .4s;
+  box-shadow:
+    0 2px 0 rgba(168,72,72,.12),
+    0 6px 20px rgba(168,72,72,.15),
+    0 18px 40px rgba(168,72,72,.1);
 }
+/* top accent line always visible */
+.house-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:3;
+  background:linear-gradient(90deg,var(--rose),#e8a5a0,var(--rose));
+  opacity:.5;transition:opacity .3s;
+}
+.house-card:hover::before{opacity:1}
 .house-card:hover{
-  transform:translateY(-8px);
-  border-color:rgba(232,165,160,.35);
-  box-shadow:0 20px 50px rgba(0,0,0,.5), 0 0 0 1px rgba(232,165,160,.12);
+  transform:translateY(-10px) scale(1.02);
+  border-color:rgba(232,165,160,.5);
+  box-shadow:
+    0 2px 0 rgba(168,72,72,.18),
+    0 16px 40px rgba(168,72,72,.24),
+    0 32px 60px rgba(168,72,72,.15);
 }
 
 /* Icon circle at top */
@@ -1360,6 +1374,25 @@ html.reveals-on .houses-carousel.in-view > .house-card{
 
 /* house-rule not needed in new design */
 .house-rule{display:none}
+
+/* Light mode house cards */
+body.light-mode .house-card{
+  background:#fff;
+  border-color:rgba(168,72,72,.18);
+  box-shadow:
+    0 2px 0 rgba(168,72,72,.1),
+    0 6px 20px rgba(168,72,72,.14),
+    0 18px 40px rgba(168,72,72,.09);
+}
+body.light-mode .house-card:hover{
+  border-color:rgba(168,72,72,.38);
+  box-shadow:
+    0 2px 0 rgba(168,72,72,.15),
+    0 16px 40px rgba(168,72,72,.22),
+    0 32px 60px rgba(168,72,72,.12);
+}
+body.light-mode .house-card-body h4{color:var(--ink)}
+body.light-mode .house-card-body p{color:#5a4040}
 
 .houses-cta{text-align:center;margin-top:3rem}
 .houses-cta .btn{
@@ -1638,14 +1671,14 @@ body.light-mode .rc-quote::before{color:rgba(168,72,72,.18)}
 }
 .showcase-card{
   background:var(--card);
-  border:1px solid rgba(232,165,160,.2);
+  border:1.5px solid rgba(232,165,160,.28);
   border-radius:18px;overflow:hidden;cursor:pointer;position:relative;
   transition:transform .45s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .45s;
   box-shadow:
-    0 2px 4px rgba(0,0,0,.15),
-    0 8px 24px rgba(168,72,72,.12),
-    0 16px 40px rgba(168,72,72,.07),
-    inset 0 1px 0 rgba(255,255,255,.06);
+    0 2px 0px rgba(168,72,72,.15),
+    0 6px 18px rgba(168,72,72,.18),
+    0 18px 40px rgba(168,72,72,.13),
+    0 1px 0 rgba(255,255,255,.07) inset;
 }
 /* staggered reveal on load */
 .showcase-card:nth-child(1){animation:cardRise .7s .0s both}
@@ -1733,16 +1766,18 @@ body.light-mode .rc-quote::before{color:rgba(168,72,72,.18)}
 /* light mode */
 body.light-mode .showcase-card{
   background:#fff;
+  border-color:rgba(168,72,72,.2);
   box-shadow:
-    0 2px 4px rgba(168,72,72,.06),
-    0 8px 24px rgba(168,72,72,.1),
-    0 16px 40px rgba(168,72,72,.06);
+    0 2px 0px rgba(168,72,72,.1),
+    0 6px 18px rgba(168,72,72,.16),
+    0 18px 40px rgba(168,72,72,.12);
 }
 body.light-mode .showcase-card:hover{
+  border-color:rgba(168,72,72,.45);
   box-shadow:
-    0 2px 4px rgba(168,72,72,.08),
-    0 16px 40px rgba(168,72,72,.18),
-    0 32px 64px rgba(168,72,72,.1);
+    0 2px 0px rgba(168,72,72,.15),
+    0 16px 40px rgba(168,72,72,.24),
+    0 32px 64px rgba(168,72,72,.16);
 }
 body.light-mode .showcase-body{background:linear-gradient(160deg,rgba(168,72,72,.03) 0%,rgba(168,72,72,.06) 100%)}
 body.light-mode .showcase-card:hover .showcase-body{background:linear-gradient(160deg,rgba(168,72,72,.06) 0%,rgba(168,72,72,.1) 100%)}
