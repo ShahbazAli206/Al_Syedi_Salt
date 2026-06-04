@@ -35,7 +35,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body>
+      <body className="light-mode">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('alsyedi-theme');if(t==='dark'){document.body.classList.remove('light-mode')}else{document.body.classList.add('light-mode')}}catch(e){}})();`,
+          }}
+        />
         <LightModeBackground />
         {children}
         <ScrollAnimator />

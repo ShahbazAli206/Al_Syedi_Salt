@@ -81,6 +81,22 @@ export default function Chatbot() {
     <>
       <div className="floating-actions">
         <a
+          className="fab fab-site"
+          aria-label="Visit Al Syedi Group"
+          href="https://al-syedi.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://al-syedi.com/wp/wp-content/uploads/2025/08/AL-SYEDI-LOGO.pdf-e1762171534475-231x300.png"
+            alt="Al Syedi Group"
+            width={36}
+            height={46}
+            style={{ objectFit: 'contain' }}
+          />
+        </a>
+        <a
           className="fab green"
           aria-label="Chat on WhatsApp"
           href="https://wa.me/17809526108"

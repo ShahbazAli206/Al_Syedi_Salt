@@ -111,23 +111,15 @@ const NAV = [
   {
     type: 'mega',
     label: 'Resources',
+    href: '/resources',
     columns: [
       {
-        title: 'Learn',
+        title: 'Resources',
         items: [
-          { href: '/#benefits',    icon: 'leaf',    title: 'Health Benefits',     desc: 'Why pink Himalayan salt' },
-          { href: '/#composition', icon: 'beaker',  title: 'Mineral Composition', desc: 'Trace-mineral breakdown' },
-          { href: '/#grades',      icon: 'chart',   title: 'Salt Grade Chart',    desc: 'Grain sizes &amp; uses' },
-          { href: '/#faq',         icon: 'help',    title: 'FAQ',                 desc: 'MOQ, Incoterms, payment, lead times' },
-        ],
-      },
-      {
-        title: 'Trust',
-        items: [
-          { href: '/#reviews',  icon: 'star',    title: 'Google Reviews',      desc: '4.9★ from 287 verified clients' },
-          { href: '/#insights', icon: 'book',    title: 'B2B Salt Insights',   desc: 'Market reports &amp; buyer guides' },
-          { href: '/#partners', icon: 'tag',     title: 'Retail Partners',     desc: 'Tesco · Walmart · Costco · Loblaws' },
-          { href: '/#brands-labeled', icon: 'sparkle', title: 'Private Label Brands', desc: 'Brands we manufacture for' },
+          { href: '/resources#benefits',       icon: 'leaf',    title: 'Health Benefits',      desc: 'Why pink Himalayan salt' },
+          { href: '/resources#composition',    icon: 'beaker',  title: 'Mineral Composition',  desc: 'Trace-mineral breakdown' },
+          { href: '/resources#grades',         icon: 'chart',   title: 'Salt Grade Chart',     desc: 'Grain sizes &amp; uses' },
+          { href: '/resources#brands-labeled', icon: 'sparkle', title: 'Private Label Brands', desc: 'Brands we manufacture for' },
         ],
       },
     ],
@@ -142,6 +134,7 @@ const NAV = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);            // mobile drawer
   const [activeMega, setActiveMega] = useState(null); // which mega is open inline on mobile
+  const [activeDesktop, setActiveDesktop] = useState(null); // which desktop dropdown is open
   const [scrolled, setScrolled] = useState(false);
   const [light, setLight] = useState(true);
 
@@ -153,6 +146,7 @@ export default function Navbar() {
       setLight(false);
     } else {
       document.body.classList.add('light-mode');
+      localStorage.setItem('alsyedi-theme', 'light');
       setLight(true);
     }
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -177,10 +171,68 @@ export default function Navbar() {
   function closeAll() {
     setOpen(false);
     setActiveMega(null);
+    setActiveDesktop(null);
   }
+
+  // Close desktop dropdown when clicking outside
+  useEffect(() => {
+    if (activeDesktop === null) return;
+    function handleClick(e) {
+      if (!e.target.closest('.has-mega')) setActiveDesktop(null);
+    }
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+  }, [activeDesktop]);
 
   return (
     <header className="site-header">
+      {/* ===== Top bar stripe ===== */}
+      <div className="top-bar">
+        <div className="top-bar-left">
+          <a href="mailto:sales@alsyedigroup.com" className="top-bar-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/>
+            </svg>
+            sales@alsyedigroup.com
+          </a>
+          <a href="tel:+17809526108" className="top-bar-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.86 19.86 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.86 19.86 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.37 1.6.7 2.36a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.76.33 1.55.57 2.36.7A2 2 0 0122 16.92z"/>
+            </svg>
+            +1 (780) 952-6108
+          </a>
+        </div>
+        <div className="top-bar-right">
+          <a href="#" aria-label="Facebook">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="X / Twitter">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05a3.74 3.74 0 013.36-1.85c3.6 0 4.27 2.37 4.27 5.45zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57z"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/17809526108" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2s-.8 1-1 1.2c-.2.2-.4.2-.7 0-.4-.2-1.5-.5-2.8-1.7-1-.9-1.7-2.1-1.9-2.4-.2-.4 0-.5.2-.7l.5-.6c.2-.2.2-.3.4-.6.1-.2.1-.4 0-.6l-.9-2.2c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.2 3.3 5.2 4.6 1.8.8 2.5.8 3.4.7.5-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.7-.4zM12 22a10 10 0 01-5.3-1.5L2 22l1.6-4.5A10 10 0 1112 22z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
       {/* ===== Main nav ===== */}
       <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
         <Link href="/" className="logo" aria-label="Al Syedi Group home" onClick={closeAll}>
@@ -198,13 +250,27 @@ export default function Navbar() {
               );
             }
             return (
-              <li key={i} className="has-dropdown has-mega">
-                <button>
-                  {item.label}
-                  <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                    <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
-                  </svg>
-                </button>
+              <li
+                key={i}
+                className={`has-dropdown has-mega${activeDesktop === i ? ' mega-open' : ''}`}
+                onMouseEnter={() => setActiveDesktop(i)}
+                onMouseLeave={() => setActiveDesktop(null)}
+              >
+                {item.href ? (
+                  <Link href={item.href} onClick={() => { setActiveDesktop(null); closeAll(); }}>
+                    {item.label}
+                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                      <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
+                    </svg>
+                  </Link>
+                ) : (
+                  <button onClick={() => setActiveDesktop(activeDesktop === i ? null : i)}>
+                    {item.label}
+                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                      <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
+                    </svg>
+                  </button>
+                )}
                 <div className="dropdown mega">
                   {item.columns.map((col, j) => (
                     <div className="mega-col" key={j}>
@@ -245,7 +311,12 @@ export default function Navbar() {
             )}
           </button>
 
-          <Link href="/contact" className="quote-btn">Request a Quote</Link>
+          <Link href="/contact" className="quote-btn">
+            Request a Quote
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7v10"/>
+            </svg>
+          </Link>
           <button
             className={`menu-toggle${open ? ' active' : ''}`}
             onClick={() => setOpen((v) => !v)}
