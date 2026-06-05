@@ -12,7 +12,7 @@ export default function B2BPage() {
       <Navbar />
 
       {/* ── Hero ── */}
-      <section className="svc-hero svc-odd">
+      <section className="svc-hero svc-even">
         <div className="svc-hero-inner">
           <div className="svc-hero-text">
             <div className="eyebrow">B2B Trade Hub</div>
@@ -22,17 +22,14 @@ export default function B2BPage() {
               Transparent volume pricing, end-to-end salt solutions, and market insights — everything your B2B buying desk needs, direct from the Khewra mines.
             </p>
             <div className="svc-hero-actions">
-              <Link href="/contact" className="btn btn-gold">
-                Request a Quote
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </Link>
               <Link href="#pricing" className="btn btn-outline">
                 View Pricing
               </Link>
             </div>
           </div>
           <div className="svc-hero-img" aria-hidden="true">
-            <SaltImage kind="pink-granular" alt="Himalayan Pink Salt bulk supply" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/header_images/img5.png" alt="Himalayan Pink Salt bulk supply" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'18px'}} />
           </div>
         </div>
 
@@ -53,7 +50,7 @@ export default function B2BPage() {
       </section>
 
       {/* ── End-to-End B2B Salt Solutions ── */}
-      <section className="section capabilities svc-even" id="services">
+      <section className="section capabilities svc-odd" id="services">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">What We Offer</div>
           <h2 className="section-title">End-to-End <span className="gold-word">B2B Salt Solutions</span></h2>
@@ -90,7 +87,7 @@ export default function B2BPage() {
       </section>
 
       {/* ── Volume Tiers FOB Karachi ── */}
-      <section className="pricing svc-odd" id="pricing">
+      <section className="pricing svc-even" id="pricing">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Indicative Bulk Pricing</div>
           <h2 className="section-title">Volume Tiers <span className="gold-word">FOB Karachi</span></h2>
@@ -135,7 +132,7 @@ export default function B2BPage() {
       </section>
 
       {/* ── B2B Salt Insights ── */}
-      <section className="insights svc-even" id="insights">
+      <section className="insights svc-odd" id="insights">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">From Our Mine</div>
           <h2 className="section-title">B2B Salt <span className="gold-word">Insights</span></h2>
@@ -169,7 +166,7 @@ export default function B2BPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="res-cta svc-odd">
+      <section className="res-cta svc-even">
         <div className="container" style={{ textAlign: 'center' }}>
           <h2 className="section-title">Ready to <span className="gold-word">Partner</span> With Us?</h2>
           <p style={{ color: 'var(--text-dim)', maxWidth: 560, margin: '1rem auto 2rem', fontSize: '.95rem' }}>

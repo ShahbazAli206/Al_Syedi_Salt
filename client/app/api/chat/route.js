@@ -17,12 +17,12 @@ About Al Syedi Group:
 - Certifications: ISO 22000, HACCP, BRC AA+, Halal (JAKIM), Kosher (OU), FDA Registered, USDA Organic (bath range), GMP, Non-GMO Project Verified, Vegan Society, ISO 14001
 - Head office: Khewra Salt Range, District Jhelum, Punjab, Pakistan
 - Regional sales offices: UK (Manchester), USA (Newark NJ), Canada (Mississauga), UAE (Jebel Ali), Germany (Hamburg)
-- Contact: sales@alsyedigroup.com · +92 323 538 3806 (WhatsApp) · Mon–Sat 9 AM – 6 PM PKT
+- Contact: info@al-syedi.com · Toll Free: +1 (877) 898-3373 · WhatsApp: +1 (780) 952-6108 · Mon–Sat 9 AM – 6 PM PKT
 - Response promise: within 24 business hours
 
 Guidelines:
 - Keep replies under 4 sentences unless the user explicitly asks for detail
-- For exact quotations or custom briefs, direct users to request a quote or email sales@alsyedigroup.com
+- For exact quotations or custom briefs, direct users to request a quote or email info@al-syedi.com
 - Never invent specifics not listed above
 - If asked something off-topic, gently steer back to salt manufacturing and supply`;
 
@@ -36,7 +36,7 @@ export async function POST(request) {
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
     return Response.json({
-      reply: "AI assistant isn't configured yet. Email sales@alsyedigroup.com for a quick response.",
+      reply: "AI assistant isn't configured yet. Email info@al-syedi.com for a quick response.",
     });
   }
 
@@ -69,7 +69,7 @@ export async function POST(request) {
     const errText = await res.text();
     console.error('Groq API error:', res.status, errText);
     return Response.json({
-      reply: "Sorry — I'm having trouble right now. Please email sales@alsyedigroup.com for a quick response.",
+      reply: "Sorry — I'm having trouble right now. Please email info@al-syedi.com for a quick response.",
     });
   }
 

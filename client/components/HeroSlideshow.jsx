@@ -3,10 +3,12 @@
 import { useEffect, useState } from 'react';
 
 const IMAGES = [
-  '/header_images/img1.png',
-  '/header_images/img2.png',
-  '/header_images/img3.png',
+  '/header_images/img6.png',
+  '/header_images/img5.png',
   '/header_images/img4.png',
+  '/header_images/img3.png',
+  '/header_images/img2.png',
+  '/header_images/img1.png',
 ];
 
 export default function HeroSlideshow() {

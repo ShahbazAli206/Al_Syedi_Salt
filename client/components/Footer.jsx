@@ -118,13 +118,13 @@ export default function Footer() {
                 <span className="ft-ci-dot">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
                 </span>
-                <span>+92 323 538 3806</span>
+                <span>Toll Free: +1 (877) 898-3373</span>
               </div>
               <div className="ft-ci">
                 <span className="ft-ci-dot">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
                 </span>
-                <span>sales@alsyedigroup.com</span>
+                <span>info@al-syedi.com</span>
               </div>
               <div className="ft-ci">
                 <span className="ft-ci-dot">
@@ -153,26 +153,6 @@ export default function Footer() {
 
       {/* ── Bottom bar — dark with mountain ── */}
       <div className="ft-bar">
-        <div className="ft-bar-mountain">
-          <svg viewBox="0 0 600 160" preserveAspectRatio="xMinYMax slice">
-            <defs>
-              <linearGradient id="mg1" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#d4786a"/>
-                <stop offset="100%" stopColor="#a85040"/>
-              </linearGradient>
-              <linearGradient id="mg2" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#b85848"/>
-                <stop offset="100%" stopColor="#7a3028"/>
-              </linearGradient>
-            </defs>
-            <rect width="600" height="160" fill="#e8a090" opacity=".35"/>
-            <path d="M0 100 L60 40 L100 65 L160 15 L210 55 L260 30 L310 70 L360 25 L420 60 L470 35 L530 75 L600 50 L600 160 L0 160Z" fill="url(#mg1)" opacity=".5"/>
-            <path d="M0 120 L50 60 L90 85 L150 30 L200 70 L240 45 L300 80 L350 40 L410 75 L460 50 L520 90 L580 60 L600 70 L600 160 L0 160Z" fill="url(#mg2)" opacity=".6"/>
-            <path d="M155 32 L160 15 L165 35" fill="rgba(255,255,255,.5)"/>
-            <path d="M355 28 L360 25 L365 30" fill="rgba(255,255,255,.4)"/>
-            <path d="M0 140 L80 110 L180 130 L280 105 L380 125 L480 100 L600 120 L600 160 L0 160Z" fill="#2c1810" opacity=".6"/>
-          </svg>
-        </div>
         <div className="ft-bar-inner">
           <div className="ft-bar-left">
             <p className="ft-bar-copy">© 2026 Al Syedi Group • مجموعة السيدي</p>

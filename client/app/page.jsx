@@ -113,7 +113,7 @@ export default async function Home() {
       </section>
 
       {/* PARTNERS MARQUEE */}
-      <section className="partners hp-even" id="partners" data-reveal-toggle="fade">
+      <section className="partners hp-odd" id="partners" data-reveal-toggle="fade">
         <div className="eyebrow">Trusted by Distributors &amp; Retailers Worldwide</div>
         <h3>Powering Salt Brands Across the UK · USA · Canada · EU · MENA</h3>
         <div className="marquee">
@@ -130,7 +130,7 @@ export default async function Home() {
       </section>
 
       {/* SALT COLLECTIONS */}
-      <section className="houses hp-odd" id="collections">
+      <section className="houses hp-even" id="collections">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Our Salt Collections</div>
           <h2 className="section-title">Six Specialist Ranges, <span className="gold-word">One Source</span></h2>
@@ -176,7 +176,7 @@ export default async function Home() {
       </section>
 
       {/* SALT VARIETIES */}
-      <section className="ingredients hp-even" id="varieties">
+      <section className="ingredients hp-odd" id="varieties">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Explore Our Varieties</div>
           <h2 className="section-title">Every Grade, Every Grind, Every <span className="gold-word">Use Case</span></h2>

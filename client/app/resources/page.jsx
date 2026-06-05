@@ -20,7 +20,7 @@ export default function ResourcesPage() {
       <Navbar />
 
       {/* ── Resources Hero ── */}
-      <section className="res-hero">
+      <section className="res-hero hp-odd">
         <div className="res-hero-inner">
           <div className="res-hero-text">
             <div className="eyebrow">Knowledge Centre</div>
@@ -53,7 +53,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* ── HEALTH BENEFITS — Why Pink Salt ── */}
-      <section className="benefits res-section-pink" id="benefits">
+      <section className="benefits hp-even" id="benefits">
         <div className="container benefits-inner">
           <div className="benefits-header" data-reveal="up">
             <div className="eyebrow">Why Himalayan Pink Salt</div>
@@ -70,7 +70,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* ── MINERAL COMPOSITION ── */}
-      <section className="minerals res-section-white" id="composition">
+      <section className="minerals hp-odd" id="composition">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Typical Analysis</div>
           <h2 className="section-title">Mineral <span className="gold-word">Composition</span></h2>
@@ -133,7 +133,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* ── SALT GRADE REFERENCE CHART ── */}
-      <section className="grades res-section-pink" id="grades">
+      <section className="grades hp-even" id="grades">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Grain Size Reference</div>
           <h2 className="section-title">Pick Your <span className="gold-word">Grade</span></h2>
@@ -154,7 +154,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* ── BRAND STRIP ── */}
-      <section className="brand-strip res-section-white" id="brands-labeled" data-reveal-toggle="fade">
+      <section className="brand-strip hp-odd" id="brands-labeled" data-reveal-toggle="fade">
         <div className="brand-strip-title">Brands We&apos;ve Privately Labelled For</div>
         <div className="brand-strip-track" data-reveal-toggle-stagger>
           {[
@@ -173,7 +173,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="res-cta res-section-pink">
+      <section className="res-cta hp-even">
         <div className="container" style={{ textAlign: 'center' }}>
           <h2 className="section-title">Ready to <span className="gold-word">Partner</span> With Us?</h2>
           <p style={{ color: 'var(--text-dim)', maxWidth: 560, margin: '1rem auto 2rem', fontSize: '.95rem' }}>

@@ -12,37 +12,34 @@ export default function ServicesPage() {
       <Navbar />
 
       {/* ── Hero ── */}
-      <section className="svc-hero svc-odd">
+      <section className="svc-hero hp-odd">
         <div className="svc-hero-inner">
           <div className="svc-hero-text">
-            <div className="eyebrow">Our Services</div>
-            <h1 className="svc-hero-title">End-to-End <span className="gold-word">B2B Salt Solutions</span></h1>
+            <div className="eyebrow">Specialist Salt Services</div>
+            <h1 className="svc-hero-title">Khewra-Sourced. Custom-Crafted. <span className="gold-word">World-Ready.</span></h1>
             <div className="svc-hero-rule" />
             <p className="svc-hero-desc">
-              From bulk container loads to private-label retail packaging — Al Syedi Group handles every step of your salt supply chain, direct from the Khewra mines.
+              Custom grinds, private-label packaging, and container-load bulk supply — sourced directly from the Khewra Salt Range and delivered worldwide with full traceability.
             </p>
             <div className="svc-hero-actions">
-              <Link href="/contact" className="btn btn-gold">
-                Request a Quote
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </Link>
-              <Link href="/products" className="btn btn-outline">
-                View Products
+              <Link href="#process" className="btn btn-outline">
+                Our Process
               </Link>
             </div>
           </div>
           <div className="svc-hero-img" aria-hidden="true">
-            <SaltImage kind="pink-coarse" alt="Salt supply" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/header_images/img6.png" alt="Salt supply" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'18px'}} />
           </div>
         </div>
 
         {/* Stats strip */}
         <div className="svc-stats">
           {[
-            { num: '25+',    lbl: 'Years Experience' },
-            { num: '42+',    lbl: 'Countries Served' },
-            { num: '320+',   lbl: 'B2B Clients' },
-            { num: '18K+ MT',lbl: 'Shipped Annually' },
+            { num: '12+',    lbl: 'Packaging Formats' },
+            { num: '7-Step', lbl: 'Quality Process' },
+            { num: '48hr',   lbl: 'Quote Turnaround' },
+            { num: 'FCL & LCL', lbl: 'Shipping Worldwide' },
           ].map((s) => (
             <div className="svc-stat" key={s.lbl}>
               <span className="svc-stat-num">{s.num}</span>
@@ -52,45 +49,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── What We Do ── */}
-      <section className="section capabilities svc-even" id="services">
-        <div className="container" style={{ textAlign: 'center' }}>
-          <div className="eyebrow">What We Offer</div>
-          <h2 className="section-title">Four Core <span className="gold-word">Service Areas</span></h2>
-          <div className="title-rule"></div>
-        </div>
-        <div className="container">
-          <div className="brands-grid" data-reveal-toggle-stagger>
-            <SvcBrandCard id="bulk" icon="cubes" title="Bulk Salt Supply"
-              desc="High-volume edible & industrial salt from our Khewra-source mines. Container loads (20ft / 40ft FCL) shipped worldwide. MOQ from 1 metric ton." />
-            <SvcBrandCard id="private-label" icon="box" title="Private Label & Packaging"
-              desc="Your brand, our salt. Custom retail jars, pouches, gift boxes & pallet packs. Full label design, barcoding & regulatory dossiers included." />
-            <SvcBrandCard id="custom" icon="grind" title="Custom Grinds & Blends"
-              desc="Fine, medium, coarse, granular, powder & chunk — tailored to your industry. Blended with herbs, citrus zest or mineral notes on request." />
-            <SvcBrandCard id="lifestyle" icon="lamp" title="Salt Lamps, Bricks & Spa"
-              desc="Hand-carved Himalayan salt lamps, polished salt tiles for halotherapy rooms, bath & spa salt blends — all manufactured to export standards." />
-          </div>
-          <div className="cap-features">
-            {[
-              { icon: 'mountain', label: 'Mine to Market',   sub: 'Full Traceability' },
-              { icon: 'beaker',   label: 'Lab Tested',       sub: 'Every Batch' },
-              { icon: 'ship',     label: 'Secure Shipping',  sub: 'Global Coverage' },
-              { icon: 'support',  label: '24/7 B2B Support', sub: 'Dedicated Team' },
-            ].map((f) => (
-              <div className="cap-feature" key={f.label}>
-                <div className="cap-feature-icon"><SvcFeatureIcon name={f.icon} /></div>
-                <div className="cap-feature-text">
-                  <strong>{f.label}</strong>
-                  <span>{f.sub}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── Packaging Options ── */}
-      <section className="pkg-section svc-odd" id="packaging">
+      <section className="pkg-section hp-even" id="packaging">
         <div className="pkg-inner">
           <div className="pkg-header">
             <div className="pkg-header-text">
@@ -120,8 +81,8 @@ export default function ServicesPage() {
               { icon:'bulk',      name:'Bulk Lump',           spec:'AS-MINED CHUNKS' },
               { icon:'palletbox', name:'Pallet Box',          spec:'500–1000 KG' },
               { icon:'vac',       name:'Vacuum Pack',         spec:'200 G – 5 KG' },
-            ].map((p) => (
-              <div className="brand-card" key={p.name}>
+            ].map((p, i) => (
+              <div className="brand-card pkg-card-reveal" key={p.name} style={{ animationDelay: `${i * 0.3}s` }}>
                 <div className="brand-card-header">
                   <div className="brand-card-icon">
                     <SvcPkgIcon name={p.icon} />
@@ -150,7 +111,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Mine-to-Market Process ── */}
-      <section className="process svc-even" id="process">
+      <section className="process hp-odd" id="process">
         <div className="container" style={{ textAlign: 'center' }}>
           <div className="eyebrow">Our Mine-to-Market Process</div>
           <h2 className="section-title">From the <span className="gold-word">Khewra Range</span> to Your Warehouse</h2>
@@ -176,26 +137,11 @@ export default function ServicesPage() {
               </div>
             ))}
           </div>
-          <div className="process-stats">
-            {[
-              { num: '25+',     lbl: 'Years of Expertise' },
-              { num: '18K+ MT', lbl: 'Shipped Annually' },
-              { num: '42+',     lbl: 'Countries Served' },
-              { num: '320+',    lbl: 'Active B2B Clients' },
-            ].map((s) => (
-              <div className="process-stat" key={s.lbl}>
-                <div>
-                  <span className="process-stat-num">{s.num}</span>
-                  <span className="process-stat-lbl">{s.lbl}</span>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* ── Retail Partners ── */}
-      <section className="partners svc-even" id="partners">
+      <section className="partners hp-even" id="partners">
         <div className="eyebrow">Trusted by Distributors &amp; Retailers Worldwide</div>
         <h3>Powering Salt Brands Across the UK · USA · Canada · EU · MENA</h3>
         <div className="marquee">

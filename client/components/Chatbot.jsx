@@ -53,7 +53,7 @@ export default function Chatbot() {
         {
           role: 'assistant',
           content:
-            "Sorry — I'm having trouble reaching the server. Please try again or email sales@alsyedigroup.com.",
+            "Sorry — I'm having trouble reaching the server. Please try again or email info@al-syedi.com.",
         },
       ]);
     } finally {

@@ -41,7 +41,7 @@ const ITEMS = [
   },
   {
     q: 'How do I request a formal quotation?',
-    a: 'Email sales@alsyedigroup.com or WhatsApp +1 (780) 952-6108 with: (1) product / grade, (2) quantity per SKU, (3) destination port, (4) Incoterm preference. We respond with a formal proforma invoice within 24 business hours.',
+    a: 'Email info@al-syedi.com or WhatsApp +1 (780) 952-6108 or call Toll Free +1 (877) 898-3373 with: (1) product / grade, (2) quantity per SKU, (3) destination port, (4) Incoterm preference. We respond with a formal proforma invoice within 24 business hours.',
   },
 ];
 
@@ -49,7 +49,7 @@ export default function FAQ() {
   const [openIdx, setOpenIdx] = useState(0);
 
   return (
-    <section className="faq" id="faq">
+    <section className="faq hp-even" id="faq">
       <div className="container" style={{ textAlign: 'center' }} data-reveal="up">
         <div className="eyebrow">Common Questions</div>
         <h2 className="section-title">Everything Importers <span className="gold-word">Need to Know</span></h2>

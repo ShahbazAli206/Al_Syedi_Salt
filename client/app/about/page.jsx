@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Chatbot from '@/components/Chatbot';
@@ -14,7 +14,7 @@ export default function AboutPage() {
       <Navbar />
 
       {/* ── About Al Syedi ── */}
-      <section className="about abt-odd" id="about">
+      <section className="about abt-even" id="about">
         <div className="about-grid">
           <div className="about-text">
             <div className="about-eyebrow">
@@ -45,9 +45,9 @@ export default function AboutPage() {
                 Contact Us
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
               </Link>
-              <a href="tel:+17809526108" className="about-phone">
+              <a href="tel:+18778983373" className="about-phone">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
-                +1 780 9526108
+                Toll Free: +1 (877) 898-3373
               </a>
             </div>
           </div>
@@ -75,23 +75,7 @@ export default function AboutPage() {
           <h2 className="section-title">From the <span className="gold-word">Khewra Range</span> to Your Warehouse</h2>
         </div>
         <div className="container">
-          <div className="process-steps">
-            {[
-              { num: '01', line1: 'Hand',       line2: 'Mining',     icon: 'pickaxe' },
-              { num: '02', line1: 'Sorting &',  line2: 'Grading',    icon: 'sort' },
-              { num: '03', line1: 'Crushing &', line2: 'Milling',    icon: 'mill' },
-              { num: '04', line1: 'Lab',         line2: 'Testing',   icon: 'beaker' },
-              { num: '05', line1: 'Custom',      line2: 'Packaging', icon: 'box' },
-              { num: '06', line1: 'Container',   line2: 'Loading',   icon: 'container' },
-              { num: '07', line1: 'Global',      line2: 'Delivery',  icon: 'ship' },
-            ].map((s) => (
-              <div className="step" key={s.num}>
-                <span className="step-num">{s.num}</span>
-                <div className="step-icon"><AbtProcessIcon name={s.icon} /></div>
-                <div className="step-label"><span>{s.line1}<br /></span><span>{s.line2}</span></div>
-              </div>
-            ))}
-          </div>
+          <ProcessStepsAnimated />
           <div className="process-stats">
             {[
               { num: '25+',      lbl: 'Years of Expertise' },
@@ -234,6 +218,76 @@ function MarketCard({ code, country, meta }) {
         <div className="market-country">{country}</div>
         <div className="market-meta">{meta}</div>
       </div>
+    </div>
+  );
+}
+
+const PROCESS_STEPS = [
+  { num: '01', line1: 'Hand',       line2: 'Mining',     icon: 'pickaxe' },
+  { num: '02', line1: 'Sorting &',  line2: 'Grading',    icon: 'sort' },
+  { num: '03', line1: 'Crushing &', line2: 'Milling',    icon: 'mill' },
+  { num: '04', line1: 'Lab',        line2: 'Testing',    icon: 'beaker' },
+  { num: '05', line1: 'Custom',     line2: 'Packaging',  icon: 'box' },
+  { num: '06', line1: 'Container',  line2: 'Loading',    icon: 'container' },
+  { num: '07', line1: 'Global',     line2: 'Delivery',   icon: 'ship' },
+];
+
+const easeInOut = (t) => t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+
+function ProcessStepsAnimated() {
+  const [activeStep, setActiveStep] = useState(0);
+  const fillRef = useRef(null);
+
+  useEffect(() => {
+    const HOLD = 1500;
+    const TRANSIT = 800;
+    const N = PROCESS_STEPS.length;
+
+    let rafId;
+    let stepIdx = 0;
+    let phaseStart = performance.now();
+    let phase = 'hold';
+
+    const setFill = (pct) => {
+      if (fillRef.current) fillRef.current.style.setProperty('--p', pct.toFixed(3));
+    };
+
+    const tick = (now) => {
+      const elapsed = now - phaseStart;
+      if (phase === 'hold') {
+        setFill((stepIdx / (N - 1)) * 100);
+        if (elapsed >= HOLD) {
+          if (stepIdx < N - 1) { phase = 'transit'; phaseStart = now; }
+          else { stepIdx = 0; setActiveStep(0); setFill(0); phase = 'hold'; phaseStart = now; }
+        }
+      } else {
+        const t = Math.min(elapsed / TRANSIT, 1);
+        const from = (stepIdx / (N - 1)) * 100;
+        const to   = ((stepIdx + 1) / (N - 1)) * 100;
+        setFill(from + (to - from) * easeInOut(t));
+        if (elapsed >= TRANSIT) { stepIdx += 1; setActiveStep(stepIdx); phase = 'hold'; phaseStart = now; }
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
+  return (
+    <div className="process-steps-anim">
+      <div className="pstep-track" />
+      <div className="pstep-fill" ref={fillRef} />
+      {PROCESS_STEPS.map((s, i) => (
+        <div
+          key={s.num}
+          className={`step pstep${i === activeStep ? ' pstep-active' : i < activeStep ? ' pstep-done' : ''}`}
+        >
+          <span className="step-num">{s.num}</span>
+          <div className="step-icon"><AbtProcessIcon name={s.icon} /></div>
+          <div className="step-label"><span>{s.line1}<br /></span><span>{s.line2}</span></div>
+        </div>
+      ))}
     </div>
   );
 }

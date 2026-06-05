@@ -102,17 +102,12 @@ const NAV = [
     href: '/about',
     columns: [
       {
-        title: 'Our Story',
+        title: 'About Us',
         items: [
-          { href: '/about#about',       icon: 'mountain', title: 'About Al Syedi',   desc: 'Our mine-to-market story since 1998' },
-          { href: '/about#khewra',      icon: 'pickaxe',  title: 'The Khewra Range', desc: 'Hand-mined · 2nd-largest salt mine on Earth' },
-        ],
-      },
-      {
-        title: 'Compliance',
-        items: [
-          { href: '/about#certifications', icon: 'shield', title: 'Certifications', desc: 'ISO, HACCP, BRC, Halal, Kosher &amp; more' },
-          { href: '/about#markets',        icon: 'globe',  title: 'Global Markets', desc: '42 countries served — and growing' },
+          { href: '/about#about',          icon: 'mountain', title: 'About Al Syedi',   desc: 'Our mine-to-market story since 1998' },
+          { href: '/about#khewra',         icon: 'pickaxe',  title: 'The Khewra Range', desc: 'Hand-mined · 2nd-largest salt mine on Earth' },
+          { href: '/about#certifications', icon: 'shield',   title: 'Certifications',   desc: 'ISO, HACCP, BRC, Halal, Kosher &amp; more' },
+          { href: '/about#markets',        icon: 'globe',    title: 'Global Markets',   desc: '42 countries served — and growing' },
         ],
       },
     ],
@@ -182,17 +177,17 @@ export default function Navbar() {
       {/* ===== Top bar stripe ===== */}
       <div className="top-bar">
         <div className="top-bar-left">
-          <a href="mailto:sales@alsyedigroup.com" className="top-bar-item">
+          <a href="mailto:info@al-syedi.com" className="top-bar-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/>
             </svg>
-            sales@alsyedigroup.com
+            info@al-syedi.com
           </a>
-          <a href="tel:+17809526108" className="top-bar-item">
+          <a href="tel:+18778983373" className="top-bar-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M22 16.92v3a2 2 0 01-2.18 2 19.86 19.86 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.86 19.86 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.37 1.6.7 2.36a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.76.33 1.55.57 2.36.7A2 2 0 0122 16.92z"/>
             </svg>
-            +1 (780) 952-6108
+            Toll Free: +1 (877) 898-3373
           </a>
         </div>
         <div className="top-bar-right">
@@ -398,7 +393,7 @@ export default function Navbar() {
               </svg>
               WhatsApp
             </a>
-            <a href="mailto:sales@alsyedigroup.com">
+            <a href="mailto:info@al-syedi.com">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/>
               </svg>

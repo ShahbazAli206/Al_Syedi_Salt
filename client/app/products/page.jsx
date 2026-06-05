@@ -31,7 +31,7 @@ export default async function ProductsPage() {
       <Navbar />
 
       {/* ── Products Hero Header ── */}
-      <section className="products-hero">
+      <section className="products-hero hp-odd">
         <div className="products-hero-inner">
           <div className="products-hero-text">
             <h1 className="products-hero-title">Salt Products</h1>
@@ -55,13 +55,14 @@ export default async function ProductsPage() {
             </div>
           </div>
           <div className="products-hero-img" aria-hidden="true">
-            <SaltImage kind="pink-coarse" alt="Himalayan Pink Salt" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/header_images/img3.png" alt="Himalayan Pink Salt" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'inherit'}} />
           </div>
         </div>
       </section>
 
       {/* ── Catalogue + Grid ── */}
-      <section className="section products-catalogue" style={{ paddingTop: '2rem' }}>
+      <section className="section products-catalogue hp-even" style={{ paddingTop: '2rem' }}>
         <div className="container" style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
           <div className="eyebrow">Our Catalogue</div>
           <h2 className="section-title">22+ SKUs · 5 Categories · <span className="gold-word">One Trusted Source</span></h2>
@@ -78,7 +79,7 @@ export default async function ProductsPage() {
       </section>
 
       {/* ── Bulk Quotation CTA ── */}
-      <section className="prod-bulk">
+      <section className="prod-bulk hp-odd">
         <div className="prod-bulk-img" aria-hidden="true">
           <SaltImage kind="bath-lavender" alt="" />
         </div>
@@ -132,7 +133,7 @@ export default async function ProductsPage() {
       </div>
 
       {/* ── Salt Collections ── */}
-      <section className="section" id="collections">
+      <section className="section hp-even" id="collections">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Eight Specialist Ranges</div>
           <h2 className="section-title">Built for <span className="gold-word">Importers, Retailers &amp; Industry</span></h2>
@@ -162,7 +163,7 @@ export default async function ProductsPage() {
       </section>
 
       {/* ── Salt Varieties ── */}
-      <section className="ingredients" id="varieties">
+      <section className="ingredients hp-odd" id="varieties">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Explore Our Varieties</div>
           <h2 className="section-title">Every Grade, Every Grind, Every <span className="gold-word">Use Case</span></h2>
@@ -206,7 +207,7 @@ export default async function ProductsPage() {
       </section>
 
       {/* ── Grade Reference ── */}
-      <section className="grades" id="grades">
+      <section className="grades hp-even" id="grades">
         <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
           <div className="eyebrow">Grain Size Reference</div>
           <h2 className="section-title">Pick Your <span className="gold-word">Grade</span></h2>
@@ -227,7 +228,7 @@ export default async function ProductsPage() {
       </section>
 
       {/* ── Packaging Options ── */}
-      <section className="pkg-section" id="packaging">
+      <section className="pkg-section hp-odd" id="packaging">
         <div className="pkg-inner">
           <div className="pkg-header">
             <div className="pkg-header-text">
