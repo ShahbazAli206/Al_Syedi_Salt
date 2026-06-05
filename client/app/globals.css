@@ -2124,7 +2124,7 @@ body.light-mode .showcase-card:hover .showcase-body{background:linear-gradient(1
   grid-template-columns:1.5fr 1fr 1.3fr 1.4fr;
   gap:2.5rem;align-items:start;
 }
-.ft-brand .ft-logo-wrap svg,.ft-brand .ft-logo-wrap img{height:60px;width:auto}
+.ft-brand .ft-logo-wrap svg,.ft-brand .ft-logo-wrap img{height:145px;width:auto}
 .ft-tagline{
   font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;
   color:#9e3a30;font-weight:800;margin:.7rem 0 .5rem;
