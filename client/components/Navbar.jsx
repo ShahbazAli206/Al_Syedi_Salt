@@ -44,19 +44,12 @@ const NAV = [
     href: '/services',
     columns: [
       {
-        title: 'What We Do',
+        title: 'Services',
         items: [
-          { href: '/services#services',      icon: 'cubes', title: 'Bulk Salt Supply',             desc: 'Container loads · FCL &amp; LCL' },
-          { href: '/services#private-label', icon: 'box',   title: 'Private Label',                desc: 'Your brand, our salt — full packaging' },
-          { href: '/services#custom',        icon: 'grind', title: 'Custom Grinds &amp; Blends',   desc: 'Powder, fine, coarse — to your spec' },
-        ],
-      },
-      {
-        title: 'How We Work',
-        items: [
-          { href: '/services#process',  icon: 'pickaxe', title: 'Mine-to-Market Process', desc: '7-step quality flow from mine to port' },
-          { href: '/services#promise',  icon: 'shield',  title: 'Quality Promise',        desc: 'What every Al Syedi shipment guarantees' },
-          { href: '/services#partners', icon: 'tag',     title: 'Retail Partners',        desc: 'Brands we supply across the world' },
+          { href: '/services#packaging',     icon: 'layers',  title: 'Packaging Formats',      desc: '12 options · bulk bags to retail jars' },
+          { href: '/services#private-label', icon: 'box',     title: 'Private Label',          desc: 'Your brand, our salt — full packaging' },
+          { href: '/services#process',       icon: 'pickaxe', title: 'Mine-to-Market Process', desc: '7-step quality flow from mine to port' },
+          { href: '/services#partners',      icon: 'tag',     title: 'Retail Partners',        desc: 'Brands we supply across the world' },
         ],
       },
     ],
@@ -424,6 +417,7 @@ function MegaIcon({ name }) {
     sparkle:  <><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></>,
     chart:    <><path d="M3 21V11M9 21V7M15 21V13M21 21V3"/></>,
     box:      <><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4M21 7v10l-9 4M12 11v10"/></>,
+    layers:   <><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></>,
     cubes:    <><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></>,
     grind:    <><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></>,
     pickaxe:  <><path d="M3 21l8-8M11 13l5-5M14 4l6 6M18 8l-2-2"/></>,

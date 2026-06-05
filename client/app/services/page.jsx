@@ -110,8 +110,90 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* ── Private Label Programme ── */}
+      <section className="pl-section hp-odd" id="private-label">
+        <div className="container">
+          <div className="pl-header">
+            <div className="pl-eyebrow">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><circle cx="7" cy="7" r="1.5" fill="currentColor"/></svg>
+              Private Label Programme
+            </div>
+            <h2 className="pl-title">Your Brand. <span className="gold-word">Our Salt.</span><br/>Our Expertise.</h2>
+            <div className="title-rule" />
+            <p className="pl-desc">From concept to container — we engineer, design and ship your exclusive Himalayan salt line. Full branding, regulatory compliance and retail-ready packaging, all under your name.</p>
+          </div>
+
+          <div className="pl-stats">
+            {[
+              { num: '500+', label: 'Min. Retail Units / SKU' },
+              { num: '1 MT',  label: 'Min. Bulk Order' },
+              { num: '8 Wk',  label: 'Avg. Lead Time' },
+              { num: '100%',  label: 'Brand Exclusivity' },
+            ].map((s) => (
+              <div className="pl-stat" key={s.label}>
+                <span className="pl-stat-num">{s.num}</span>
+                <span className="pl-stat-lbl">{s.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="pl-cards">
+            {[
+              { icon:'design',      tag:'Full Service',  title:'Brand Design Studio',      desc:'Custom label artwork, barcode generation, multilingual regulatory copy and QR codes — we handle every pixel of your brand identity.' },
+              { icon:'formats',     tag:'12+ Formats',   title:'Retail-Ready Packaging',   desc:'Glass jars, kraft stand-up pouches, gift boxes, grinders, shakers and pallet packs — all carrying your brand, retail-ready from day one.' },
+              { icon:'compliance',  tag:'Global Markets', title:'Regulatory Dossiers',     desc:'Full COA, MSDS, nutrition panels, allergen statements, halal/kosher certificates and FDA + EU labelling compliance — included, not extra.' },
+              { icon:'volume',      tag:'Low MOQ',       title:'Flexible Volume Tiers',    desc:'Start a trial run from 500 branded retail units or 1 MT bulk. Scale to multi-container recurring shipments as your brand grows.' },
+              { icon:'exclusivity', tag:'Guaranteed',    title:'Exclusivity Clause',       desc:'Your formulation, grind profile and label are kept strictly confidential. We never resell your recipe or artwork to a competitor.' },
+              { icon:'speed',       tag:'8 Weeks',       title:'Fast-Track Delivery',      desc:'From signed brief to loaded container: design approval in 5 days, production in 3 weeks, loading and dispatch within 60 days.' },
+            ].map((c, i) => (
+              <div className="pl-card" key={c.title} style={{ animationDelay:`${i * 0.08}s` }}>
+                <div className="pl-card-glow" />
+                <div className="pl-card-top">
+                  <div className="pl-card-badge"><PlCardIcon name={c.icon} /></div>
+                  <span className="pl-card-tag">{c.tag}</span>
+                </div>
+                <h3 className="pl-card-title">{c.title}</h3>
+                <p className="pl-card-desc">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="pl-how">
+            <div className="pl-how-label">How It Works</div>
+            <div className="pl-how-steps">
+              {[
+                { num:'01', title:'Brief',   sub:'Share your vision & SKUs' },
+                { num:'02', title:'Design',  sub:'Label artwork & pack spec' },
+                { num:'03', title:'Approve', sub:'Review physical samples' },
+                { num:'04', title:'Produce', sub:'Mine → mill → pack → QC' },
+                { num:'05', title:'Ship',    sub:'FCL / LCL to your door' },
+              ].map((s) => (
+                <div className="pl-how-item" key={s.num}>
+                  <div className="pl-how-dot"><span>{s.num}</span></div>
+                  <div className="pl-how-text">
+                    <strong>{s.title}</strong>
+                    <span>{s.sub}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="pl-cta">
+            <div className="pl-cta-text">
+              <h3>Ready to launch your private label salt range?</h3>
+              <p>Our branding team responds within 24 hours. No commitment required for an initial brief.</p>
+            </div>
+            <Link href="/contact" className="btn btn-gold pl-cta-btn">
+              Start Your Brand
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── Mine-to-Market Process ── */}
-      <section className="process hp-odd" id="process">
+      <section className="process hp-even" id="process">
         <div className="container" style={{ textAlign: 'center' }}>
           <div className="eyebrow">Our Mine-to-Market Process</div>
           <h2 className="section-title">From the <span className="gold-word">Khewra Range</span> to Your Warehouse</h2>
@@ -141,7 +223,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Retail Partners ── */}
-      <section className="partners hp-even" id="partners">
+      <section className="partners hp-odd" id="partners">
         <div className="eyebrow">Trusted by Distributors &amp; Retailers Worldwide</div>
         <h3>Powering Salt Brands Across the UK · USA · Canada · EU · MENA</h3>
         <div className="marquee">
@@ -271,6 +353,22 @@ function SvcPkgFeatIcon({ name }) {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
       {p[name]}
+    </svg>
+  );
+}
+
+function PlCardIcon({ name }) {
+  const paths = {
+    design:      <><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></>,
+    formats:     <><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></>,
+    compliance:  <><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></>,
+    volume:      <><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></>,
+    exclusivity: <><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></>,
+    speed:       <><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></>,
+  };
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+      {paths[name] || <circle cx="12" cy="12" r="9"/>}
     </svg>
   );
 }

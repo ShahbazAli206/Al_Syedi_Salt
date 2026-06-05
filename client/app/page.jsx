@@ -54,13 +54,20 @@ export default async function Home() {
       {/* PRODUCT SHOWCASE — Our Salt. Your Brand. Worldwide. */}
       <section className="showcase hp-even" id="products-overview">
         <div className="container">
-          <h2 className="showcase-title" data-reveal-toggle="up">
-            <span className="t1">Our Salt. </span>
-            <span className="t2">Your Brand. Worldwide.</span>
-          </h2>
-          <p className="showcase-sub" data-reveal-toggle="up">
-            From edible to industrial — tailored salt solutions for every business need.
-          </p>
+          <div className="showcase-hdr" data-reveal-toggle="up">
+            <div className="eyebrow" style={{marginBottom:'1rem'}}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{display:'inline',verticalAlign:'middle',marginRight:'6px'}}><path d="M3 20l6-12 5 8 3-4 4 8z"/><circle cx="17" cy="6" r="2"/></svg>
+              Premium Himalayan Pink Salt · Since 1998
+            </div>
+            <h2 className="showcase-title">
+              <span className="t1">Our Salt. </span>
+              <span className="t2">Your Brand. Worldwide.</span>
+            </h2>
+            <div className="title-rule" />
+            <p className="showcase-lead">
+              Sourced from the Khewra Salt Range — the world&apos;s oldest and purest salt deposit — every product we manufacture carries the same uncompromised standard. From gourmet edible varieties and therapeutic spa blends to artisan home décor and high-volume industrial grades: one mine, one quality benchmark, every category your business needs.
+            </p>
+          </div>
           <div className="showcase-grid" data-reveal-toggle-stagger>
             {[
               { kind:'pink-fine',      name:'Himalayan Pink Salt', cat:'Edible Salt',     href:'/products?category=edible' },
@@ -177,12 +184,63 @@ export default async function Home() {
 
       {/* SALT VARIETIES */}
       <section className="ingredients hp-odd" id="varieties">
-        <div className="container" style={{ textAlign: 'center' }} data-reveal-toggle="up">
-          <div className="eyebrow">Explore Our Varieties</div>
+        <div className="container varieties-hdr" data-reveal-toggle="up">
+          <div className="eyebrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{display:'inline',verticalAlign:'middle',marginRight:'6px'}}><polygon points="12,2 20,9 16,22 8,22 4,9"/><path d="M12 2v20M4 9h16"/></svg>
+            Explore Our Varieties
+          </div>
           <h2 className="section-title">Every Grade, Every Grind, Every <span className="gold-word">Use Case</span></h2>
-          <p style={{ color: 'var(--text-dim)', fontSize: '.95rem', maxWidth: 560, margin: '.75rem auto 0' }}>
-            From gourmet pink flakes to industrial de-icing salt, we deliver purity in every grain.
+          <div className="title-rule" />
+          <p className="varieties-lead">
+            Hand-mined from 250-million-year-old Khewra seams and milled to your exact specification — our range spans gourmet pink flakes for the dinner table all the way to heavy-duty industrial and de-icing grades. One source. Uncompromised purity. Every grain, every application.
           </p>
+          <div className="varieties-pills">
+            {[
+              {
+                label: '250M yr-old deposits',
+                svg: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="12,2 20,9 16,22 8,22 4,9" fill="rgba(220,70,100,.18)" stroke="#e05070" strokeWidth="1.6"/>
+                  <path d="M12 2v20M4 9h16" stroke="#c03060" strokeWidth="1.1" strokeDasharray="2 1.5"/>
+                </svg>,
+              },
+              {
+                label: 'Lab-verified every batch',
+                svg: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" strokeLinecap="round">
+                  <path d="M9 3h6M10 3v6L4 20a1 1 0 001 1h14a1 1 0 001-1l-6-11V3" stroke="#3d8fc8" strokeWidth="1.6"/>
+                  <path d="M7 17l-2 4h14l-2-4H7z" fill="rgba(255,150,50,.4)" stroke="none"/>
+                  <path d="M6 16h12" stroke="#f09030" strokeWidth="1.8"/>
+                </svg>,
+              },
+              {
+                label: '5 grain sizes · powder to chunk',
+                svg: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" fill="rgba(150,80,220,.15)" stroke="#a050dc" strokeWidth="1.5"/>
+                  <path d="M2 12l10 5 10-5" stroke="#4d7ed4" strokeWidth="1.5"/>
+                  <path d="M2 17l10 5 10-5" stroke="#28a88a" strokeWidth="1.5"/>
+                </svg>,
+              },
+              {
+                label: 'Ships to 42 countries',
+                svg: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" strokeLinecap="round">
+                  <circle cx="12" cy="12" r="10" fill="rgba(40,130,220,.12)" stroke="#2882dc" strokeWidth="1.5"/>
+                  <path d="M2 12h20" stroke="#2882dc" strokeWidth="1.2"/>
+                  <path d="M12 2a15 15 0 010 20M12 2a15 15 0 000 20" stroke="#55aaee" strokeWidth="1.2"/>
+                </svg>,
+              },
+              {
+                label: 'ISO · HACCP · Halal certified',
+                svg: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z" fill="rgba(30,180,100,.14)" stroke="#1faa60" strokeWidth="1.5"/>
+                  <path d="M9 12l2 2 4-4" stroke="#17944f" strokeWidth="2.2"/>
+                </svg>,
+              },
+            ].map((p) => (
+              <div className="varieties-pill" key={p.label}>
+                {p.svg}
+                {p.label}
+              </div>
+            ))}
+          </div>
         </div>
         <div className="ingredients-marquee-outer">
           <div className="ingredients-marquee-track">
@@ -196,25 +254,6 @@ export default async function Home() {
                   <span className="ingredient-arrow">→</span>
                 </div>
               </Link>
-            ))}
-          </div>
-        </div>
-        <div className="container">
-          {/* Bottom feature trust strip */}
-          <div className="variety-features" data-reveal-toggle-stagger>
-            {[
-              { icon: 'leaf',    label: '100% Natural',      sub: 'Pure & Unrefined' },
-              { icon: 'beaker',  label: 'Rich in Minerals',  sub: '84+ Trace Minerals' },
-              { icon: 'mountain',label: 'Sustainable Source', sub: 'Ethically Mined' },
-              { icon: 'shield',  label: 'Global Standards',  sub: 'ISO & HACCP Certified' },
-            ].map((f) => (
-              <div className="variety-feature" key={f.label}>
-                <div className="vf-icon"><FeatureIcon name={f.icon} /></div>
-                <div className="vf-text">
-                  <strong>{f.label}</strong>
-                  <span>{f.sub}</span>
-                </div>
-              </div>
             ))}
           </div>
         </div>
