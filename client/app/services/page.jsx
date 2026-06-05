@@ -60,14 +60,14 @@ export default function ServicesPage() {
           <div className="title-rule"></div>
         </div>
         <div className="container">
-          <div className="cap-grid">
-            <SvcCapCard id="bulk" icon="cubes" title="Bulk Salt Supply"
+          <div className="brands-grid" data-reveal-toggle-stagger>
+            <SvcBrandCard id="bulk" icon="cubes" title="Bulk Salt Supply"
               desc="High-volume edible & industrial salt from our Khewra-source mines. Container loads (20ft / 40ft FCL) shipped worldwide. MOQ from 1 metric ton." />
-            <SvcCapCard id="private-label" icon="box" title="Private Label & Packaging"
+            <SvcBrandCard id="private-label" icon="box" title="Private Label & Packaging"
               desc="Your brand, our salt. Custom retail jars, pouches, gift boxes & pallet packs. Full label design, barcoding & regulatory dossiers included." />
-            <SvcCapCard id="custom" icon="grind" title="Custom Grinds & Blends"
+            <SvcBrandCard id="custom" icon="grind" title="Custom Grinds & Blends"
               desc="Fine, medium, coarse, granular, powder & chunk — tailored to your industry. Blended with herbs, citrus zest or mineral notes on request." />
-            <SvcCapCard id="lifestyle" icon="lamp" title="Salt Lamps, Bricks & Spa"
+            <SvcBrandCard id="lifestyle" icon="lamp" title="Salt Lamps, Bricks & Spa"
               desc="Hand-carved Himalayan salt lamps, polished salt tiles for halotherapy rooms, bath & spa salt blends — all manufactured to export standards." />
           </div>
           <div className="cap-features">
@@ -106,7 +106,7 @@ export default function ServicesPage() {
               <img src="/salt-bg.jpg" alt="" />
             </div>
           </div>
-          <div className="pkg-grid">
+          <div className="brands-grid" data-reveal-toggle-stagger style={{gridTemplateColumns:'repeat(4,1fr)'}}>
             {[
               { icon:'fibc',      name:'FIBC Big Bag',       spec:'1,000 KG' },
               { icon:'ppbag',     name:'PP Woven Bag',        spec:'25 / 50 KG' },
@@ -121,10 +121,15 @@ export default function ServicesPage() {
               { icon:'palletbox', name:'Pallet Box',          spec:'500–1000 KG' },
               { icon:'vac',       name:'Vacuum Pack',         spec:'200 G – 5 KG' },
             ].map((p) => (
-              <div className="pkg-card" key={p.name}>
-                <div className="pkg-card-icon"><SvcPkgIcon name={p.icon} /></div>
-                <div className="pkg-card-name">{p.name}</div>
-                <div className="pkg-card-spec">{p.spec}</div>
+              <div className="brand-card" key={p.name}>
+                <div className="brand-card-header">
+                  <div className="brand-card-icon">
+                    <SvcPkgIcon name={p.icon} />
+                  </div>
+                  <h3>{p.name}</h3>
+                </div>
+                <div className="brand-card-rule" />
+                <p>{p.spec}</p>
               </div>
             ))}
           </div>
@@ -189,23 +194,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── Quality Promise ── */}
-      <section className="section promise svc-odd" id="promise">
-        <div className="container" style={{ textAlign: 'center' }}>
-          <div className="eyebrow">Why Importers Choose Us</div>
-          <h2 className="section-title">The <span className="gold-word">Al Syedi</span> Promise</h2>
-          <div className="title-rule"></div>
-        </div>
-        <div className="container">
-          <div className="promise-grid">
-            <SvcPromiseCard icon="purity" title="99.8% Pure Crystal" desc="Hand-mined from the deepest seams of the Khewra Salt Range and lab-verified to deliver consistent purity batch after batch." />
-            <SvcPromiseCard icon="grade"  title="Every Grade On Demand" desc="Powder, fine, medium, coarse, chunk, lump — milled and screened to your exact specification with full traceability." />
-            <SvcPromiseCard icon="price"  title="Direct-from-Mine Pricing" desc="No middlemen. Vertical integration means margins for you and quality that the high-street can't match." />
-            <SvcPromiseCard icon="globe"  title="Container Logistics" desc="FCL / LCL shipments via Karachi, Jebel Ali & Port Qasim — to any port worldwide, with full documentation handled." />
-          </div>
-        </div>
-      </section>
-
       {/* ── Retail Partners ── */}
       <section className="partners svc-even" id="partners">
         <div className="eyebrow">Trusted by Distributors &amp; Retailers Worldwide</div>
@@ -232,7 +220,7 @@ export default function ServicesPage() {
 
 /* ── Helper components ── */
 
-function SvcCapCard({ id, icon, title, desc }) {
+function SvcBrandCard({ id, icon, title, desc }) {
   const icons = {
     cubes: <><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></>,
     box:   <><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4M21 7v10l-9 4M12 11v10"/></>,
@@ -240,13 +228,16 @@ function SvcCapCard({ id, icon, title, desc }) {
     lamp:  <><path d="M9 21h6M12 17v4M8 17h8l-1-6H9z"/><circle cx="12" cy="7" r="3"/></>,
   };
   return (
-    <div className="cap-card" id={id}>
-      <div className="cap-card-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">{icons[icon]}</svg>
+    <div className="brand-card" id={id}>
+      <div className="brand-card-header">
+        <div className="brand-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">{icons[icon]}</svg>
+        </div>
+        <h3>{title}</h3>
       </div>
-      <h3>{title}</h3>
+      <div className="brand-card-rule" />
       <p>{desc}</p>
-      <Link href="/contact" className="cap-card-link">
+      <Link href="/contact" className="cap-card-link" style={{ marginTop: '.75rem' }}>
         Get a Quote
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </Link>
@@ -254,7 +245,7 @@ function SvcCapCard({ id, icon, title, desc }) {
   );
 }
 
-function SvcPromiseCard({ icon, title, desc }) {
+function PromiseBrandCard({ icon, title, desc }) {
   const icons = {
     purity: <><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></>,
     grade:  <><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4M21 7v10l-9 4M12 11v10"/></>,
@@ -262,11 +253,14 @@ function SvcPromiseCard({ icon, title, desc }) {
     globe:  <><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></>,
   };
   return (
-    <div className="promise-card">
-      <div className="promise-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">{icons[icon]}</svg>
+    <div className="brand-card">
+      <div className="brand-card-header">
+        <div className="brand-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">{icons[icon]}</svg>
+        </div>
+        <h3>{title}</h3>
       </div>
-      <h4>{title}</h4>
+      <div className="brand-card-rule" />
       <p>{desc}</p>
     </div>
   );

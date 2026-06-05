@@ -46,7 +46,8 @@ export default function ResourcesPage() {
             </div>
           </div>
           <div className="res-hero-img" aria-hidden="true">
-            <ContactImage className="res-hero-salt-img" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/header_images/img4.png" alt="Himalayan Pink Salt" className="res-hero-salt-img" />
           </div>
         </div>
       </section>

@@ -5,6 +5,7 @@ import SaltImage from '@/components/SaltImage';
 import Flag from '@/components/Flag';
 import Chatbot from '@/components/Chatbot';
 import FAQ from '@/components/FAQ';
+import HeroSlideshow from '@/components/HeroSlideshow';
 import { VARIETIES } from '@/data/catalog';
 
 export default async function Home() {
@@ -16,7 +17,7 @@ export default async function Home() {
 
       {/* HERO */}
       <section className="hero hp-odd">
-        <div className="hero-bg" aria-hidden="true" />
+        <HeroSlideshow />
         <div className="sparkles" aria-hidden="true">
           <span className="orb"></span><span className="orb"></span>
           <span className="orb"></span><span className="orb"></span>
@@ -28,19 +29,11 @@ export default async function Home() {
         </div>
 
         <div className="hero-content" data-reveal-stagger>
-          <div className="hero-tag">
-            <span>Premium</span>
-            <span className="pill">Himalayan Pink Salt</span>
-            <span>Since 1998</span>
-          </div>
           <h1>
             Bulk Salt Manufacturing<br />
             <span className="gold-word">&amp;</span> Global<br />
             <span className="gold-word">Wholesale Supply</span>
           </h1>
-          <p>
-            Al Syedi Group is a trusted manufacturer and exporter of premium Himalayan Pink Salt, edible salts, bath &amp; spa salts, decorative salt lamps, salt bricks and industrial-grade salts — shipped in bulk to clients across the UK, US, Canada, Europe and the Middle East.
-          </p>
           <div className="hero-actions">
             <Link href="/products" className="btn btn-outline">
               View Salt Products
@@ -148,26 +141,27 @@ export default async function Home() {
         <div className="container">
           <div className="houses-carousel" data-reveal-toggle-stagger>
             {[
-              { name: 'Edible Range',  icon: 'spoon',   kind: 'pink-fine',       desc: 'Food grade pink, white & black salts in fine, coarse & gourmet variants.' },
-              { name: 'Pink Crystal',  icon: 'crystal', kind: 'crystal-display', desc: 'Premium Himalayan rock crystal salt for grinders & retail.' },
-              { name: 'Bath & Spa',    icon: 'leaf',    kind: 'bath-lavender',   desc: 'Therapeutic bath salts, soak & spa-grade blends.' },
-              { name: 'Lifestyle',     icon: 'lamp',    kind: 'lamp-natural',    desc: 'Himalayan salt lamps, USB lamps & candle holders.' },
-              { name: 'Construction',  icon: 'brick',   kind: 'salt-brick',      desc: 'Polished salt bricks & tiles for halotherapy rooms & salt walls.' },
-              { name: 'Industrial',    icon: 'gear',    kind: 'animal-lick',     desc: 'Animal lick salts, water softener pellets & de-icing salt.' },
+              { name: 'Edible Range',  icon: 'spoon',   kind: 'pink-fine',       badge: 'Premium Quality',  cta: 'Explore Edible Range',  desc: 'Food grade pink, white & black salts in fine, coarse & gourmet variants.' },
+              { name: 'Pink Crystal',  icon: 'crystal', kind: 'crystal-display', badge: '100% Natural',     cta: 'Discover Pink Crystal', desc: 'Premium Himalayan rock crystal salt for grinders & retail.' },
+              { name: 'Bath & Spa',    icon: 'leaf',    kind: 'bath-lavender',   badge: 'Spa Grade',        cta: 'Explore Bath & Spa',    desc: 'Therapeutic bath salts, soak & spa-grade blends.' },
+              { name: 'Lifestyle',     icon: 'lamp',    kind: 'lamp-natural',    badge: 'Handcrafted',      cta: 'Browse Lifestyle',      desc: 'Himalayan salt lamps, USB lamps & candle holders.' },
+              { name: 'Construction',  icon: 'brick',   kind: 'salt-brick',      badge: 'Export Ready',     cta: 'View Construction',     desc: 'Polished salt bricks & tiles for halotherapy rooms & salt walls.' },
+              { name: 'Industrial',    icon: 'gear',    kind: 'animal-lick',     badge: 'Bulk Supply',      cta: 'Explore Industrial',    desc: 'Animal lick salts, water softener pellets & de-icing salt.' },
             ].map((h) => (
-              <div className="house-card" key={h.name}>
-                <div className="house-card-top">
-                  <div className="house-icon"><CollectionIcon name={h.icon} /></div>
-                </div>
+              <Link href="/products" className="house-card" key={h.name}>
                 <div className="house-card-img">
                   <SaltImage kind={h.kind} alt={h.name} />
+                  <div className="house-card-badge">{h.badge}</div>
                 </div>
                 <div className="house-card-body">
                   <h4>{h.name}</h4>
                   <p>{h.desc}</p>
-                  <span className="house-card-arrow">→</span>
+                  <span className="house-card-link">
+                    <span className="house-card-arrow">→</span>
+                    {h.cta}
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           <div className="houses-cta">
@@ -193,7 +187,7 @@ export default async function Home() {
         <div className="ingredients-marquee-outer">
           <div className="ingredients-marquee-track">
             {[...varieties, ...varieties].map((ing, i) => (
-              <div className="ingredient-card" key={i} aria-hidden={i >= varieties.length}>
+              <Link href="/products" className="ingredient-card" key={i} aria-hidden={i >= varieties.length}>
                 <SaltImage kind={ing.kind || 'pink-fine'} alt={ing.name} />
                 <div className="ingredient-label">
                   <div className="ingredient-badge">{ing.note}</div>
@@ -201,7 +195,7 @@ export default async function Home() {
                   <small>{ing.latin}</small>
                   <span className="ingredient-arrow">→</span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -234,7 +228,7 @@ export default async function Home() {
           <div className="title-rule"></div>
         </div>
         <div className="container">
-          <div className="promise-grid" data-reveal-toggle-stagger>
+          <div className="brands-grid" data-reveal-toggle-stagger>
             <PromiseCard icon="purity" title="99.8% Pure Crystal" desc="Hand-mined from the deepest seams of the Khewra Salt Range and lab-verified to deliver consistent purity batch after batch." />
             <PromiseCard icon="grade" title="Every Grade On Demand" desc="Powder, fine, medium, coarse, chunk, lump — milled and screened to your exact specification with full traceability." />
             <PromiseCard icon="price" title="Direct-from-Mine Pricing" desc="No middlemen. Vertical integration means margins for you and quality that the high-street can&apos;t match." />
@@ -363,13 +357,16 @@ function PromiseCard({ title, desc, icon }) {
     globe:  <><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></>,
   };
   return (
-    <div className="promise-card">
-      <div className="promise-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-          {paths[icon]}
-        </svg>
+    <div className="brand-card">
+      <div className="brand-card-header">
+        <div className="brand-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+            {paths[icon]}
+          </svg>
+        </div>
+        <h3 dangerouslySetInnerHTML={{ __html: title }} />
       </div>
-      <h4 dangerouslySetInnerHTML={{ __html: title }} />
+      <div className="brand-card-rule" />
       <p dangerouslySetInnerHTML={{ __html: desc }} />
     </div>
   );

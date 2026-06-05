@@ -60,15 +60,15 @@ export default function B2BPage() {
           <div className="title-rule"></div>
         </div>
         <div className="container">
-          <div className="cap-grid" data-reveal-toggle-stagger>
-            <CapCard id="bulk" icon="cubes" title="Bulk Salt Supply"
-              desc="High-volume edible &amp; industrial salt from our Khewra-source mines. Container loads (20ft / 40ft FCL) shipped worldwide. MOQ from 1 metric ton." />
-            <CapCard id="private-label" icon="box" title="Private Label &amp; Packaging"
-              desc="Your brand, our salt. Custom retail jars, pouches, gift boxes &amp; pallet packs. Full label design, barcoding &amp; regulatory dossiers included." />
-            <CapCard id="custom" icon="grind" title="Custom Grinds &amp; Blends"
-              desc="Fine, medium, coarse, granular, powder &amp; chunk — tailored to your industry. Blended with herbs, citrus zest or mineral notes on request." />
-            <CapCard id="lifestyle" icon="lamp" title="Salt Lamps, Bricks &amp; Spa"
-              desc="Hand-carved Himalayan salt lamps, polished salt tiles for halotherapy rooms, bath &amp; spa salt blends — all manufactured to export standards." />
+          <div className="brands-grid" data-reveal-toggle-stagger>
+            <B2BBrandCard id="bulk" icon="cubes" title="Bulk Salt Supply"
+              desc="High-volume edible & industrial salt from our Khewra-source mines. Container loads (20ft / 40ft FCL) shipped worldwide. MOQ from 1 metric ton." />
+            <B2BBrandCard id="private-label" icon="box" title="Private Label & Packaging"
+              desc="Your brand, our salt. Custom retail jars, pouches, gift boxes & pallet packs. Full label design, barcoding & regulatory dossiers included." />
+            <B2BBrandCard id="custom" icon="grind" title="Custom Grinds & Blends"
+              desc="Fine, medium, coarse, granular, powder & chunk — tailored to your industry. Blended with herbs, citrus zest or mineral notes on request." />
+            <B2BBrandCard id="lifestyle" icon="lamp" title="Salt Lamps, Bricks & Spa"
+              desc="Hand-carved Himalayan salt lamps, polished salt tiles for halotherapy rooms, bath & spa salt blends — all manufactured to export standards." />
           </div>
           <div className="cap-features" data-reveal-toggle-stagger>
             {[
@@ -221,12 +221,17 @@ function CapIcon({ name }) {
   );
 }
 
-function CapCard({ id, title, desc, icon }) {
+function B2BBrandCard({ id, title, desc, icon }) {
   return (
-    <div className="cap-card" id={id}>
-      <div className="cap-icon-circle"><CapIcon name={icon} /></div>
-      <h3 dangerouslySetInnerHTML={{ __html: title }} />
-      <p dangerouslySetInnerHTML={{ __html: desc }} />
+    <div className="brand-card" id={id}>
+      <div className="brand-card-header">
+        <div className="brand-card-icon">
+          <CapIcon name={icon} />
+        </div>
+        <h3>{title}</h3>
+      </div>
+      <div className="brand-card-rule" />
+      <p>{desc}</p>
     </div>
   );
 }

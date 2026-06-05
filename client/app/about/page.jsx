@@ -17,42 +17,50 @@ export default function AboutPage() {
       <section className="about abt-odd" id="about">
         <div className="about-grid">
           <div className="about-text">
-            <div className="eyebrow">About Al Syedi Group</div>
-            <h2>From the Khewra Salt Range to <span className="gold-word">Kitchens &amp; Spas Worldwide</span></h2>
-            <p>
-              For over two decades, Al Syedi Group has been a trusted name in the global salt trade — quarrying, refining and exporting the world&apos;s purest Himalayan Pink Salt from the legendary Khewra Salt Range, the second-largest salt mine on Earth.
+            <div className="about-eyebrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+              About Our Company
+            </div>
+            <h2 className="about-heading">Syedi Salt is Pakistan&apos;s Leading <span className="gold-word">Premium Himalayan Pink Salt</span> Manufacturer &amp; Exporter Since 1998.</h2>
+            <p className="about-desc">
+              From the legendary Khewra Salt Range — the second-largest salt mine on Earth — we quarry, refine and export the world&apos;s purest Himalayan Pink Salt. Our vertically integrated mine-to-market operation serves 320+ B2B clients across 42 countries with consistent quality, competitive pricing and reliable container-load shipping.
             </p>
-            <p>
-              From a single mine-side operation to a vertically integrated supplier serving 320+ B2B clients across 42 countries, our promise has never changed: premium purity, consistent grades and uncompromising service.
-            </p>
-            <ul className="checklist">
+            <div className="about-features">
               {[
-                'Vertically Integrated Mine-to-Market',
-                'In-House Lab &amp; Quality Control',
-                'ISO 22000, HACCP, BRC, Halal &amp; Kosher Certified',
-                'Container-Load Shipping to 42 Countries',
-              ].map((t) => (
-                <li key={t}>
-                  <span className="check">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg>
-                  </span>
-                  <span dangerouslySetInnerHTML={{ __html: t }} />
-                </li>
+                { icon: <><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></>, label: 'ISO & HACCP Certified' },
+                { icon: <><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></>, label: 'On-Time Global Delivery' },
+                { icon: <><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4M21 7v10l-9 4"/></>, label: 'Custom Packaging Solutions' },
+                { icon: <><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></>, label: '24/7 Export Support' },
+                { icon: <><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></>, label: 'Private Label & White Label' },
+                { icon: <><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></>, label: 'Container-Load Shipping' },
+              ].map((f) => (
+                <div className="about-feat" key={f.label}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">{f.icon}</svg>
+                  <span>{f.label}</span>
+                </div>
               ))}
-            </ul>
-            <Link href="/contact" className="btn btn-gold">Partner With Us</Link>
+            </div>
+            <div className="about-actions">
+              <Link href="/contact" className="btn btn-gold">
+                Contact Us
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </Link>
+              <a href="tel:+17809526108" className="about-phone">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+                +1 780 9526108
+              </a>
+            </div>
           </div>
           <div className="about-images">
             <div className="about-main-img">
-              <SaltImage kind="crystal-display" alt="Khewra Pink Salt Crystals" />
-              <div className="about-overlay-cards">
-                <div className="about-overlay-card">
-                  <div className="aoc-thumb"><SaltImage kind="pink-coarse" alt="Raw Himalayan Salt" /></div>
-                  <div><div className="aoc-label">Raw Himalayan Salt</div><div className="aoc-sub">Direct from Khewra Mines</div></div>
-                </div>
-                <div className="about-overlay-card">
-                  <div className="aoc-thumb"><SaltImage kind="lamp-natural" alt="Salt Lamps & Decor" /></div>
-                  <div><div className="aoc-label">Salt Lamps &amp; Decor</div><div className="aoc-sub">Handcrafted Excellence</div></div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/about_us_image.png" alt="Syedi Salt — Premium Himalayan Pink Salt" className="about-hero-img" />
+              <div className="about-stat-card">
+                <div className="about-stat-num">320+</div>
+                <div className="about-stat-lbl">Trusted B2B Clients</div>
+                <div className="about-stat-sub">
+                  <div><span className="about-stat-highlight">42+</span> Countries</div>
+                  <div><span className="about-stat-highlight">18K+</span> Tons/Year</div>
                 </div>
               </div>
             </div>
@@ -193,14 +201,18 @@ export default function AboutPage() {
               <Link href="/contact" className="btn btn-gold">Enquire for Your Market</Link>
             </div>
           </div>
-          <div className="markets-right">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80" alt="Global shipping network" className="markets-map-img" />
-            <div className="markets-map-overlay" />
-            <div className="markets-stat-panel">
-              <div className="markets-stat-num">42+</div>
-              <div className="markets-stat-lbl">Countries Covered</div>
-              <div className="markets-tagline">Global Reach.<br /><span className="gold-word">Local Commitment.</span></div>
+          <div className="markets-right markets-right--card">
+            <div className="markets-img-wrap">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/42-countries.png" alt="Global shipping to 42+ countries" className="markets-card-img" />
+              <div className="about-stat-card">
+                <div className="about-stat-num">42+</div>
+                <div className="about-stat-lbl">Countries Served</div>
+                <div className="about-stat-sub">
+                  <div><span className="about-stat-highlight">320+</span> Clients</div>
+                  <div><span className="about-stat-highlight">25+</span> Years</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
